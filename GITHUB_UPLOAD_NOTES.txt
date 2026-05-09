@@ -1,0 +1,7 @@
+﻿洛克王国多功能辅助工具 GitHub 上传包
+
+源码运行：
+1. pip install -r requirements.txt
+2. python 洛克王国多功能辅助工具.pyw
+
+Windows 免安装版请下载 GitHub Release 里的 portable zip，解压后运行 exe。

@@ -1,0 +1,30 @@
+{
+  "sourcePage": "https://map.17173.com/rocom/maps/shijie",
+  "sourceFile": "data/17173_all_resources_wiki_coords.json",
+  "fetchedAt": "2026-04-27T05:06:51+00:00",
+  "removedExisting17173SelectedMarkers": 0,
+  "addedCount": 498,
+  "addedByType": {
+    "克罗修斯的试炼": 1,
+    "露天对战": 102,
+    "支线任务": 21,
+    "未分类任务": 11,
+    "挑战小游戏": 61,
+    "魔法石": 294,
+    "魔法": 8
+  },
+  "skippedByType": {
+    "克罗修斯的试炼": 27,
+    "露天对战": 2,
+    "支线任务": 0,
+    "未分类任务": 0,
+    "挑战小游戏": 0,
+    "魔法石": 0,
+    "魔法": 0
+  },
+  "outdoorBattleOverlapPx": 32,
+  "wikiBlackMarkerCount": 16,
+  "iconEntriesAdded": 7,
+  "iconEntriesUpdated": 0,
+  "totalMarkers": 5339
+}

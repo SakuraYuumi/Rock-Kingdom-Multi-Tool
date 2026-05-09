@@ -1,0 +1,651 @@
+{
+  "sourcePage": "https://wiki.biligame.com/rocom/大地图",
+  "mapWidgetUrl": "https://wiki.biligame.com/rocom/Widget:Map4/main?action=raw",
+  "mapCodeWidgetUrl": "https://wiki.biligame.com/rocom/Widget:Map4.1/mapc?action=raw",
+  "fetchedAt": "2026-04-26T12:06:19+00:00",
+  "layer": {
+    "name": "G",
+    "description": "地上层",
+    "tileUrl": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/{z}/tile-{x}_{y}.png",
+    "index": 0
+  },
+  "zoom": 6,
+  "scanRange": {
+    "xMin": -6,
+    "xMax": 5,
+    "yMin": -6,
+    "yMax": 5
+  },
+  "tileCount": 120,
+  "tileDirectory": "D:\\素材\\Codex\\洛克王国坐标项目\\assets\\wiki_tiles\\G\\z6",
+  "stitchedMap": "D:\\素材\\Codex\\洛克王国坐标项目\\assets\\maps\\wiki_G_z6.png",
+  "tileBounds": {
+    "xMin": -6,
+    "xMax": 5,
+    "yMin": -6,
+    "yMax": 5
+  },
+  "imageSize": [
+    3072,
+    3072
+  ],
+  "leafletSimpleCrsTransformScale": 0.0078125,
+  "pixelPerCoordinate": 0.5,
+  "coordinatePerPixel": 2.0,
+  "pixelFormula": {
+    "x": "(lng - -3072.0) * 0.5",
+    "y": "(lat - -3072.0) * 0.5"
+  },
+  "coordinateBounds": {
+    "lngMin": -3072.0,
+    "lngMax": 3072.0,
+    "latMin": -3072.0,
+    "latMax": 3072.0
+  },
+  "tiles": [
+    {
+      "x": -6,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_-5.png"
+    },
+    {
+      "x": -5,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_-5.png"
+    },
+    {
+      "x": -4,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_-5.png"
+    },
+    {
+      "x": -3,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_-5.png"
+    },
+    {
+      "x": -2,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_-5.png"
+    },
+    {
+      "x": -1,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_-5.png"
+    },
+    {
+      "x": 0,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_-5.png"
+    },
+    {
+      "x": 1,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_-5.png"
+    },
+    {
+      "x": 2,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_-5.png"
+    },
+    {
+      "x": 3,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_-5.png"
+    },
+    {
+      "x": 4,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_-5.png"
+    },
+    {
+      "x": 5,
+      "y": -5,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_-5.png"
+    },
+    {
+      "x": -6,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_-4.png"
+    },
+    {
+      "x": -5,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_-4.png"
+    },
+    {
+      "x": -4,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_-4.png"
+    },
+    {
+      "x": -3,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_-4.png"
+    },
+    {
+      "x": -2,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_-4.png"
+    },
+    {
+      "x": -1,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_-4.png"
+    },
+    {
+      "x": 0,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_-4.png"
+    },
+    {
+      "x": 1,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_-4.png"
+    },
+    {
+      "x": 2,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_-4.png"
+    },
+    {
+      "x": 3,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_-4.png"
+    },
+    {
+      "x": 4,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_-4.png"
+    },
+    {
+      "x": 5,
+      "y": -4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_-4.png"
+    },
+    {
+      "x": -6,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_-3.png"
+    },
+    {
+      "x": -5,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_-3.png"
+    },
+    {
+      "x": -4,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_-3.png"
+    },
+    {
+      "x": -3,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_-3.png"
+    },
+    {
+      "x": -2,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_-3.png"
+    },
+    {
+      "x": -1,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_-3.png"
+    },
+    {
+      "x": 0,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_-3.png"
+    },
+    {
+      "x": 1,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_-3.png"
+    },
+    {
+      "x": 2,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_-3.png"
+    },
+    {
+      "x": 3,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_-3.png"
+    },
+    {
+      "x": 4,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_-3.png"
+    },
+    {
+      "x": 5,
+      "y": -3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_-3.png"
+    },
+    {
+      "x": -6,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_-2.png"
+    },
+    {
+      "x": -5,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_-2.png"
+    },
+    {
+      "x": -4,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_-2.png"
+    },
+    {
+      "x": -3,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_-2.png"
+    },
+    {
+      "x": -2,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_-2.png"
+    },
+    {
+      "x": -1,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_-2.png"
+    },
+    {
+      "x": 0,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_-2.png"
+    },
+    {
+      "x": 1,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_-2.png"
+    },
+    {
+      "x": 2,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_-2.png"
+    },
+    {
+      "x": 3,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_-2.png"
+    },
+    {
+      "x": 4,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_-2.png"
+    },
+    {
+      "x": 5,
+      "y": -2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_-2.png"
+    },
+    {
+      "x": -6,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_-1.png"
+    },
+    {
+      "x": -5,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_-1.png"
+    },
+    {
+      "x": -4,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_-1.png"
+    },
+    {
+      "x": -3,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_-1.png"
+    },
+    {
+      "x": -2,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_-1.png"
+    },
+    {
+      "x": -1,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_-1.png"
+    },
+    {
+      "x": 0,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_-1.png"
+    },
+    {
+      "x": 1,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_-1.png"
+    },
+    {
+      "x": 2,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_-1.png"
+    },
+    {
+      "x": 3,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_-1.png"
+    },
+    {
+      "x": 4,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_-1.png"
+    },
+    {
+      "x": 5,
+      "y": -1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_-1.png"
+    },
+    {
+      "x": -6,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_0.png"
+    },
+    {
+      "x": -5,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_0.png"
+    },
+    {
+      "x": -4,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_0.png"
+    },
+    {
+      "x": -3,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_0.png"
+    },
+    {
+      "x": -2,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_0.png"
+    },
+    {
+      "x": -1,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_0.png"
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_0.png"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_0.png"
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_0.png"
+    },
+    {
+      "x": 3,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_0.png"
+    },
+    {
+      "x": 4,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_0.png"
+    },
+    {
+      "x": 5,
+      "y": 0,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_0.png"
+    },
+    {
+      "x": -6,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_1.png"
+    },
+    {
+      "x": -5,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_1.png"
+    },
+    {
+      "x": -4,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_1.png"
+    },
+    {
+      "x": -3,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_1.png"
+    },
+    {
+      "x": -2,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_1.png"
+    },
+    {
+      "x": -1,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_1.png"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_1.png"
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_1.png"
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_1.png"
+    },
+    {
+      "x": 3,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_1.png"
+    },
+    {
+      "x": 4,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_1.png"
+    },
+    {
+      "x": 5,
+      "y": 1,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_1.png"
+    },
+    {
+      "x": -6,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_2.png"
+    },
+    {
+      "x": -5,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_2.png"
+    },
+    {
+      "x": -4,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_2.png"
+    },
+    {
+      "x": -3,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_2.png"
+    },
+    {
+      "x": -2,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_2.png"
+    },
+    {
+      "x": -1,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_2.png"
+    },
+    {
+      "x": 0,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_2.png"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_2.png"
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_2.png"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_2.png"
+    },
+    {
+      "x": 4,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_2.png"
+    },
+    {
+      "x": 5,
+      "y": 2,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_2.png"
+    },
+    {
+      "x": -6,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_3.png"
+    },
+    {
+      "x": -5,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_3.png"
+    },
+    {
+      "x": -4,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_3.png"
+    },
+    {
+      "x": -3,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_3.png"
+    },
+    {
+      "x": -2,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_3.png"
+    },
+    {
+      "x": -1,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_3.png"
+    },
+    {
+      "x": 0,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_3.png"
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_3.png"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_3.png"
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_3.png"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_3.png"
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_3.png"
+    },
+    {
+      "x": -6,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--6_4.png"
+    },
+    {
+      "x": -5,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--5_4.png"
+    },
+    {
+      "x": -4,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--4_4.png"
+    },
+    {
+      "x": -3,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--3_4.png"
+    },
+    {
+      "x": -2,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--2_4.png"
+    },
+    {
+      "x": -1,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile--1_4.png"
+    },
+    {
+      "x": 0,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-0_4.png"
+    },
+    {
+      "x": 1,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-1_4.png"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-2_4.png"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-3_4.png"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-4_4.png"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "url": "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/6/tile-5_4.png"
+    }
+  ],
+  "rawWidgetExtracts": {
+    "mapWidgetContainsTileUrl": true,
+    "mapCodeContainsCrsScale": true
+  }
+}

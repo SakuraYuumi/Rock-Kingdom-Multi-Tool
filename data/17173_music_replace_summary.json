@@ -1,0 +1,14 @@
+{
+  "sourcePage": "https://map.17173.com/rocom/maps/shijie",
+  "sourceFile": "data/17173_all_resources_wiki_coords.json",
+  "fetchedAt": "2026-04-27T05:06:50+00:00",
+  "removedWikiMusicMarkType": 810,
+  "removedWikiMusicMarkers": 0,
+  "removedMusicCategories": 1,
+  "removedMusicIconEntries": 0,
+  "sourceMusicCategoryId": 17310030036,
+  "sourceMusicCategoryName": "崭新乐章",
+  "targetMusicName": "乐谱",
+  "added17173MusicMarkers": 60,
+  "totalMarkers": 4841
+}

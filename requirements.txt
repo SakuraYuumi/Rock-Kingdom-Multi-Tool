@@ -1,0 +1,4 @@
+PyQt5>=5.15
+numpy>=1.26
+opencv-python>=4.9
+Pillow>=10.0

@@ -1,0 +1,68 @@
+{
+  "sourcePage": "https://map.17173.com/rocom/maps/shijie",
+  "locationApi": "https://terra-api.17173.com/app/location/list?mapIds=4010",
+  "fetchedAt": "2026-04-26T19:57:54+00:00",
+  "sourceCount": 1516,
+  "addedCount": 1205,
+  "skippedExistingOrOverlap": 311,
+  "skippedInternal": 0,
+  "removedExisting17173": 1445,
+  "legacyCategoriesRemoved": 0,
+  "newCategoriesAdded": 0,
+  "legacyIconsRemoved": 0,
+  "newIconsAdded": 0,
+  "duplicateDistancePx": 24,
+  "coordinateTransform": {
+    "sourceTileZoom": 12,
+    "sourceTileSize": 256,
+    "sourceTileOrigin": {
+      "x": 2032,
+      "y": 2032
+    },
+    "sourcePixelSpace": "17173 z12 stitched WebMercator tile pixels",
+    "targetPixelSpace": "wiki_G_z6.png pixels",
+    "transformX": [
+      1.000007219550505,
+      -8.89857547223961e-05,
+      -486.2928464737367
+    ],
+    "transformY": [
+      -2.4905604790605112e-05,
+      0.9990897235965729,
+      -662.7596392208782
+    ],
+    "alignmentNote": "The wiki basemap is a crop of the 17173 tile image, not a 3072-wide resize."
+  },
+  "addedByType": {
+    "NPC宝箱": 7,
+    "交互宝箱": 9,
+    "光系宝箱": 5,
+    "华丽宝箱": 65,
+    "地下宝箱": 20,
+    "地系宝箱": 12,
+    "幻系宝箱": 4,
+    "幽系宝箱": 11,
+    "恶系宝箱": 9,
+    "挖掘宝箱": 87,
+    "普通宝箱": 493,
+    "普通系宝箱": 7,
+    "机械系宝箱": 4,
+    "武系宝箱": 3,
+    "毒系宝箱": 3,
+    "水系宝箱": 7,
+    "火系宝箱": 5,
+    "珍贵宝箱": 5,
+    "电系宝箱": 2,
+    "精灵的宝藏": 203,
+    "精灵翻找宝箱": 63,
+    "翻找宝箱": 10,
+    "翼系宝箱": 14,
+    "草系宝箱": 9,
+    "萌系宝箱": 1,
+    "虫系宝箱": 6,
+    "观察宝箱": 1,
+    "钓鱼宝箱": 1,
+    "闪光点宝箱": 110,
+    "露天宝箱": 29
+  }
+}

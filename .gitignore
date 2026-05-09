@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local runtime state
+启动错误.log
+tmp_*/
+data/**/*.tmp
+data/accounts/
+data/user_*.json
+data/pvp_team_slots.json
+data/pvp_team_presets.json
+
+# Development-only generated artifacts
+dev_artifacts/
+release/
+*.zip

@@ -1,0 +1,35 @@
+{
+  "sourcePage": "https://map.17173.com/rocom/maps/shijie",
+  "sourceFile": "data/17173_all_resources_wiki_coords.json",
+  "fetchedAt": "2026-04-27T04:23:08+00:00",
+  "sourceSpiritPointCount": 381,
+  "excludedSourceSpiritCategories": {
+    "17310030023": "未分类精灵"
+  },
+  "removedWikiSpiritMarkers": 404,
+  "added17173SpiritMarkers": 381,
+  "removedWikiSpiritCategories": 19,
+  "added17173SpiritCategories": 18,
+  "removedWikiSpiritIconEntries": 19,
+  "added17173SpiritIconEntries": 18,
+  "addedByType": {
+    "草系": 67,
+    "萌系": 2,
+    "火系": 15,
+    "虫系": 12,
+    "水系": 42,
+    "翼系": 28,
+    "幽系": 26,
+    "电系": 11,
+    "光系": 4,
+    "地系": 71,
+    "龙系": 3,
+    "毒系": 3,
+    "恶系": 27,
+    "幻系": 11,
+    "冰系": 15,
+    "普通系": 24,
+    "机械系": 15,
+    "稀有精灵": 5
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "sourcePage": "https://map.17173.com/rocom/maps/shijie",
+  "sourceFile": "data/17173_all_resources_wiki_coords.json",
+  "targetMarkType": 802,
+  "targetMarkTypeName": "眠枭之星（蓝）",
+  "duplicateDistancePxZ6": 25.0,
+  "addedCount": 14,
+  "updatedAt": "2026-04-28T09:31:51+00:00",
+  "added": [
+    {
+      "sourcePointId": 158088585216,
+      "title": "在副本里有一个",
+      "nearestDistancePxZ6": 65.924,
+      "wikiCoord": {
+        "lng": -1460.110662,
+        "lat": -1955.144614
+      },
+      "wikiPixelZ6": {
+        "x": 805.944669,
+        "y": 558.427693,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 1611.889338,
+        "y": 1116.855386,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 187933073408,
+      "title": "帐篷顶",
+      "nearestDistancePxZ6": 693.023,
+      "wikiCoord": {
+        "lng": 561.991074,
+        "lat": -978.766275
+      },
+      "wikiPixelZ6": {
+        "x": 1816.995537,
+        "y": 1046.616862,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3633.991074,
+        "y": 2093.233725,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 209041715200,
+      "title": "眠枭之星雕像",
+      "nearestDistancePxZ6": 1332.696,
+      "wikiCoord": {
+        "lng": 1807.331442,
+        "lat": 546.83495
+      },
+      "wikiPixelZ6": {
+        "x": 2439.665721,
+        "y": 1809.417475,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 4879.331442,
+        "y": 3618.83495,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 251410923520,
+      "title": "路灯用魔法",
+      "nearestDistancePxZ6": 836.854,
+      "wikiCoord": {
+        "lng": 792.691926,
+        "lat": 223.494651
+      },
+      "wikiPixelZ6": {
+        "x": 1932.345963,
+        "y": 1647.747326,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3864.691926,
+        "y": 3295.494651,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 333276368896,
+      "title": "瀑布后",
+      "nearestDistancePxZ6": 769.919,
+      "wikiCoord": {
+        "lng": 714.754738,
+        "lat": -1048.767816
+      },
+      "wikiPixelZ6": {
+        "x": 1893.377369,
+        "y": 1011.616092,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3786.754738,
+        "y": 2023.232184,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 641653051392,
+      "title": "悬浮石头上用星星魔法",
+      "nearestDistancePxZ6": 692.271,
+      "wikiCoord": {
+        "lng": 553.974981,
+        "lat": -1125.683213
+      },
+      "wikiPixelZ6": {
+        "x": 1812.98749,
+        "y": 973.158394,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3625.974981,
+        "y": 1946.316787,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 657940250624,
+      "title": "山顶",
+      "nearestDistancePxZ6": 837.38,
+      "wikiCoord": {
+        "lng": 840.313017,
+        "lat": -804.232968
+      },
+      "wikiPixelZ6": {
+        "x": 1956.156508,
+        "y": 1133.883516,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3912.313017,
+        "y": 2267.767032,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 712811229184,
+      "title": "镜中世界左侧隐藏入口眠枭之星",
+      "nearestDistancePxZ6": 890.58,
+      "wikiCoord": {
+        "lng": 949.855121,
+        "lat": -829.843938
+      },
+      "wikiPixelZ6": {
+        "x": 2010.92756,
+        "y": 1121.078031,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 4021.855121,
+        "y": 2242.156062,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 786282827776,
+      "title": "星星",
+      "nearestDistancePxZ6": 437.891,
+      "wikiCoord": {
+        "lng": -18.553762,
+        "lat": -313.757621
+      },
+      "wikiPixelZ6": {
+        "x": 1526.723119,
+        "y": 1379.12119,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3053.446238,
+        "y": 2758.242379,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 917763149824,
+      "title": "星星",
+      "nearestDistancePxZ6": 635.896,
+      "wikiCoord": {
+        "lng": 377.689787,
+        "lat": -354.047816
+      },
+      "wikiPixelZ6": {
+        "x": 1724.844893,
+        "y": 1358.976092,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3449.689787,
+        "y": 2717.952184,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 924175654912,
+      "title": "眠枭之星",
+      "nearestDistancePxZ6": 60.673,
+      "wikiCoord": {
+        "lng": -2384.519988,
+        "lat": -1541.394323
+      },
+      "wikiPixelZ6": {
+        "x": 343.740006,
+        "y": 765.302839,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 687.480012,
+        "y": 1530.605677,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 937401094144,
+      "title": "星星",
+      "nearestDistancePxZ6": 960.414,
+      "wikiCoord": {
+        "lng": 1032.034078,
+        "lat": -266.975075
+      },
+      "wikiPixelZ6": {
+        "x": 2052.017039,
+        "y": 1402.512462,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 4104.034078,
+        "y": 2805.024925,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 937458155520,
+      "title": "秘境内",
+      "nearestDistancePxZ6": 41.149,
+      "wikiCoord": {
+        "lng": -956.952615,
+        "lat": -962.884634
+      },
+      "wikiPixelZ6": {
+        "x": 1057.523692,
+        "y": 1054.557683,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 2115.047385,
+        "y": 2109.115366,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    },
+    {
+      "sourcePointId": 984250109952,
+      "title": "眠枭之星",
+      "nearestDistancePxZ6": 724.345,
+      "wikiCoord": {
+        "lng": 561.448529,
+        "lat": -210.395444
+      },
+      "wikiPixelZ6": {
+        "x": 1816.724265,
+        "y": 1430.802278,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      },
+      "wikiPixelZ7": {
+        "x": 3633.448529,
+        "y": 2861.604556,
+        "inBounds": true,
+        "basemap": "wiki_G_z7.png"
+      }
+    }
+  ]
+}

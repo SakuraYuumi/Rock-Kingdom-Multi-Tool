@@ -1,0 +1,410 @@
+{
+  "sourcePage": "https://map.17173.com/rocom/maps/shijie",
+  "sourceFile": "data/17173_all_resources_wiki_coords.json",
+  "targetMarkType": 802,
+  "targetMarkTypeName": "眠枭之星（蓝）",
+  "matchDistancePxZ6": 30.0,
+  "beforeBlueCount": 161,
+  "sourceBlueCount": 156,
+  "matchedExistingCount": 154,
+  "addedFrom17173Count": 2,
+  "removedWikiCount": 7,
+  "afterBlueCount": 163,
+  "updatedAt": "2026-04-28T10:41:36+00:00",
+  "addedFrom17173": [
+    {
+      "sourcePointId": 534767415296,
+      "title": "眠枭之星",
+      "wikiPixelZ6": {
+        "x": 1074.424438,
+        "y": 1456.585707,
+        "inBounds": true
+      },
+      "wikiCoord": {
+        "lng": -923.151124,
+        "lat": -158.828586
+      }
+    },
+    {
+      "sourcePointId": 98310967296,
+      "title": "眠枭之星（用星星魔法）",
+      "wikiPixelZ6": {
+        "x": 809.133482,
+        "y": 688.417259,
+        "inBounds": true
+      },
+      "wikiCoord": {
+        "lng": -1453.733037,
+        "lat": -1695.165482
+      }
+    }
+  ],
+  "removedWiki": [
+    {
+      "oldIndex": 206,
+      "id": "143b99k25mr",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 236.0,
+        "y": 931.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 229,
+      "id": "1sfl6ne0b2",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 848.5,
+        "y": 1950.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 262,
+      "id": "1r4s92cph69",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 653.5,
+        "y": 898.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 263,
+      "id": "1qu5f9avzhv",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 652.0,
+        "y": 898.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 268,
+      "id": "3uvfn16hmu",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 333.5,
+        "y": 705.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 326,
+      "id": "s2vc1kyfsq",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 624.0,
+        "y": 1130.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 327,
+      "id": "yod5sm2ih6",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 615.5,
+        "y": 1114.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    }
+  ],
+  "removedUidMappings": [
+    {
+      "oldUid": "802:1r4s92cph69:262",
+      "newUid": "802:24meqdkcsbv:259",
+      "distancePxZ6": 5.373
+    },
+    {
+      "oldUid": "802:1qu5f9avzhv:263",
+      "newUid": "802:24meqdkcsbv:259",
+      "distancePxZ6": 5.818
+    },
+    {
+      "oldUid": "802:1sfl6ne0b2:229",
+      "newUid": "802:18tgvgweujg:225",
+      "distancePxZ6": 21.742
+    },
+    {
+      "oldUid": "802:3uvfn16hmu:268",
+      "newUid": "802:17173-924175654912:5284",
+      "distancePxZ6": 60.673
+    },
+    {
+      "oldUid": "802:143b99k25mr:206",
+      "newUid": "802:1ae697fqx8j:205",
+      "distancePxZ6": 71.988
+    },
+    {
+      "oldUid": "802:yod5sm2ih6:327",
+      "newUid": "802:yyzzlrhr6q:321",
+      "distancePxZ6": 16.85
+    },
+    {
+      "oldUid": "802:s2vc1kyfsq:326",
+      "newUid": "802:yyzzlrhr6q:321",
+      "distancePxZ6": 11.911
+    }
+  ],
+  "largestMatchedDistances": [
+    {
+      "sourcePointId": 299420008448,
+      "preservedWikiId": "ls0c3njpa9",
+      "oldIndex": 295,
+      "distancePxZ6": 24.853
+    },
+    {
+      "sourcePointId": 566140809216,
+      "preservedWikiId": "1v2kmxgkrsd",
+      "oldIndex": 312,
+      "distancePxZ6": 21.204
+    },
+    {
+      "sourcePointId": 90954293248,
+      "preservedWikiId": "23mynesz7g3",
+      "oldIndex": 300,
+      "distancePxZ6": 17.841
+    },
+    {
+      "sourcePointId": 887139266560,
+      "preservedWikiId": "1ae697fqx8j",
+      "oldIndex": 205,
+      "distancePxZ6": 17.301
+    },
+    {
+      "sourcePointId": 647851720704,
+      "preservedWikiId": "2h4l4pzigjo",
+      "oldIndex": 287,
+      "distancePxZ6": 16.8
+    },
+    {
+      "sourcePointId": 608031748096,
+      "preservedWikiId": "1qjil7q3dic",
+      "oldIndex": 244,
+      "distancePxZ6": 15.526
+    },
+    {
+      "sourcePointId": 378505637888,
+      "preservedWikiId": "13w8gfk1c2x",
+      "oldIndex": 292,
+      "distancePxZ6": 12.239
+    },
+    {
+      "sourcePointId": 774288769024,
+      "preservedWikiId": "cmcnzxr0t9",
+      "oldIndex": 275,
+      "distancePxZ6": 12.182
+    },
+    {
+      "sourcePointId": 367535628288,
+      "preservedWikiId": "16geads72iq",
+      "oldIndex": 259,
+      "distancePxZ6": 11.977
+    },
+    {
+      "sourcePointId": 743126544384,
+      "preservedWikiId": "qzvmqp5yno",
+      "oldIndex": 335,
+      "distancePxZ6": 11.823
+    },
+    {
+      "sourcePointId": 37196886016,
+      "preservedWikiId": "11xc9p9wbdk",
+      "oldIndex": 339,
+      "distancePxZ6": 11.658
+    },
+    {
+      "sourcePointId": 82529644544,
+      "preservedWikiId": "14s4xt30c1t",
+      "oldIndex": 265,
+      "distancePxZ6": 10.933
+    },
+    {
+      "sourcePointId": 80588443648,
+      "preservedWikiId": "1zsph7wrja8",
+      "oldIndex": 207,
+      "distancePxZ6": 10.714
+    },
+    {
+      "sourcePointId": 282885361664,
+      "preservedWikiId": "29n6fct7vqz",
+      "oldIndex": 213,
+      "distancePxZ6": 10.691
+    },
+    {
+      "sourcePointId": 971594944512,
+      "preservedWikiId": "2ilr9rqto3k",
+      "oldIndex": 289,
+      "distancePxZ6": 10.494
+    },
+    {
+      "sourcePointId": 837470576640,
+      "preservedWikiId": "21gz8t2ir3n",
+      "oldIndex": 344,
+      "distancePxZ6": 10.105
+    },
+    {
+      "sourcePointId": 452670869504,
+      "preservedWikiId": "8okajd2f5s",
+      "oldIndex": 343,
+      "distancePxZ6": 9.942
+    },
+    {
+      "sourcePointId": 53138399232,
+      "preservedWikiId": "1cd2fui8gat",
+      "oldIndex": 200,
+      "distancePxZ6": 9.796
+    },
+    {
+      "sourcePointId": 876056526848,
+      "preservedWikiId": "1cr9aq3nctu",
+      "oldIndex": 301,
+      "distancePxZ6": 9.76
+    },
+    {
+      "sourcePointId": 151242739712,
+      "preservedWikiId": "wbajbbk2kh",
+      "oldIndex": 279,
+      "distancePxZ6": 9.754
+    }
+  ],
+  "policy": "replace_17173_matches_keep_extra_wiki",
+  "keptExtraWikiCount": 7,
+  "restoredWikiCount": 7,
+  "restoredWiki": [
+    {
+      "oldIndex": 206,
+      "id": "143b99k25mr",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 236.0,
+        "y": 931.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 229,
+      "id": "1sfl6ne0b2",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 848.5,
+        "y": 1950.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 262,
+      "id": "1r4s92cph69",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 653.5,
+        "y": 898.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 263,
+      "id": "1qu5f9avzhv",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 652.0,
+        "y": 898.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 268,
+      "id": "3uvfn16hmu",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 333.5,
+        "y": 705.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 326,
+      "id": "s2vc1kyfsq",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 624.0,
+        "y": 1130.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    },
+    {
+      "oldIndex": 327,
+      "id": "yod5sm2ih6",
+      "sourcePointId": null,
+      "wikiPixelZ6": {
+        "x": 615.5,
+        "y": 1114.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z6.png"
+      }
+    }
+  ],
+  "routeMarkersAddedAfterRestore": [
+    {
+      "uid": "802:17173-534767415296:5288",
+      "nearestDistancePxZ7": 20.862
+    },
+    {
+      "uid": "802:17173-98310967296:5289",
+      "nearestDistancePxZ7": 5.688
+    },
+    {
+      "uid": "802:143b99k25mr:5290",
+      "nearestDistancePxZ7": 143.977
+    },
+    {
+      "uid": "802:1sfl6ne0b2:5291",
+      "nearestDistancePxZ7": 43.484
+    },
+    {
+      "uid": "802:1r4s92cph69:5292",
+      "nearestDistancePxZ7": 10.746
+    },
+    {
+      "uid": "802:1qu5f9avzhv:5293",
+      "nearestDistancePxZ7": 3.0
+    },
+    {
+      "uid": "802:3uvfn16hmu:5294",
+      "nearestDistancePxZ7": 121.346
+    },
+    {
+      "uid": "802:s2vc1kyfsq:5295",
+      "nearestDistancePxZ7": 23.822
+    },
+    {
+      "uid": "802:yod5sm2ih6:5296",
+      "nearestDistancePxZ7": 33.701
+    }
+  ],
+  "correctedAt": "2026-04-28T10:47:27+00:00",
+  "restoredIntoFiles": [
+    "wiki_resource_points.json",
+    "wiki_collection_points.json",
+    "wiki_resource_points_pixels_z6.json",
+    "wiki_resource_points_pixels_z7.json",
+    "wiki_resource_points_by_type.json",
+    "wiki_resource_points.csv"
+  ],
+  "note": "17173 blue-star coordinates replace matched Wiki points; unmatched extra Wiki blue-star points are preserved instead of deleted."
+}

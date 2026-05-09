@@ -1,0 +1,1222 @@
+{
+  "meta": {
+    "sourcePage": "https://wiki.biligame.com/rocom/大地图",
+    "sourcePageEncoded": "https://wiki.biligame.com/rocom/%E5%A4%A7%E5%9C%B0%E5%9B%BE",
+    "categoryUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/json?action=raw",
+    "fetchedAt": "2026-04-26T18:49:54+00:00",
+    "totalCategories": 121,
+    "updatedAt": "2026-04-27T05:40:09+00:00"
+  },
+  "categories": [
+    {
+      "group": "地点",
+      "markType": 201,
+      "markTypeName": "庇护所",
+      "length": "{{#invoke:point|getLength|Map|201}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_庇护所.png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 210,
+      "markTypeName": "小庇护所",
+      "length": "{{#invoke:point|getLength|Map|210}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_眠枭2.PNG}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 202,
+      "markTypeName": "传送点",
+      "length": "{{#invoke:point|getLength|Map|202}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_传送点.png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 203,
+      "markTypeName": "炼金台",
+      "length": "{{#invoke:point|getLength|Map|203}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_炼金.png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 204,
+      "markTypeName": "副本",
+      "length": "{{#invoke:point|getLength|Map|204}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_副本1.png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 205,
+      "markTypeName": "服装店",
+      "length": "{{#invoke:point|getLength|Map|205}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_皮卡服装店.png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 206,
+      "markTypeName": "商店",
+      "length": "{{#invoke:point|getLength|Map|206}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_商店 .png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 207,
+      "markTypeName": "扭蛋机",
+      "length": "{{#invoke:point|getLength|Map|207}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_扭蛋机.png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 208,
+      "markTypeName": "重量解谜",
+      "length": "{{#invoke:point|getLength|Map|208}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_称重.png}}",
+      "desc": ""
+    },
+    {
+      "group": "地点",
+      "markType": 209,
+      "markTypeName": "小游戏",
+      "length": "{{#invoke:point|getLength|Map|209}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_小游戏.png}}",
+      "desc": ""
+    },
+    {
+      "group": "收集",
+      "markType": 801,
+      "markTypeName": "果实",
+      "length": "{{#invoke:point|getLength|Map|801}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_果实.png}}",
+      "desc": ""
+    },
+    {
+      "group": "收集",
+      "markType": 802,
+      "markTypeName": "眠枭之星（蓝）",
+      "length": "{{#invoke:point|getLength|Map|802}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_星星1.png}}",
+      "desc": ""
+    },
+    {
+      "group": "收集",
+      "markType": 803,
+      "markTypeName": "眠枭之星（金）",
+      "length": "{{#invoke:point|getLength|Map|803}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_星星2.png}}",
+      "desc": ""
+    },
+    {
+      "group": "收集",
+      "markType": 807,
+      "markTypeName": "可可果",
+      "length": "{{#invoke:point|getLength|Map|807}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_可可果.png}}",
+      "desc": ""
+    },
+    {
+      "group": "收集",
+      "markType": 808,
+      "markTypeName": "无花果",
+      "length": "{{#invoke:point|getLength|Map|808}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_无花果.png}}",
+      "desc": ""
+    },
+    {
+      "group": "收集",
+      "markType": 809,
+      "markTypeName": "魔力果",
+      "length": "{{#invoke:point|getLength|Map|809}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_魔力果.png}}",
+      "desc": ""
+    },
+    {
+      "group": "互动事件",
+      "markType": 1001,
+      "markTypeName": "天气石像",
+      "length": "{{#invoke:point|getLength|Map|1001}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_天气石像.png}}",
+      "desc": ""
+    },
+    {
+      "group": "互动事件",
+      "markType": 1002,
+      "markTypeName": "石碑",
+      "length": "{{#invoke:point|getLength|Map|1002}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_石碑.png}}",
+      "desc": ""
+    },
+    {
+      "group": "互动事件",
+      "markType": 1003,
+      "markTypeName": "火盆",
+      "length": "{{#invoke:point|getLength|Map|1003}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_火盆.png}}",
+      "desc": ""
+    },
+    {
+      "group": "互动事件",
+      "markType": 1004,
+      "markTypeName": "问答挑战",
+      "length": "{{#invoke:point|getLength|Map|1004}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_问答挑战.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 301,
+      "markTypeName": "普通宝箱",
+      "length": "{{#invoke:point|getLength|Map|301}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_宝箱1.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 302,
+      "markTypeName": "稀有宝箱",
+      "length": "{{#invoke:point|getLength|Map|302}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_宝箱2.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 303,
+      "markTypeName": "珍贵宝箱",
+      "length": "{{#invoke:point|getLength|Map|303}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_宝箱3.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 304,
+      "markTypeName": "华丽宝箱",
+      "length": "{{#invoke:point|getLength|Map|304}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_宝箱4.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 305,
+      "markTypeName": "普通系宝箱",
+      "length": "{{#invoke:point|getLength|Map|305}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_普通宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 306,
+      "markTypeName": "草系宝箱",
+      "length": "{{#invoke:point|getLength|Map|306}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_草宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 307,
+      "markTypeName": "火系宝箱",
+      "length": "{{#invoke:point|getLength|Map|307}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_火宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 308,
+      "markTypeName": "水系宝箱",
+      "length": "{{#invoke:point|getLength|Map|308}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_水宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 309,
+      "markTypeName": "光系宝箱",
+      "length": "{{#invoke:point|getLength|Map|309}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_光宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 310,
+      "markTypeName": "地系宝箱",
+      "length": "{{#invoke:point|getLength|Map|310}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_地宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 311,
+      "markTypeName": "冰系宝箱",
+      "length": "{{#invoke:point|getLength|Map|311}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_冰宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 312,
+      "markTypeName": "龙系宝箱",
+      "length": "{{#invoke:point|getLength|Map|312}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_龙宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 313,
+      "markTypeName": "电系宝箱",
+      "length": "{{#invoke:point|getLength|Map|313}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_电宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 314,
+      "markTypeName": "毒系宝箱",
+      "length": "{{#invoke:point|getLength|Map|314}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_毒宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 315,
+      "markTypeName": "虫系宝箱",
+      "length": "{{#invoke:point|getLength|Map|315}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_虫宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 316,
+      "markTypeName": "武系宝箱",
+      "length": "{{#invoke:point|getLength|Map|316}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_武宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 317,
+      "markTypeName": "翼系宝箱",
+      "length": "{{#invoke:point|getLength|Map|317}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_翼宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 318,
+      "markTypeName": "萌系宝箱",
+      "length": "{{#invoke:point|getLength|Map|318}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_萌宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 319,
+      "markTypeName": "幽系宝箱",
+      "length": "{{#invoke:point|getLength|Map|319}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_幽宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 320,
+      "markTypeName": "恶系宝箱",
+      "length": "{{#invoke:point|getLength|Map|320}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_恶宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 321,
+      "markTypeName": "机械系宝箱",
+      "length": "{{#invoke:point|getLength|Map|321}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_机械宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 322,
+      "markTypeName": "幻系宝箱",
+      "length": "{{#invoke:point|getLength|Map|322}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_幻宝箱.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "length": "{{#invoke:point|getLength|Map|701}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_黑晶琉璃.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 702,
+      "markTypeName": "黄石榴石",
+      "length": "{{#invoke:point|getLength|Map|702}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_黄石榴石.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 703,
+      "markTypeName": "蓝晶碧玺",
+      "length": "{{#invoke:point|getLength|Map|703}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_蓝晶碧玺.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 704,
+      "markTypeName": "紫莲刚玉",
+      "length": "{{#invoke:point|getLength|Map|704}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_紫莲刚玉.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 715,
+      "markTypeName": "蜂窝",
+      "length": "{{#invoke:point|getLength|Map|715}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_蜂窝.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "length": "{{#invoke:point|getLength|Map|705}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_向阳花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "length": "{{#invoke:point|getLength|Map|727}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_海神花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 728,
+      "markTypeName": "紫雀花",
+      "length": "{{#invoke:point|getLength|Map|728}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_紫雀花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 706,
+      "markTypeName": "喵喵草",
+      "length": "{{#invoke:point|getLength|Map|706}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_喵喵草.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "length": "{{#invoke:point|getLength|Map|708}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_睡铃.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 710,
+      "markTypeName": "石耳",
+      "length": "{{#invoke:point|getLength|Map|710}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_石耳.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 711,
+      "markTypeName": "伞伞菌",
+      "length": "{{#invoke:point|getLength|Map|711}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_伞伞菌.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 712,
+      "markTypeName": "蜜黄菌",
+      "length": "{{#invoke:point|getLength|Map|712}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_蜜黄菌.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 714,
+      "markTypeName": "凤眼莲",
+      "length": "{{#invoke:point|getLength|Map|714}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_凤眼莲.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 707,
+      "markTypeName": "蓝掌",
+      "length": "{{#invoke:point|getLength|Map|707}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_蓝掌.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 725,
+      "markTypeName": "风卷草",
+      "length": "{{#invoke:point|getLength|Map|725}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_风卷草.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 723,
+      "markTypeName": "彩玉花",
+      "length": "{{#invoke:point|getLength|Map|723}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_彩玉花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 713,
+      "markTypeName": "喷气菇",
+      "length": "{{#invoke:point|getLength|Map|713}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_喷气菇.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 734,
+      "markTypeName": "幽幽草",
+      "length": "{{#invoke:point|getLength|Map|734}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_幽幽草.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 735,
+      "markTypeName": "幽幽鬼火",
+      "length": "{{#invoke:point|getLength|Map|735}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_幽幽鬼火.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 709,
+      "markTypeName": "天使草",
+      "length": "{{#invoke:point|getLength|Map|709}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_天使草.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 716,
+      "markTypeName": "星霜花",
+      "length": "{{#invoke:point|getLength|Map|716}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_星霜花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 732,
+      "markTypeName": "火焰花",
+      "length": "{{#invoke:point|getLength|Map|732}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_火焰花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 733,
+      "markTypeName": "雪菇",
+      "length": "{{#invoke:point|getLength|Map|733}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_雪菇.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 738,
+      "markTypeName": "杏黄贝",
+      "length": "{{#invoke:point|getLength|Map|738}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_杏黄贝.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 721,
+      "markTypeName": "海桑花",
+      "length": "{{#invoke:point|getLength|Map|721}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_海桑花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 731,
+      "markTypeName": "花星角",
+      "length": "{{#invoke:point|getLength|Map|731}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_花星角.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 724,
+      "markTypeName": "象牙花",
+      "length": "{{#invoke:point|getLength|Map|724}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_象牙花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 720,
+      "markTypeName": "紫晶菇",
+      "length": "{{#invoke:point|getLength|Map|720}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_紫晶菇.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 717,
+      "markTypeName": "荧光兰",
+      "length": "{{#invoke:point|getLength|Map|717}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_荧光兰.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 739,
+      "markTypeName": "短木莲",
+      "length": "{{#invoke:point|getLength|Map|739}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_短木莲.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 729,
+      "markTypeName": "恶魔雪茄",
+      "length": "{{#invoke:point|getLength|Map|729}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_恶魔雪茄.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 730,
+      "markTypeName": "骨片",
+      "length": "{{#invoke:point|getLength|Map|730}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_骨片.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 737,
+      "markTypeName": "洋红珊瑚",
+      "length": "{{#invoke:point|getLength|Map|737}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_洋红珊瑚.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 726,
+      "markTypeName": "海珊瑚",
+      "length": "{{#invoke:point|getLength|Map|726}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_海珊瑚.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "length": "{{#invoke:point|getLength|Map|718}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_大嘴花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 719,
+      "markTypeName": "流星兰",
+      "length": "{{#invoke:point|getLength|Map|719}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_流星兰.png}}",
+      "desc": ""
+    },
+    {
+      "group": "采集",
+      "markType": 736,
+      "markTypeName": "藻羽花",
+      "length": "{{#invoke:point|getLength|Map|736}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_藻羽花.png}}",
+      "desc": ""
+    },
+    {
+      "group": "任务",
+      "markType": 401,
+      "markTypeName": "拾遗任务",
+      "length": "{{#invoke:point|getLength|Map|401}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_任务.png}}",
+      "desc": ""
+    },
+    {
+      "group": "任务",
+      "markType": 402,
+      "markTypeName": "奇谭任务",
+      "length": "{{#invoke:point|getLength|Map|402}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_任务2.png}}",
+      "desc": ""
+    },
+    {
+      "group": "任务",
+      "markType": 403,
+      "markTypeName": "旅途任务",
+      "length": "{{#invoke:point|getLength|Map|403}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_任务4.png}}",
+      "desc": ""
+    },
+    {
+      "group": "战斗",
+      "markType": 602,
+      "markTypeName": "黑衣人",
+      "length": "{{#invoke:point|getLength|Map|602}}",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_黑衣人.png}}",
+      "desc": ""
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730031,
+      "markTypeName": "精灵的宝藏",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030031.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730101,
+      "markTypeName": "闪光点宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730102,
+      "markTypeName": "挖掘宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730103,
+      "markTypeName": "露天宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730104,
+      "markTypeName": "地下宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730105,
+      "markTypeName": "精灵翻找宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030031.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730106,
+      "markTypeName": "翻找宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730107,
+      "markTypeName": "观察宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730108,
+      "markTypeName": "NPC宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730109,
+      "markTypeName": "钓鱼宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "宝箱",
+      "markType": 171730110,
+      "markTypeName": "交互宝箱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030001.png",
+      "desc": "17173 洛克王国世界互动地图新增宝箱分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030005,
+      "markTypeName": "草系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030005.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030006,
+      "markTypeName": "萌系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030006.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030007,
+      "markTypeName": "火系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030007.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030008,
+      "markTypeName": "虫系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030008.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030009,
+      "markTypeName": "水系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030009.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030010,
+      "markTypeName": "翼系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030010.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030011,
+      "markTypeName": "幽系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030011.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030012,
+      "markTypeName": "电系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030012.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030013,
+      "markTypeName": "光系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030013.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030014,
+      "markTypeName": "地系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030014.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030015,
+      "markTypeName": "龙系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030015.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030016,
+      "markTypeName": "毒系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030016.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030018,
+      "markTypeName": "恶系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030018.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030019,
+      "markTypeName": "幻系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030019.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030020,
+      "markTypeName": "冰系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030020.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030021,
+      "markTypeName": "普通系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030021.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030022,
+      "markTypeName": "机械系",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030022.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "精灵分布",
+      "markType": 17310030037,
+      "markTypeName": "稀有精灵",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030037.png",
+      "desc": "17173 洛克王国世界互动地图精灵分类"
+    },
+    {
+      "group": "收集",
+      "markType": 17310030036,
+      "markTypeName": "乐谱",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "{{filepath:地图_点位_icon_音符.png}}",
+      "desc": "17173 洛克王国世界互动地图崭新乐章，程序中显示为乐谱"
+    },
+    {
+      "group": "地点",
+      "markType": 17310030025,
+      "markTypeName": "克罗修斯的试炼",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030025.png",
+      "desc": "17173 洛克王国世界互动地图新增分类"
+    },
+    {
+      "group": "战斗",
+      "markType": 17310030026,
+      "markTypeName": "露天对战",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030026.png",
+      "desc": "17173 洛克王国世界互动地图新增分类"
+    },
+    {
+      "group": "任务",
+      "markType": 17310030027,
+      "markTypeName": "支线任务",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030027.png",
+      "desc": "17173 洛克王国世界互动地图新增分类"
+    },
+    {
+      "group": "任务",
+      "markType": 17310030028,
+      "markTypeName": "未分类任务",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030028.png",
+      "desc": "17173 洛克王国世界互动地图新增分类"
+    },
+    {
+      "group": "地点",
+      "markType": 17310030029,
+      "markTypeName": "挑战小游戏",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030029.png",
+      "desc": "17173 洛克王国世界互动地图新增分类"
+    },
+    {
+      "group": "收集",
+      "markType": 17310030033,
+      "markTypeName": "魔法石",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030033.png",
+      "desc": "17173 洛克王国世界互动地图新增分类"
+    },
+    {
+      "group": "收集",
+      "markType": 17310030034,
+      "markTypeName": "魔法",
+      "length": "",
+      "defaultShow": "",
+      "collectible": "",
+      "icon": "https://ue.17173cdn.com/a/terra/icon/rocom/17310030034.png",
+      "desc": "17173 洛克王国世界互动地图新增分类"
+    }
+  ]
+}

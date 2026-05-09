@@ -4580,6 +4580,7 @@ class RocoResourceMapQt(QMainWindow):
         self.route_preview_arrow_item = None
         self.route_preview_current_item = None
         self.route_preview_player_item = None
+        self.route_preview_node_items = []
         self.route_preview_marker_items = []
         self.route_preview_marker_signature = None
         self.route_preview_icon_cache = {}
@@ -5878,6 +5879,7 @@ class RocoResourceMapQt(QMainWindow):
         self.route_preview_current_item = None
         self.route_preview_player_item = None
         self.route_preview_opacity_slider = None
+        self.route_preview_node_items = []
         self.route_preview_marker_items = []
         self.route_preview_marker_signature = None
         self.minimap_follow_status_label = None
@@ -6078,7 +6080,14 @@ class RocoResourceMapQt(QMainWindow):
                 except RuntimeError:
                     pass
                 setattr(self, item_name, None)
-        steps = self.route_remaining_steps(800)
+        for item in getattr(self, "route_preview_node_items", []):
+            try:
+                self.route_preview_scene.removeItem(item)
+            except RuntimeError:
+                pass
+        self.route_preview_node_items = []
+
+        steps = self.route_remaining_steps()
         markers = [marker for marker, _kind in steps]
         preview_markers = self.route_preview_markers(1200)
         route_uids = tuple(route_point_uid(marker) for marker in preview_markers if route_point_uid(marker))
@@ -6129,6 +6138,34 @@ class RocoResourceMapQt(QMainWindow):
             self.route_preview_arrow_item.setZValue(4)
             self.route_preview_arrow_item.setAcceptedMouseButtons(Qt.NoButton)
             self.route_preview_scene.addItem(self.route_preview_arrow_item)
+
+        current_uid = route_point_uid(self.current_route_marker() or {})
+        for marker, kind in steps:
+            uid = route_point_uid(marker)
+            radius = 22 if uid == current_uid else 16
+            node = QGraphicsEllipseItem(
+                marker["x"] - radius,
+                marker["y"] - radius,
+                radius * 2,
+                radius * 2,
+            )
+            if uid == current_uid:
+                brush = QBrush(QColor("#ffcc33"))
+                pen = QPen(QColor("#ffffff"), 5)
+            elif kind == "teleport":
+                brush = QBrush(QColor("#2f7dff"))
+                pen = QPen(QColor("#ffffff"), 4)
+            else:
+                brush = QBrush(QColor("#111820"))
+                pen = QPen(QColor("#ffffff"), 4)
+            pen.setCosmetic(True)
+            node.setBrush(brush)
+            node.setPen(pen)
+            node.setZValue(5.2)
+            node.setAcceptedMouseButtons(Qt.NoButton)
+            node.setData(0, uid)
+            self.route_preview_scene.addItem(node)
+            self.route_preview_node_items.append(node)
 
         current = self.current_route_marker()
         if current is not None:
@@ -7837,7 +7874,7 @@ class RocoResourceMapQt(QMainWindow):
         self.clear_route_path()
         if not hasattr(self, "scene"):
             return
-        steps = self.route_remaining_steps(ROUTE_DRAW_LIMIT)
+        steps = self.route_remaining_steps()
         markers = [marker for marker, _kind in steps]
         for marker, kind in steps:
             if kind not in ("teleport", "manual"):
@@ -8651,6 +8688,8 @@ def run_selftest():
     route_player_moves_ok = False
     route_player_icon_ok = False
     route_arrows_ok = False
+    route_main_full_path_ok = False
+    route_preview_nodes_ok = False
     locate_player_ok = False
     cache_button_removed = False
     pinned_layout_ok = False
@@ -8723,7 +8762,39 @@ def run_selftest():
         window.current_route_index = 0
         window.refresh_route_tree()
         window.render_route_path()
+        window.update_route_preview()
         app.processEvents()
+        route_preview_nodes_ok = (
+            len(getattr(window, "route_preview_node_items", [])) >= len(window.route_remaining_steps())
+            and len(getattr(window, "route_preview_node_items", [])) > 0
+        )
+        old_route_for_full_path = window.route_markers
+        old_index_for_full_path = window.current_route_index
+        try:
+            long_route = [
+                window.create_manual_route_point(
+                    float(index * 12),
+                    float(120 + (index % 7) * 24),
+                    title=f"自检路径点 {index + 1}",
+                    uid=f"{MANUAL_ROUTE_UID_PREFIX}selftest-full-{index}",
+                    layer=window.current_layer,
+                )
+                for index in range(ROUTE_DRAW_LIMIT + 25)
+            ]
+            window.route_markers = long_route
+            window.current_route_index = 0
+            window.render_route_path()
+            expected_steps = len(window.route_remaining_steps())
+            path_elements = (
+                window.route_path_item.path().elementCount()
+                if window.route_path_item is not None
+                else 0
+            )
+            route_main_full_path_ok = path_elements == expected_steps == len(long_route)
+        finally:
+            window.route_markers = old_route_for_full_path
+            window.current_route_index = old_index_for_full_path
+            window.render_route_path()
         line_markers = [{"x": float(x), "y": 0.0} for x in (0, 10, 20, 30)]
         line_route = window.build_optimized_route(line_markers, 15.0, 0.0)
         route_global_open_ok = (
@@ -9296,6 +9367,8 @@ def run_selftest():
         "route_player_moves_ok": bool(route_player_moves_ok),
         "route_player_icon_ok": bool(route_player_icon_ok),
         "route_arrows_ok": bool(route_arrows_ok),
+        "route_main_full_path_ok": bool(route_main_full_path_ok),
+        "route_preview_nodes_ok": bool(route_preview_nodes_ok),
         "locate_player_ok": bool(locate_player_ok),
         "cache_button_removed": bool(cache_button_removed),
         "pinned_layout_ok": bool(pinned_layout_ok),
@@ -9381,6 +9454,8 @@ def run_selftest():
     print(f"route player moves: {route_player_moves_ok}")
     print(f"route player icon: {route_player_icon_ok}")
     print(f"route preview arrows: {route_arrows_ok}")
+    print(f"main map full route path: {route_main_full_path_ok}")
+    print(f"route preview nodes: {route_preview_nodes_ok}")
     print(f"locate player works: {locate_player_ok}")
     print(f"SIFT cache button removed: {cache_button_removed}")
     print(f"pinned layout minimal: {pinned_layout_ok}")

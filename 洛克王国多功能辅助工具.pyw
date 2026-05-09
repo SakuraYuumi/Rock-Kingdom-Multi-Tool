@@ -4,9 +4,16 @@ from pathlib import Path
 
 
 PROJECT_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
-RUNTIME_DIR = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else PROJECT_DIR
 if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
+
+try:
+    from app.app_paths import startup_error_path
+except Exception:
+    RUNTIME_DIR = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else PROJECT_DIR
+
+    def startup_error_path():
+        return RUNTIME_DIR / "启动错误.log"
 
 
 def show_startup_error(error_path, error_text):
@@ -31,7 +38,7 @@ if __name__ == "__main__":
 
         sys.exit(main())
     except Exception:
-        error_path = RUNTIME_DIR / "启动错误.log"
+        error_path = startup_error_path()
         error_text = traceback.format_exc()
         error_path.write_text(error_text, encoding="utf-8")
         show_startup_error(error_path, error_text)

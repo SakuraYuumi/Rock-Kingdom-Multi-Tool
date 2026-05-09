@@ -62,7 +62,27 @@ from PyQt5.QtWidgets import (
 )
 
 
-PROJECT_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
+try:
+    from app.app_paths import (
+        PROJECT_DIR,
+        data_path,
+        legacy_data_path,
+        migrate_user_dir,
+        migrate_user_file,
+        startup_error_path,
+        user_cache_path,
+    )
+except ImportError:
+    from app_paths import (
+        PROJECT_DIR,
+        data_path,
+        legacy_data_path,
+        migrate_user_dir,
+        migrate_user_file,
+        startup_error_path,
+        user_cache_path,
+    )
+
 if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
 
@@ -105,10 +125,10 @@ except ImportError:  # noqa: E402
         type_multiplier_for,
     )
 
-DATA_PATH = PROJECT_DIR / "data" / "wiki_resource_points_pixels_z6.json"
+DATA_PATH = data_path("wiki_resource_points_pixels_z6.json")
 MAP_PATH = PROJECT_DIR / "assets" / "maps" / "wiki_G_z6.png"
 MAP_ZOOM = "z6"
-DATA_PATH_Z7 = PROJECT_DIR / "data" / "wiki_resource_points_pixels_z7.json"
+DATA_PATH_Z7 = data_path("wiki_resource_points_pixels_z7.json")
 MAP_PATH_Z7 = PROJECT_DIR / "assets" / "maps" / "wiki_G_z7.png"
 if DATA_PATH_Z7.exists() and MAP_PATH_Z7.exists():
     DATA_PATH = DATA_PATH_Z7
@@ -135,19 +155,19 @@ MAP_LAYER_PATHS = OrderedDict(
     (layer, PROJECT_DIR / "assets" / "maps" / f"wiki_{layer}_{MAP_ZOOM}.png")
     for layer in MAP_LAYER_LABELS
 )
-STATE_PATH = PROJECT_DIR / "data" / "user_dimmed_markers.json"
-NOTES_PATH = PROJECT_DIR / "data" / "user_marker_notes.json"
-ROUTE_STATE_PATH = PROJECT_DIR / "data" / "user_route_progress.json"
-ROUTE_CACHE_PATH = PROJECT_DIR / "data" / "user_route_cache.json"
-ACCOUNT_ROOT = PROJECT_DIR / "data" / "accounts"
-ACCOUNTS_PATH = PROJECT_DIR / "data" / "user_accounts.json"
+STATE_PATH = migrate_user_file("user_dimmed_markers.json")
+NOTES_PATH = migrate_user_file("user_marker_notes.json")
+ROUTE_STATE_PATH = migrate_user_file("user_route_progress.json")
+ROUTE_CACHE_PATH = migrate_user_file("user_route_cache.json")
+ACCOUNT_ROOT = migrate_user_dir("accounts")
+ACCOUNTS_PATH = migrate_user_file("user_accounts.json")
 DEFAULT_ACCOUNT_ID = "default"
 DEFAULT_ACCOUNT_NAME = "默认账号"
-DETAILS_PATH = PROJECT_DIR / "data" / "17173_marker_details.json"
-EGG_DATA_PATH = PROJECT_DIR / "data" / "egg_group_data.json"
-PVP_TEAM_PRESETS_PATH = PROJECT_DIR / "data" / "pvp_team_presets.json"
-SUBMISSIONS_PATH = PROJECT_DIR / "data" / "user_marker_audit_submissions.json"
-SUBMISSION_UPLOADS_DIR = PROJECT_DIR / "data" / "user_marker_submission_uploads"
+DETAILS_PATH = data_path("17173_marker_details.json")
+EGG_DATA_PATH = data_path("egg_group_data.json")
+PVP_TEAM_PRESETS_PATH = migrate_user_file("pvp_team_presets.json")
+SUBMISSIONS_PATH = migrate_user_file("user_marker_audit_submissions.json")
+SUBMISSION_UPLOADS_DIR = migrate_user_dir("user_marker_submission_uploads")
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp"}
 
 OPENGL_FORMAT = QSurfaceFormat()
@@ -228,7 +248,7 @@ MINIMAP_MOTION_SAMPLE_STEP = 6
 MINIMAP_MOTION_BAD_SCORE = 46
 MINIMAP_MOTION_MIN_IMPROVEMENT = 1.4
 MINIMAP_WORLD_PIXELS_PER_MINIMAP_PIXEL = 4.0
-SIFT_CACHE_PATH = PROJECT_DIR / "data" / "wiki_map_sift_cache.npz"
+SIFT_CACHE_PATH = data_path("wiki_map_sift_cache.npz")
 SIFT_REFERENCE_MAX_SIDE = 2048
 SIFT_MIN_MATCHES = 12
 SIFT_RATIO_TEST = 0.72
@@ -237,7 +257,7 @@ SIFT_MAX_WORLD_JUMP = 420
 
 
 def write_startup_error(exc_type, exc_value, exc_traceback):
-    error_path = PROJECT_DIR / "启动错误.log"
+    error_path = startup_error_path()
     error_path.write_text(
         "".join(traceback.format_exception(exc_type, exc_value, exc_traceback)),
         encoding="utf-8",
@@ -399,6 +419,9 @@ def migrate_legacy_account_state():
     migrate_legacy_account_file("user_dimmed_markers.json", STATE_PATH)
     migrate_legacy_account_file("user_marker_notes.json", NOTES_PATH)
     migrate_legacy_account_file("user_route_progress.json", ROUTE_STATE_PATH)
+    migrate_legacy_account_file("user_dimmed_markers.json", legacy_data_path("user_dimmed_markers.json"))
+    migrate_legacy_account_file("user_marker_notes.json", legacy_data_path("user_marker_notes.json"))
+    migrate_legacy_account_file("user_route_progress.json", legacy_data_path("user_route_progress.json"))
 
 
 def marker_uid(marker, index):
@@ -4891,9 +4914,16 @@ class RocoResourceMapQt(QMainWindow):
         return map_path_for_layer(self.current_layer)
 
     def sift_cache_path(self):
+        cache_name = "wiki_map_sift_cache.npz"
         if self.current_layer == "G":
-            return SIFT_CACHE_PATH
-        return PROJECT_DIR / "data" / f"wiki_map_sift_cache_{self.current_layer}.npz"
+            if SIFT_CACHE_PATH.exists():
+                return SIFT_CACHE_PATH
+        else:
+            cache_name = f"wiki_map_sift_cache_{self.current_layer}.npz"
+            static_cache = data_path(cache_name)
+            if static_cache.exists():
+                return static_cache
+        return user_cache_path(cache_name)
 
     def load_layer_pixmap(self, layer):
         layer = normalize_map_layer(layer)
@@ -6252,6 +6282,7 @@ class RocoResourceMapQt(QMainWindow):
             except Exception:
                 pass
 
+        cache_path = user_cache_path(cache_path.name)
         source = self.cv_read_image(self.active_map_path())
         if source is None:
             QMessageBox.warning(self, "AI小地图跟随", "无法读取地图底图生成识别缓存。")

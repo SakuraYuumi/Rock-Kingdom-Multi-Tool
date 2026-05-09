@@ -346,9 +346,32 @@ def _project_dir():
 
 
 def _cache_path():
-    data_dir = _project_dir() / "data"
-    data_dir.mkdir(parents=True, exist_ok=True)
-    return data_dir / SIFT_CACHE_NAME
+    try:
+        from app.app_paths import data_path, user_cache_path
+    except Exception:
+        try:
+            from app_paths import data_path, user_cache_path
+        except Exception:
+            data_dir = _project_dir() / "user_data" / "cache"
+            data_dir.mkdir(parents=True, exist_ok=True)
+            return data_dir / SIFT_CACHE_NAME
+    static_cache = data_path(SIFT_CACHE_NAME)
+    if static_cache.exists():
+        return static_cache
+    return user_cache_path(SIFT_CACHE_NAME)
+
+
+def _write_cache_path():
+    try:
+        from app.app_paths import user_cache_path
+    except Exception:
+        try:
+            from app_paths import user_cache_path
+        except Exception:
+            data_dir = _project_dir() / "user_data" / "cache"
+            data_dir.mkdir(parents=True, exist_ok=True)
+            return data_dir / SIFT_CACHE_NAME
+    return user_cache_path(SIFT_CACHE_NAME)
 
 
 def _read_image(path):
@@ -1465,6 +1488,7 @@ def prepare_sift_tracker_v2(owner, force=False):
         setattr(owner, "_sift_v2_points", points)
         setattr(owner, "_sift_v2_desc", desc)
         setattr(owner, "_sift_v2_shape", ref.shape[:2])
+        cache_path = _write_cache_path()
         try:
             np.savez_compressed(
                 str(cache_path),

@@ -19,7 +19,7 @@ except Exception:
     cv2 = None
     np = None
 
-from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QStringListModel
+from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QRect, QStringListModel
 from PyQt5.QtGui import QBrush, QColor, QIcon, QImage, QPainter, QPainterPath, QPen, QPixmap, QSurfaceFormat, QTransform
 from PyQt5.QtWidgets import (
     QApplication,
@@ -4390,6 +4390,95 @@ class RouteNavigationDialog(QDialog):
     def __init__(self, owner):
         super().__init__()
         self.owner = owner
+        self.resize_margin = 9
+        self.resize_edges = None
+        self.resize_start_pos = None
+        self.resize_start_geometry = None
+        self.setMouseTracking(True)
+
+    def install_pinned_resize_filters(self):
+        self.installEventFilter(self)
+        self.setMouseTracking(True)
+        for child in self.findChildren(QWidget):
+            child.installEventFilter(self)
+            child.setMouseTracking(True)
+
+    def pinned_resize_edges_at(self, pos):
+        if not getattr(self.owner, "route_dialog_pinned", False):
+            return None
+        margin = self.resize_margin
+        left = pos.x() <= margin
+        right = pos.x() >= self.width() - margin
+        top = pos.y() <= margin
+        bottom = pos.y() >= self.height() - margin
+        if not any((left, right, top, bottom)):
+            return None
+        return left, right, top, bottom
+
+    def resize_cursor_for_edges(self, edges):
+        if not edges:
+            return None
+        left, right, top, bottom = edges
+        if (left and top) or (right and bottom):
+            return Qt.SizeFDiagCursor
+        if (right and top) or (left and bottom):
+            return Qt.SizeBDiagCursor
+        if left or right:
+            return Qt.SizeHorCursor
+        if top or bottom:
+            return Qt.SizeVerCursor
+        return None
+
+    def resize_to_global_pos(self, global_pos):
+        if not self.resize_edges or self.resize_start_pos is None or self.resize_start_geometry is None:
+            return
+        delta = global_pos - self.resize_start_pos
+        geom = QRect(self.resize_start_geometry)
+        left, right, top, bottom = self.resize_edges
+        min_width = max(1, self.minimumWidth())
+        min_height = max(1, self.minimumHeight())
+        if left:
+            geom.setLeft(min(geom.right() - min_width + 1, geom.left() + delta.x()))
+        if right:
+            geom.setRight(max(geom.left() + min_width - 1, geom.right() + delta.x()))
+        if top:
+            geom.setTop(min(geom.bottom() - min_height + 1, geom.top() + delta.y()))
+        if bottom:
+            geom.setBottom(max(geom.top() + min_height - 1, geom.bottom() + delta.y()))
+        self.setGeometry(geom)
+
+    def eventFilter(self, obj, event):
+        if getattr(self.owner, "route_dialog_pinned", False):
+            if event.type() == QEvent.MouseButtonPress and event.button() == Qt.LeftButton:
+                edges = self.pinned_resize_edges_at(self.mapFromGlobal(event.globalPos()))
+                if edges:
+                    self.resize_edges = edges
+                    self.resize_start_pos = event.globalPos()
+                    self.resize_start_geometry = QRect(self.geometry())
+                    event.accept()
+                    return True
+            if event.type() == QEvent.MouseMove:
+                if self.resize_edges is not None:
+                    self.resize_to_global_pos(event.globalPos())
+                    event.accept()
+                    return True
+                cursor = self.resize_cursor_for_edges(self.pinned_resize_edges_at(self.mapFromGlobal(event.globalPos())))
+                if cursor is not None:
+                    self.setCursor(cursor)
+                else:
+                    self.unsetCursor()
+            if event.type() == QEvent.MouseButtonRelease:
+                if self.resize_edges is not None:
+                    self.resize_to_global_pos(event.globalPos())
+                    self.resize_edges = None
+                    self.resize_start_pos = None
+                    self.resize_start_geometry = None
+                    self.unsetCursor()
+                    event.accept()
+                    return True
+            if event.type() == QEvent.Leave and self.resize_edges is None:
+                self.unsetCursor()
+        return super().eventFilter(obj, event)
 
     def keyPressEvent(self, event):
         if getattr(self.owner, "route_dialog_pinned", False):
@@ -4564,6 +4653,7 @@ class RocoResourceMapQt(QMainWindow):
         self.route_dialog_normal_layouts = []
         self.route_dialog_pin_label = None
         self.route_dialog_route_list_button = None
+        self.route_dialog_reset_button = None
         self.route_dialog_route_list_visible = True
         self.route_dialog_side_panel = None
         self.route_dialog_pin_bar_widgets = []
@@ -5791,7 +5881,7 @@ class RocoResourceMapQt(QMainWindow):
         pin_bar.setSpacing(0)
         self.route_dialog_route_list_button = QPushButton("隐藏路线")
         self.route_dialog_route_list_button.clicked.connect(self.toggle_route_list_panel)
-        self.route_dialog_pin_label = QLabel("F8 定位传送点  F9 定位小洛克位置  F10 定位路线源头  F11 开启/关闭路线顺序  F12 解除固定")
+        self.route_dialog_pin_label = QLabel("F12 取消固定导航  F8 定位传送点  F9 小洛克  F10 源头  F11 路线顺序")
         self.route_dialog_pin_label.setFixedHeight(18)
         self.route_dialog_pin_label.setAlignment(Qt.AlignVCenter | Qt.AlignLeft)
         self.route_dialog_pin_label.setStyleSheet("font-size: 12px; font-weight: 700; color: #d05b00; padding: 0px;")
@@ -5812,6 +5902,17 @@ class RocoResourceMapQt(QMainWindow):
         side_column = QVBoxLayout(self.route_dialog_side_panel)
         side_column.setContentsMargins(0, 0, 0, 0)
         side_column.setSpacing(2)
+        reset_row = QHBoxLayout()
+        reset_row.setContentsMargins(2, 0, 2, 0)
+        reset_row.setSpacing(4)
+        reset_label = QLabel("路线顺序")
+        reset_label.setStyleSheet("font-weight: 700;")
+        self.route_dialog_reset_button = QPushButton("重置")
+        self.route_dialog_reset_button.setToolTip("重置当前路线进度")
+        self.route_dialog_reset_button.clicked.connect(self.reset_route_progress)
+        reset_row.addWidget(reset_label, 1)
+        reset_row.addWidget(self.route_dialog_reset_button)
+        side_column.addLayout(reset_row)
         side_column.addWidget(tree, 1)
 
         main_row.addLayout(left_column, 1)
@@ -5841,6 +5942,7 @@ class RocoResourceMapQt(QMainWindow):
         dialog.destroyed.connect(self.on_route_dialog_destroyed)
         self.refresh_route_tree()
         self.update_route_preview()
+        dialog.install_pinned_resize_filters()
         dialog.show()
 
     def eventFilter(self, obj, event):
@@ -5872,6 +5974,7 @@ class RocoResourceMapQt(QMainWindow):
         self.route_dialog_normal_layouts = []
         self.route_dialog_pin_bar_widgets = []
         self.route_dialog_route_list_button = None
+        self.route_dialog_reset_button = None
         self.route_dialog_route_list_visible = True
         self.route_dialog_side_panel = None
         self.route_dialog_unpinned_size = None
@@ -5948,6 +6051,8 @@ class RocoResourceMapQt(QMainWindow):
                 self.route_dialog_tree.setColumnHidden(1, False)
                 self.route_dialog_tree.setColumnWidth(0, 164)
                 self.route_dialog_tree.setColumnWidth(1, 50)
+        if self.route_dialog_reset_button is not None:
+            self.route_dialog_reset_button.setMaximumWidth(48 if self.route_dialog_pinned else 80)
         if self.route_preview_view is not None:
             if self.route_dialog_pinned:
                 self.route_preview_view.setMinimumSize(160, 120)
@@ -8233,6 +8338,25 @@ class RocoResourceMapQt(QMainWindow):
         self.save_route_state()
         self.update_status()
 
+    def reset_route_progress(self):
+        if not self.route_markers:
+            QMessageBox.information(self, "跑图导航", "目前没有可以重置的路线。")
+            return
+        for marker in self.route_markers:
+            uid = route_point_uid(marker)
+            self.completed_route_uids.discard(uid)
+            if not is_manual_route_point(marker):
+                self.dimmed_uids.discard(uid)
+        self.current_route_index = 0
+        self.route_auto_complete_candidate_uid = None
+        self.route_auto_complete_candidate_hits = 0
+        self.route_auto_complete_candidate_started_at = 0.0
+        self.rebuild_marker_tiles()
+        self.refresh_route_tree()
+        self.render_route_path()
+        self.save_route_state()
+        self.update_status()
+
     def import_route_file(self):
         file_name, _ = QFileDialog.getOpenFileName(
             self,
@@ -8761,6 +8885,7 @@ def run_selftest():
     route_preview_green_node_ok = False
     route_preview_completed_node_ok = False
     route_list_click_keeps_progress_ok = False
+    route_reset_ok = False
     teleport_focus_ok = False
     locate_player_ok = False
     cache_button_removed = False
@@ -8780,6 +8905,8 @@ def run_selftest():
     route_tree_tall_ok = False
     pinned_shortcuts_ok = False
     route_dialog_resize_ok = False
+    pinned_resize_ok = False
+    pinned_f12_visible_ok = False
     compact_route_panel_ok = False
     resource_tree_no_hscroll_ok = False
     invalid_frame_no_drift_ok = False
@@ -8880,6 +9007,19 @@ def run_selftest():
                 clicked
                 and window.current_route_index == old_index_for_click
                 and len(window.route_all_steps()) == old_step_count_for_click
+            )
+        if len(window.route_markers) >= 2:
+            reset_uid = route_point_uid(window.route_markers[1])
+            window.completed_route_uids.add(reset_uid)
+            window.dimmed_uids.add(reset_uid)
+            window.current_route_index = 3
+            window.reset_route_progress()
+            route_reset_ok = (
+                window.current_route_index == 0
+                and reset_uid not in window.completed_route_uids
+                and reset_uid not in window.dimmed_uids
+                and len(window.route_markers) == 8
+                and window.route_dialog_reset_button is not None
             )
         old_route_for_full_path = window.route_markers
         old_index_for_full_path = window.current_route_index
@@ -9174,6 +9314,17 @@ def run_selftest():
             window.route_dialog.minimumWidth() <= ROUTE_DIALOG_PINNED_MIN_SIZE.width()
             and window.route_dialog.minimumHeight() <= ROUTE_DIALOG_PINNED_MIN_SIZE.height()
         )
+        pinned_f12_visible_ok = pinned_hint.startswith("F12") and "取消固定导航" in pinned_hint
+        pinned_resize_edge = window.route_dialog.pinned_resize_edges_at(window.route_dialog.rect().bottomRight())
+        old_pinned_width = window.route_dialog.width()
+        old_pinned_height = window.route_dialog.height()
+        window.route_dialog.resize(old_pinned_width + 40, old_pinned_height + 24)
+        app.processEvents()
+        pinned_resize_ok = (
+            pinned_resize_edge is not None
+            and window.route_dialog.width() >= old_pinned_width + 35
+            and window.route_dialog.height() >= old_pinned_height + 20
+        )
         shortcut_hits = []
 
         class FakeRouteKey:
@@ -9226,6 +9377,7 @@ def run_selftest():
             and window.route_dialog_tree is not None
             and window.route_dialog_tree.isColumnHidden(1)
             and all(key in pinned_hint for key in ("F8", "F9", "F10", "F11", "F12"))
+            and pinned_f12_visible_ok
             and window.route_dialog_pin_label is not None
             and window.route_dialog_pin_label.isVisible()
             and window.route_dialog_pin_label.height() <= 20
@@ -9496,6 +9648,7 @@ def run_selftest():
         "route_preview_green_node_ok": bool(route_preview_green_node_ok),
         "route_preview_completed_node_ok": bool(route_preview_completed_node_ok),
         "route_list_click_keeps_progress_ok": bool(route_list_click_keeps_progress_ok),
+        "route_reset_ok": bool(route_reset_ok),
         "teleport_focus_ok": bool(teleport_focus_ok),
         "locate_player_ok": bool(locate_player_ok),
         "cache_button_removed": bool(cache_button_removed),
@@ -9515,6 +9668,8 @@ def run_selftest():
         "route_tree_tall_ok": bool(route_tree_tall_ok),
         "pinned_shortcuts_ok": bool(pinned_shortcuts_ok),
         "route_dialog_resize_ok": bool(route_dialog_resize_ok),
+        "pinned_resize_ok": bool(pinned_resize_ok),
+        "pinned_f12_visible_ok": bool(pinned_f12_visible_ok),
         "compact_route_panel_ok": bool(compact_route_panel_ok),
         "resource_tree_no_hscroll_ok": bool(resource_tree_no_hscroll_ok),
         "invalid_frame_no_drift_ok": bool(invalid_frame_no_drift_ok),
@@ -9587,6 +9742,7 @@ def run_selftest():
     print(f"route preview green nodes: {route_preview_green_node_ok}")
     print(f"route preview completed nodes: {route_preview_completed_node_ok}")
     print(f"route list click keeps progress: {route_list_click_keeps_progress_ok}")
+    print(f"route reset: {route_reset_ok}")
     print(f"teleport focus: {teleport_focus_ok}")
     print(f"locate player works: {locate_player_ok}")
     print(f"SIFT cache button removed: {cache_button_removed}")
@@ -9606,6 +9762,8 @@ def run_selftest():
     print(f"route tree tall: {route_tree_tall_ok}")
     print(f"pinned shortcuts F8/F9/F10/F11: {pinned_shortcuts_ok}")
     print(f"route dialog can shrink: {route_dialog_resize_ok}")
+    print(f"pinned dialog resizable: {pinned_resize_ok}")
+    print(f"pinned F12 hint visible: {pinned_f12_visible_ok}")
     print(f"compact route panel: {compact_route_panel_ok}")
     print(f"resource tree horizontal bar hidden: {resource_tree_no_hscroll_ok}")
     print(f"invalid frame no drift: {invalid_frame_no_drift_ok}")

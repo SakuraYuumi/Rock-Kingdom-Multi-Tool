@@ -15,6 +15,7 @@ $PackageData = Join-Path $ReleaseDir "package_data"
 $Entry = (Get-ChildItem -LiteralPath $Root -Filter "*.pyw" | Select-Object -First 1).FullName
 $AppName = [System.IO.Path]::GetFileNameWithoutExtension($Entry)
 $ZipPath = Join-Path $ReleaseDir "Roco-Kingdom-Multi-Tool-Windows-Portable-$Version.zip"
+$IconPath = Join-Path $Root "assets\app_icon.ico"
 
 Write-Host "Building $Version from $Root"
 
@@ -51,29 +52,35 @@ Get-ChildItem -LiteralPath $DataSource -Recurse -File | ForEach-Object {
     }
 }
 
-python -m PyInstaller `
-    --noconfirm `
-    --clean `
-    --windowed `
-    --onedir `
-    --name $AppName `
-    --distpath $DistDir `
-    --workpath $BuildDir `
-    --specpath $SpecDir `
-    --add-data "$Root\assets;assets" `
-    --add-data "$PackageData;data" `
-    --exclude-module PyQt5.QtDBus `
-    --exclude-module PyQt5.QtDesigner `
-    --exclude-module PyQt5.QtHelp `
-    --exclude-module PyQt5.QtNetwork `
-    --exclude-module PyQt5.QtQml `
-    --exclude-module PyQt5.QtQuick `
-    --exclude-module PyQt5.QtSql `
-    --exclude-module PyQt5.QtTest `
-    --exclude-module PyQt5.QtWebSockets `
-    --exclude-module tkinter `
-    --exclude-module pytest `
-    $Entry
+$PyInstallerArgs = @(
+    "--noconfirm",
+    "--clean",
+    "--windowed",
+    "--onedir",
+    "--name", $AppName,
+    "--distpath", $DistDir,
+    "--workpath", $BuildDir,
+    "--specpath", $SpecDir,
+    "--add-data", "$Root\assets;assets",
+    "--add-data", "$PackageData;data",
+    "--exclude-module", "PyQt5.QtDBus",
+    "--exclude-module", "PyQt5.QtDesigner",
+    "--exclude-module", "PyQt5.QtHelp",
+    "--exclude-module", "PyQt5.QtNetwork",
+    "--exclude-module", "PyQt5.QtQml",
+    "--exclude-module", "PyQt5.QtQuick",
+    "--exclude-module", "PyQt5.QtSql",
+    "--exclude-module", "PyQt5.QtTest",
+    "--exclude-module", "PyQt5.QtWebSockets",
+    "--exclude-module", "tkinter",
+    "--exclude-module", "pytest"
+)
+if (Test-Path -LiteralPath $IconPath) {
+    $PyInstallerArgs += @("--icon", $IconPath)
+}
+$PyInstallerArgs += $Entry
+
+python -m PyInstaller @PyInstallerArgs
 
 New-Item -ItemType Directory -Force -Path $PortableRoot | Out-Null
 Move-Item -LiteralPath (Join-Path $DistDir $AppName) -Destination $PortableDir

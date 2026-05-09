@@ -19,7 +19,7 @@ except Exception:
     cv2 = None
     np = None
 
-from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QRect, QStringListModel
+from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QRect, QPoint, QStringListModel
 from PyQt5.QtGui import QBrush, QColor, QIcon, QImage, QPainter, QPainterPath, QPen, QPixmap, QSurfaceFormat, QTransform
 from PyQt5.QtWidgets import (
     QApplication,
@@ -65,6 +65,7 @@ from PyQt5.QtWidgets import (
 try:
     from app.app_paths import (
         PROJECT_DIR,
+        asset_path,
         data_path,
         legacy_data_path,
         migrate_user_dir,
@@ -75,6 +76,7 @@ try:
 except ImportError:
     from app_paths import (
         PROJECT_DIR,
+        asset_path,
         data_path,
         legacy_data_path,
         migrate_user_dir,
@@ -128,6 +130,7 @@ except ImportError:  # noqa: E402
 DATA_PATH = data_path("wiki_resource_points_pixels_z6.json")
 MAP_PATH = PROJECT_DIR / "assets" / "maps" / "wiki_G_z6.png"
 MAP_ZOOM = "z6"
+APP_ICON_PATH = asset_path("app_icon.ico")
 DATA_PATH_Z7 = data_path("wiki_resource_points_pixels_z7.json")
 MAP_PATH_Z7 = PROJECT_DIR / "assets" / "maps" / "wiki_G_z7.png"
 if DATA_PATH_Z7.exists() and MAP_PATH_Z7.exists():
@@ -263,6 +266,11 @@ def write_startup_error(exc_type, exc_value, exc_traceback):
         encoding="utf-8",
     )
     sys.__excepthook__(exc_type, exc_value, exc_traceback)
+
+
+def apply_application_icon(target):
+    if APP_ICON_PATH.exists():
+        target.setWindowIcon(QIcon(str(APP_ICON_PATH)))
 
 
 sys.excepthook = write_startup_error
@@ -4394,6 +4402,8 @@ class RouteNavigationDialog(QDialog):
         self.resize_edges = None
         self.resize_start_pos = None
         self.resize_start_geometry = None
+        self.move_start_pos = None
+        self.move_start_frame_pos = None
         self.setMouseTracking(True)
 
     def install_pinned_resize_filters(self):
@@ -4447,14 +4457,40 @@ class RouteNavigationDialog(QDialog):
             geom.setBottom(max(geom.top() + min_height - 1, geom.bottom() + delta.y()))
         self.setGeometry(geom)
 
+    def pinned_drag_area_at(self, pos):
+        if not getattr(self.owner, "route_dialog_pinned", False):
+            return False
+        if self.resize_cursor_for_edges(self.pinned_resize_edges_at(pos)) is not None:
+            return False
+        return 0 <= pos.y() <= 24
+
+    def begin_pinned_move(self, global_pos):
+        self.move_start_pos = QPoint(global_pos)
+        self.move_start_frame_pos = QPoint(self.frameGeometry().topLeft())
+
+    def move_to_global_pos(self, global_pos):
+        if self.move_start_pos is None or self.move_start_frame_pos is None:
+            return
+        self.move(self.move_start_frame_pos + (global_pos - self.move_start_pos))
+
+    def end_pinned_move(self):
+        self.move_start_pos = None
+        self.move_start_frame_pos = None
+
     def eventFilter(self, obj, event):
         if getattr(self.owner, "route_dialog_pinned", False):
             if event.type() == QEvent.MouseButtonPress and event.button() == Qt.LeftButton:
-                edges = self.pinned_resize_edges_at(self.mapFromGlobal(event.globalPos()))
+                local_pos = self.mapFromGlobal(event.globalPos())
+                edges = self.pinned_resize_edges_at(local_pos)
                 if edges:
                     self.resize_edges = edges
                     self.resize_start_pos = event.globalPos()
                     self.resize_start_geometry = QRect(self.geometry())
+                    event.accept()
+                    return True
+                if self.pinned_drag_area_at(local_pos):
+                    self.begin_pinned_move(event.globalPos())
+                    self.setCursor(Qt.SizeAllCursor)
                     event.accept()
                     return True
             if event.type() == QEvent.MouseMove:
@@ -4462,9 +4498,16 @@ class RouteNavigationDialog(QDialog):
                     self.resize_to_global_pos(event.globalPos())
                     event.accept()
                     return True
-                cursor = self.resize_cursor_for_edges(self.pinned_resize_edges_at(self.mapFromGlobal(event.globalPos())))
+                if self.move_start_pos is not None:
+                    self.move_to_global_pos(event.globalPos())
+                    event.accept()
+                    return True
+                local_pos = self.mapFromGlobal(event.globalPos())
+                cursor = self.resize_cursor_for_edges(self.pinned_resize_edges_at(local_pos))
                 if cursor is not None:
                     self.setCursor(cursor)
+                elif self.pinned_drag_area_at(local_pos):
+                    self.setCursor(Qt.SizeAllCursor)
                 else:
                     self.unsetCursor()
             if event.type() == QEvent.MouseButtonRelease:
@@ -4476,7 +4519,12 @@ class RouteNavigationDialog(QDialog):
                     self.unsetCursor()
                     event.accept()
                     return True
-            if event.type() == QEvent.Leave and self.resize_edges is None:
+                if self.move_start_pos is not None:
+                    self.end_pinned_move()
+                    self.unsetCursor()
+                    event.accept()
+                    return True
+            if event.type() == QEvent.Leave and self.resize_edges is None and self.move_start_pos is None:
                 self.unsetCursor()
         return super().eventFilter(obj, event)
 
@@ -4484,10 +4532,6 @@ class RouteNavigationDialog(QDialog):
         if getattr(self.owner, "route_dialog_pinned", False):
             if event.key() == Qt.Key_F8:
                 self.owner.focus_next_route_teleport()
-                event.accept()
-                return
-            if event.key() == Qt.Key_F12:
-                self.owner.toggle_route_dialog_pin()
                 event.accept()
                 return
             if event.key() == Qt.Key_F9:
@@ -4500,6 +4544,10 @@ class RouteNavigationDialog(QDialog):
                 return
             if event.key() == Qt.Key_F11:
                 self.owner.toggle_route_list_panel()
+                event.accept()
+                return
+            if event.key() == Qt.Key_F12:
+                self.owner.toggle_route_dialog_pin()
                 event.accept()
                 return
         super().keyPressEvent(event)
@@ -5778,6 +5826,7 @@ class RocoResourceMapQt(QMainWindow):
 
         dialog = RouteNavigationDialog(self)
         dialog.setWindowTitle("跑图导航")
+        apply_application_icon(dialog)
         dialog.setMinimumSize(ROUTE_DIALOG_NORMAL_MIN_SIZE)
         dialog.setWindowFlags(
             Qt.Window
@@ -5881,7 +5930,7 @@ class RocoResourceMapQt(QMainWindow):
         pin_bar.setSpacing(0)
         self.route_dialog_route_list_button = QPushButton("隐藏路线")
         self.route_dialog_route_list_button.clicked.connect(self.toggle_route_list_panel)
-        self.route_dialog_pin_label = QLabel("F12 取消固定导航  F8 定位传送点  F9 小洛克  F10 源头  F11 路线顺序")
+        self.route_dialog_pin_label = QLabel("F8 定位传送点  F9 小洛克  F10 源头  F11 路线顺序  F12 取消固定")
         self.route_dialog_pin_label.setFixedHeight(18)
         self.route_dialog_pin_label.setAlignment(Qt.AlignVCenter | Qt.AlignLeft)
         self.route_dialog_pin_label.setStyleSheet("font-size: 12px; font-weight: 700; color: #d05b00; padding: 0px;")
@@ -8906,6 +8955,7 @@ def run_selftest():
     pinned_shortcuts_ok = False
     route_dialog_resize_ok = False
     pinned_resize_ok = False
+    pinned_drag_ok = False
     pinned_f12_visible_ok = False
     compact_route_panel_ok = False
     resource_tree_no_hscroll_ok = False
@@ -9314,7 +9364,12 @@ def run_selftest():
             window.route_dialog.minimumWidth() <= ROUTE_DIALOG_PINNED_MIN_SIZE.width()
             and window.route_dialog.minimumHeight() <= ROUTE_DIALOG_PINNED_MIN_SIZE.height()
         )
-        pinned_f12_visible_ok = pinned_hint.startswith("F12") and "取消固定导航" in pinned_hint
+        pinned_keys = ("F8", "F9", "F10", "F11", "F12")
+        pinned_f12_visible_ok = (
+            all(key in pinned_hint for key in pinned_keys)
+            and [pinned_hint.index(key) for key in pinned_keys] == sorted(pinned_hint.index(key) for key in pinned_keys)
+            and "取消固定" in pinned_hint
+        )
         pinned_resize_edge = window.route_dialog.pinned_resize_edges_at(window.route_dialog.rect().bottomRight())
         old_pinned_width = window.route_dialog.width()
         old_pinned_height = window.route_dialog.height()
@@ -9324,6 +9379,16 @@ def run_selftest():
             pinned_resize_edge is not None
             and window.route_dialog.width() >= old_pinned_width + 35
             and window.route_dialog.height() >= old_pinned_height + 20
+        )
+        old_pinned_pos = window.route_dialog.pos()
+        drag_start = window.route_dialog.mapToGlobal(QPoint(42, 12))
+        window.route_dialog.begin_pinned_move(drag_start)
+        window.route_dialog.move_to_global_pos(drag_start + QPoint(36, 28))
+        window.route_dialog.end_pinned_move()
+        app.processEvents()
+        pinned_drag_ok = (
+            abs(window.route_dialog.x() - old_pinned_pos.x() - 36) <= 2
+            and abs(window.route_dialog.y() - old_pinned_pos.y() - 28) <= 2
         )
         shortcut_hits = []
 
@@ -9669,6 +9734,7 @@ def run_selftest():
         "pinned_shortcuts_ok": bool(pinned_shortcuts_ok),
         "route_dialog_resize_ok": bool(route_dialog_resize_ok),
         "pinned_resize_ok": bool(pinned_resize_ok),
+        "pinned_drag_ok": bool(pinned_drag_ok),
         "pinned_f12_visible_ok": bool(pinned_f12_visible_ok),
         "compact_route_panel_ok": bool(compact_route_panel_ok),
         "resource_tree_no_hscroll_ok": bool(resource_tree_no_hscroll_ok),
@@ -9763,6 +9829,7 @@ def run_selftest():
     print(f"pinned shortcuts F8/F9/F10/F11: {pinned_shortcuts_ok}")
     print(f"route dialog can shrink: {route_dialog_resize_ok}")
     print(f"pinned dialog resizable: {pinned_resize_ok}")
+    print(f"pinned dialog draggable: {pinned_drag_ok}")
     print(f"pinned F12 hint visible: {pinned_f12_visible_ok}")
     print(f"compact route panel: {compact_route_panel_ok}")
     print(f"resource tree horizontal bar hidden: {resource_tree_no_hscroll_ok}")
@@ -9799,8 +9866,10 @@ def main():
         return int(run_selftest())
 
     app = QApplication.instance() or QApplication(sys.argv)
+    apply_application_icon(app)
     try:
         window = RocoResourceMapQt()
+        apply_application_icon(window)
     except Exception as exc:
         QMessageBox.critical(None, "启动失败", str(exc))
         return 1

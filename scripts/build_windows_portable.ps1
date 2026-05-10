@@ -95,8 +95,7 @@ if (Test-Path $Translations) {
 $UnusedQtPluginDirs = @(
     "_internal\PyQt5\Qt5\plugins\generic",
     "_internal\PyQt5\Qt5\plugins\iconengines",
-    "_internal\PyQt5\Qt5\plugins\platformthemes",
-    "_internal\PyQt5\Qt5\plugins\styles"
+    "_internal\PyQt5\Qt5\plugins\platformthemes"
 )
 foreach ($Relative in $UnusedQtPluginDirs) {
     $Path = Join-Path $PortableDir $Relative

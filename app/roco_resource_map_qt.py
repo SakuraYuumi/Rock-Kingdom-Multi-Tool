@@ -51,6 +51,7 @@ from PyQt5.QtWidgets import (
     QSlider,
     QSplitter,
     QSpinBox,
+    QStyleFactory,
     QTextEdit,
     QToolTip,
     QTabWidget,
@@ -272,6 +273,16 @@ def write_startup_error(exc_type, exc_value, exc_traceback):
 def apply_application_icon(target):
     if APP_ICON_PATH.exists():
         target.setWindowIcon(QIcon(str(APP_ICON_PATH)))
+
+
+def apply_application_style(app):
+    available = {name.casefold(): name for name in QStyleFactory.keys()}
+    for preferred in ("windowsvista", "fusion"):
+        style_name = available.get(preferred)
+        if style_name:
+            app.setStyle(style_name)
+            return style_name
+    return ""
 
 
 sys.excepthook = write_startup_error
@@ -8860,6 +8871,7 @@ def run_check():
 
 def run_selftest():
     app = QApplication.instance() or QApplication(sys.argv[:1])
+    apply_application_style(app)
     app.setQuitOnLastWindowClosed(False)
     window = RocoResourceMapQt()
     total = len(window.markers)
@@ -9885,6 +9897,7 @@ def main():
         return int(run_selftest())
 
     app = QApplication.instance() or QApplication(sys.argv)
+    apply_application_style(app)
     apply_application_icon(app)
     try:
         window = RocoResourceMapQt()

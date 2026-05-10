@@ -19,8 +19,8 @@ except Exception:
     cv2 = None
     np = None
 
-from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QRect, QPoint, QStringListModel
-from PyQt5.QtGui import QBrush, QColor, QIcon, QImage, QPainter, QPainterPath, QPen, QPixmap, QSurfaceFormat, QTransform
+from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QRect, QPoint, QUrl, QStringListModel
+from PyQt5.QtGui import QBrush, QColor, QDesktopServices, QIcon, QImage, QPainter, QPainterPath, QPen, QPixmap, QSurfaceFormat, QTransform
 from PyQt5.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -131,6 +131,7 @@ DATA_PATH = data_path("wiki_resource_points_pixels_z6.json")
 MAP_PATH = PROJECT_DIR / "assets" / "maps" / "wiki_G_z6.png"
 MAP_ZOOM = "z6"
 APP_ICON_PATH = asset_path("app_icon.ico")
+UPDATE_PAGE_URL = "https://github.com/SakuraYuumi/Rock-Kingdom-Multi-Tool/releases/latest"
 DATA_PATH_Z7 = data_path("wiki_resource_points_pixels_z7.json")
 MAP_PATH_Z7 = PROJECT_DIR / "assets" / "maps" / "wiki_G_z7.png"
 if DATA_PATH_Z7.exists() and MAP_PATH_Z7.exists():
@@ -5290,6 +5291,10 @@ class RocoResourceMapQt(QMainWindow):
         pvp_damage_button = QPushButton("PVP伤害计算")
         pvp_damage_button.clicked.connect(self.open_pvp_damage_dialog)
         toolbar_layout.addWidget(pvp_damage_button)
+        update_button = QPushButton("检测更新")
+        update_button.setObjectName("checkUpdateButton")
+        update_button.clicked.connect(self.open_update_page)
+        toolbar_layout.addWidget(update_button)
 
         restore_button = QPushButton("恢复全部")
         restore_button.clicked.connect(self.restore_all)
@@ -5384,6 +5389,10 @@ class RocoResourceMapQt(QMainWindow):
         dialog.destroyed.connect(lambda *_args: setattr(self, "pvp_damage_dialog", None))
         self.pvp_damage_dialog = dialog
         dialog.show()
+
+    def open_update_page(self):
+        if not QDesktopServices.openUrl(QUrl(UPDATE_PAGE_URL)):
+            QMessageBox.information(self, "检测更新", f"请手动打开更新页面：\n{UPDATE_PAGE_URL}")
 
     def run_search(self):
         query = self.search_input.text().strip()
@@ -8966,6 +8975,7 @@ def run_selftest():
     overlapping_marker_cycle_ok = False
     egg_query_feature_ok = False
     pvp_damage_feature_ok = False
+    update_page_button_ok = False
     manual_route_anywhere_ok = False
     manual_first_point_visible_ok = False
     manual_route_no_save_keeps_ok = False
@@ -8996,6 +9006,13 @@ def run_selftest():
         window.open_route_navigation()
         app.processEvents()
         route_dialog_opens = window.route_dialog is not None and window.route_preview_scene is not None
+        update_page_button_ok = (
+            UPDATE_PAGE_URL == "https://github.com/SakuraYuumi/Rock-Kingdom-Multi-Tool/releases/latest"
+            and any(
+                button.objectName() == "checkUpdateButton" and button.text() == "检测更新"
+                for button in window.findChildren(QPushButton)
+            )
+        )
         nav_button_layout_ok = (
             window.minimap_follow_button is not None
             and window.minimap_follow_button.text() == "开启AI导航"
@@ -9746,6 +9763,7 @@ def run_selftest():
         "black_glaze_surface_ok": bool(black_glaze_surface_ok),
         "egg_query_feature_ok": bool(egg_query_feature_ok),
         "pvp_damage_feature_ok": bool(pvp_damage_feature_ok),
+        "update_page_button_ok": bool(update_page_button_ok),
         "account_state_isolated_ok": bool(account_state_isolated_ok),
         "account_delete_ok": bool(account_delete_ok),
         "manual_route_anywhere_ok": bool(manual_route_anywhere_ok),
@@ -9841,6 +9859,7 @@ def run_selftest():
     print(f"black glaze fixed to surface: {black_glaze_surface_ok}")
     print(f"egg query feature: {egg_query_feature_ok}")
     print(f"PVP damage feature: {pvp_damage_feature_ok}")
+    print(f"update page button: {update_page_button_ok}")
     print(f"account state isolated: {account_state_isolated_ok}")
     print(f"account delete works: {account_delete_ok}")
     print(f"manual route anywhere: {manual_route_anywhere_ok}")

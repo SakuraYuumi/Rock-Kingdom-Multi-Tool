@@ -19,8 +19,8 @@ except Exception:
     cv2 = None
     np = None
 
-from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QRect, QPoint, QUrl, QStringListModel
-from PyQt5.QtGui import QBrush, QColor, QDesktopServices, QIcon, QImage, QPainter, QPainterPath, QPen, QPixmap, QSurfaceFormat, QTransform
+from PyQt5.QtCore import QEvent, Qt, QTimer, QSize, QStringListModel
+from PyQt5.QtGui import QBrush, QColor, QIcon, QImage, QPainter, QPainterPath, QPen, QPixmap, QSurfaceFormat, QTransform
 from PyQt5.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -51,7 +51,6 @@ from PyQt5.QtWidgets import (
     QSlider,
     QSplitter,
     QSpinBox,
-    QStyleFactory,
     QTextEdit,
     QToolTip,
     QTabWidget,
@@ -63,33 +62,7 @@ from PyQt5.QtWidgets import (
 )
 
 
-try:
-    from app.app_paths import (
-        ASSETS_DIR,
-        PROJECT_DIR,
-        RUNTIME_DIR,
-        asset_path,
-        data_path,
-        legacy_data_path,
-        migrate_user_dir,
-        migrate_user_file,
-        startup_error_path,
-        user_cache_path,
-    )
-except ImportError:
-    from app_paths import (
-        ASSETS_DIR,
-        PROJECT_DIR,
-        RUNTIME_DIR,
-        asset_path,
-        data_path,
-        legacy_data_path,
-        migrate_user_dir,
-        migrate_user_file,
-        startup_error_path,
-        user_cache_path,
-    )
-
+PROJECT_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
 if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
 
@@ -132,12 +105,10 @@ except ImportError:  # noqa: E402
         type_multiplier_for,
     )
 
-DATA_PATH = data_path("wiki_resource_points_pixels_z6.json")
+DATA_PATH = PROJECT_DIR / "data" / "wiki_resource_points_pixels_z6.json"
 MAP_PATH = PROJECT_DIR / "assets" / "maps" / "wiki_G_z6.png"
 MAP_ZOOM = "z6"
-APP_ICON_PATH = asset_path("app_icon.ico")
-UPDATE_PAGE_URL = "https://github.com/SakuraYuumi/Rock-Kingdom-Multi-Tool/releases/latest"
-DATA_PATH_Z7 = data_path("wiki_resource_points_pixels_z7.json")
+DATA_PATH_Z7 = PROJECT_DIR / "data" / "wiki_resource_points_pixels_z7.json"
 MAP_PATH_Z7 = PROJECT_DIR / "assets" / "maps" / "wiki_G_z7.png"
 if DATA_PATH_Z7.exists() and MAP_PATH_Z7.exists():
     DATA_PATH = DATA_PATH_Z7
@@ -164,19 +135,19 @@ MAP_LAYER_PATHS = OrderedDict(
     (layer, PROJECT_DIR / "assets" / "maps" / f"wiki_{layer}_{MAP_ZOOM}.png")
     for layer in MAP_LAYER_LABELS
 )
-STATE_PATH = migrate_user_file("user_dimmed_markers.json")
-NOTES_PATH = migrate_user_file("user_marker_notes.json")
-ROUTE_STATE_PATH = migrate_user_file("user_route_progress.json")
-ROUTE_CACHE_PATH = migrate_user_file("user_route_cache.json")
-ACCOUNT_ROOT = migrate_user_dir("accounts")
-ACCOUNTS_PATH = migrate_user_file("user_accounts.json")
+STATE_PATH = PROJECT_DIR / "data" / "user_dimmed_markers.json"
+NOTES_PATH = PROJECT_DIR / "data" / "user_marker_notes.json"
+ROUTE_STATE_PATH = PROJECT_DIR / "data" / "user_route_progress.json"
+ROUTE_CACHE_PATH = PROJECT_DIR / "data" / "user_route_cache.json"
+ACCOUNT_ROOT = PROJECT_DIR / "data" / "accounts"
+ACCOUNTS_PATH = PROJECT_DIR / "data" / "user_accounts.json"
 DEFAULT_ACCOUNT_ID = "default"
 DEFAULT_ACCOUNT_NAME = "默认账号"
-DETAILS_PATH = data_path("17173_marker_details.json")
-EGG_DATA_PATH = data_path("egg_group_data.json")
-PVP_TEAM_PRESETS_PATH = migrate_user_file("pvp_team_presets.json")
-SUBMISSIONS_PATH = migrate_user_file("user_marker_audit_submissions.json")
-SUBMISSION_UPLOADS_DIR = migrate_user_dir("user_marker_submission_uploads")
+DETAILS_PATH = PROJECT_DIR / "data" / "17173_marker_details.json"
+EGG_DATA_PATH = PROJECT_DIR / "data" / "egg_group_data.json"
+PVP_TEAM_PRESETS_PATH = PROJECT_DIR / "data" / "pvp_team_presets.json"
+SUBMISSIONS_PATH = PROJECT_DIR / "data" / "user_marker_audit_submissions.json"
+SUBMISSION_UPLOADS_DIR = PROJECT_DIR / "data" / "user_marker_submission_uploads"
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp"}
 
 OPENGL_FORMAT = QSurfaceFormat()
@@ -229,9 +200,6 @@ ROUTE_DIALOG_PINNED_MIN_SIZE = QSize(360, 240)
 ROUTE_DIALOG_PINNED_DEFAULT_SIZE = QSize(650, 500)
 ROUTE_DIALOG_ROUTE_WIDTH_NORMAL = 218
 ROUTE_DIALOG_ROUTE_WIDTH_PINNED = 142
-MINIMAP_FOLLOW_INTERVAL_MS = 70
-ROUTE_PREVIEW_PLAYER_SMOOTH_SECONDS = 0.075
-ROUTE_PREVIEW_PLAYER_ANGLE_SMOOTH_SECONDS = 0.055
 ROUTE_ARROW_STEP = 5
 ROUTE_ARROW_SIZE = 26
 ROUTE_AUTO_COMPLETE_RADIUS = 30
@@ -260,7 +228,7 @@ MINIMAP_MOTION_SAMPLE_STEP = 6
 MINIMAP_MOTION_BAD_SCORE = 46
 MINIMAP_MOTION_MIN_IMPROVEMENT = 1.4
 MINIMAP_WORLD_PIXELS_PER_MINIMAP_PIXEL = 4.0
-SIFT_CACHE_PATH = data_path("wiki_map_sift_cache.npz")
+SIFT_CACHE_PATH = PROJECT_DIR / "data" / "wiki_map_sift_cache.npz"
 SIFT_REFERENCE_MAX_SIDE = 2048
 SIFT_MIN_MATCHES = 12
 SIFT_RATIO_TEST = 0.72
@@ -269,75 +237,12 @@ SIFT_MAX_WORLD_JUMP = 420
 
 
 def write_startup_error(exc_type, exc_value, exc_traceback):
-    error_path = startup_error_path()
+    error_path = PROJECT_DIR / "启动错误.log"
     error_path.write_text(
         "".join(traceback.format_exception(exc_type, exc_value, exc_traceback)),
         encoding="utf-8",
     )
     sys.__excepthook__(exc_type, exc_value, exc_traceback)
-
-
-def apply_application_icon(target):
-    if APP_ICON_PATH.exists():
-        target.setWindowIcon(QIcon(str(APP_ICON_PATH)))
-
-
-def apply_application_style(app):
-    available = {name.casefold(): name for name in QStyleFactory.keys()}
-    for preferred in ("windowsvista", "fusion"):
-        style_name = available.get(preferred)
-        if style_name:
-            app.setStyle(style_name)
-            return style_name
-    return ""
-
-
-def configure_qt_application_attributes():
-    if QApplication.instance() is not None:
-        return
-    for name in ("AA_EnableHighDpiScaling", "AA_UseHighDpiPixmaps"):
-        attribute = getattr(Qt, name, None)
-        if attribute is not None:
-            QApplication.setAttribute(attribute, True)
-
-
-def grab_global_screen_region(x, y, width, height):
-    center = QPoint(int(x + width / 2), int(y + height / 2))
-    screen = QApplication.screenAt(center) if hasattr(QApplication, "screenAt") else None
-    if screen is None:
-        screen = QApplication.primaryScreen()
-    if screen is None:
-        return QPixmap()
-    geometry = screen.geometry()
-    return screen.grabWindow(
-        0,
-        int(x - geometry.x()),
-        int(y - geometry.y()),
-        int(width),
-        int(height),
-    )
-
-
-def startup_resource_diagnostics(map_path):
-    details = [f"地图图片不存在或无法读取：{map_path}"]
-    details.append("")
-    details.append("请确认下载的是 Windows 免安装版 zip，并且已经完整解压。不要只复制 exe，也不要删除 _internal 文件夹。")
-    details.append("")
-    details.append("需要存在的文件：")
-    checks = [
-        ("地图文件", Path(map_path)),
-        ("PNG读取插件", RUNTIME_DIR / "_internal" / "PyQt5" / "Qt5" / "plugins" / "imageformats" / "qpng.dll"),
-        ("地图目录", ASSETS_DIR / "maps"),
-    ]
-    for label, path in checks:
-        if path.exists():
-            if path.is_file():
-                details.append(f"- {label}：存在，大小 {path.stat().st_size} 字节")
-            else:
-                details.append(f"- {label}：存在")
-        else:
-            details.append(f"- {label}：缺失：{path}")
-    return "\n".join(details)
 
 
 sys.excepthook = write_startup_error
@@ -494,9 +399,6 @@ def migrate_legacy_account_state():
     migrate_legacy_account_file("user_dimmed_markers.json", STATE_PATH)
     migrate_legacy_account_file("user_marker_notes.json", NOTES_PATH)
     migrate_legacy_account_file("user_route_progress.json", ROUTE_STATE_PATH)
-    migrate_legacy_account_file("user_dimmed_markers.json", legacy_data_path("user_dimmed_markers.json"))
-    migrate_legacy_account_file("user_marker_notes.json", legacy_data_path("user_marker_notes.json"))
-    migrate_legacy_account_file("user_route_progress.json", legacy_data_path("user_route_progress.json"))
 
 
 def marker_uid(marker, index):
@@ -4465,140 +4367,11 @@ class RouteNavigationDialog(QDialog):
     def __init__(self, owner):
         super().__init__()
         self.owner = owner
-        self.resize_margin = 9
-        self.resize_edges = None
-        self.resize_start_pos = None
-        self.resize_start_geometry = None
-        self.move_start_pos = None
-        self.move_start_frame_pos = None
-        self.setMouseTracking(True)
-
-    def install_pinned_resize_filters(self):
-        self.installEventFilter(self)
-        self.setMouseTracking(True)
-        for child in self.findChildren(QWidget):
-            child.installEventFilter(self)
-            child.setMouseTracking(True)
-
-    def pinned_resize_edges_at(self, pos):
-        if not getattr(self.owner, "route_dialog_pinned", False):
-            return None
-        margin = self.resize_margin
-        left = pos.x() <= margin
-        right = pos.x() >= self.width() - margin
-        top = pos.y() <= margin
-        bottom = pos.y() >= self.height() - margin
-        if not any((left, right, top, bottom)):
-            return None
-        return left, right, top, bottom
-
-    def resize_cursor_for_edges(self, edges):
-        if not edges:
-            return None
-        left, right, top, bottom = edges
-        if (left and top) or (right and bottom):
-            return Qt.SizeFDiagCursor
-        if (right and top) or (left and bottom):
-            return Qt.SizeBDiagCursor
-        if left or right:
-            return Qt.SizeHorCursor
-        if top or bottom:
-            return Qt.SizeVerCursor
-        return None
-
-    def resize_to_global_pos(self, global_pos):
-        if not self.resize_edges or self.resize_start_pos is None or self.resize_start_geometry is None:
-            return
-        delta = global_pos - self.resize_start_pos
-        geom = QRect(self.resize_start_geometry)
-        left, right, top, bottom = self.resize_edges
-        min_width = max(1, self.minimumWidth())
-        min_height = max(1, self.minimumHeight())
-        if left:
-            geom.setLeft(min(geom.right() - min_width + 1, geom.left() + delta.x()))
-        if right:
-            geom.setRight(max(geom.left() + min_width - 1, geom.right() + delta.x()))
-        if top:
-            geom.setTop(min(geom.bottom() - min_height + 1, geom.top() + delta.y()))
-        if bottom:
-            geom.setBottom(max(geom.top() + min_height - 1, geom.bottom() + delta.y()))
-        self.setGeometry(geom)
-
-    def pinned_drag_area_at(self, pos):
-        if not getattr(self.owner, "route_dialog_pinned", False):
-            return False
-        if self.resize_cursor_for_edges(self.pinned_resize_edges_at(pos)) is not None:
-            return False
-        return 0 <= pos.y() <= 24
-
-    def begin_pinned_move(self, global_pos):
-        self.move_start_pos = QPoint(global_pos)
-        self.move_start_frame_pos = QPoint(self.frameGeometry().topLeft())
-
-    def move_to_global_pos(self, global_pos):
-        if self.move_start_pos is None or self.move_start_frame_pos is None:
-            return
-        self.move(self.move_start_frame_pos + (global_pos - self.move_start_pos))
-
-    def end_pinned_move(self):
-        self.move_start_pos = None
-        self.move_start_frame_pos = None
-
-    def eventFilter(self, obj, event):
-        if getattr(self.owner, "route_dialog_pinned", False):
-            if event.type() == QEvent.MouseButtonPress and event.button() == Qt.LeftButton:
-                local_pos = self.mapFromGlobal(event.globalPos())
-                edges = self.pinned_resize_edges_at(local_pos)
-                if edges:
-                    self.resize_edges = edges
-                    self.resize_start_pos = event.globalPos()
-                    self.resize_start_geometry = QRect(self.geometry())
-                    event.accept()
-                    return True
-                if self.pinned_drag_area_at(local_pos):
-                    self.begin_pinned_move(event.globalPos())
-                    self.setCursor(Qt.SizeAllCursor)
-                    event.accept()
-                    return True
-            if event.type() == QEvent.MouseMove:
-                if self.resize_edges is not None:
-                    self.resize_to_global_pos(event.globalPos())
-                    event.accept()
-                    return True
-                if self.move_start_pos is not None:
-                    self.move_to_global_pos(event.globalPos())
-                    event.accept()
-                    return True
-                local_pos = self.mapFromGlobal(event.globalPos())
-                cursor = self.resize_cursor_for_edges(self.pinned_resize_edges_at(local_pos))
-                if cursor is not None:
-                    self.setCursor(cursor)
-                elif self.pinned_drag_area_at(local_pos):
-                    self.setCursor(Qt.SizeAllCursor)
-                else:
-                    self.unsetCursor()
-            if event.type() == QEvent.MouseButtonRelease:
-                if self.resize_edges is not None:
-                    self.resize_to_global_pos(event.globalPos())
-                    self.resize_edges = None
-                    self.resize_start_pos = None
-                    self.resize_start_geometry = None
-                    self.unsetCursor()
-                    event.accept()
-                    return True
-                if self.move_start_pos is not None:
-                    self.end_pinned_move()
-                    self.unsetCursor()
-                    event.accept()
-                    return True
-            if event.type() == QEvent.Leave and self.resize_edges is None and self.move_start_pos is None:
-                self.unsetCursor()
-        return super().eventFilter(obj, event)
 
     def keyPressEvent(self, event):
         if getattr(self.owner, "route_dialog_pinned", False):
-            if event.key() == Qt.Key_F8:
-                self.owner.focus_next_route_teleport()
+            if event.key() == Qt.Key_F12:
+                self.owner.toggle_route_dialog_pin()
                 event.accept()
                 return
             if event.key() == Qt.Key_F9:
@@ -4611,10 +4384,6 @@ class RouteNavigationDialog(QDialog):
                 return
             if event.key() == Qt.Key_F11:
                 self.owner.toggle_route_list_panel()
-                event.accept()
-                return
-            if event.key() == Qt.Key_F12:
-                self.owner.toggle_route_dialog_pin()
                 event.accept()
                 return
         super().keyPressEvent(event)
@@ -4768,7 +4537,6 @@ class RocoResourceMapQt(QMainWindow):
         self.route_dialog_normal_layouts = []
         self.route_dialog_pin_label = None
         self.route_dialog_route_list_button = None
-        self.route_dialog_reset_button = None
         self.route_dialog_route_list_visible = True
         self.route_dialog_side_panel = None
         self.route_dialog_pin_bar_widgets = []
@@ -4789,7 +4557,6 @@ class RocoResourceMapQt(QMainWindow):
         self.route_preview_arrow_item = None
         self.route_preview_current_item = None
         self.route_preview_player_item = None
-        self.route_preview_node_items = []
         self.route_preview_marker_items = []
         self.route_preview_marker_signature = None
         self.route_preview_icon_cache = {}
@@ -4838,7 +4605,7 @@ class RocoResourceMapQt(QMainWindow):
         self.sift_matcher = None
         self.minimap_follow_status_label = None
         self.minimap_follow_timer = QTimer(self)
-        self.minimap_follow_timer.setInterval(MINIMAP_FOLLOW_INTERVAL_MS)
+        self.minimap_follow_timer.setInterval(33)
         self.minimap_follow_timer.timeout.connect(self.update_minimap_follow)
         self.marker_rebuild_timer = QTimer(self)
         self.marker_rebuild_timer.setSingleShot(True)
@@ -5124,16 +4891,9 @@ class RocoResourceMapQt(QMainWindow):
         return map_path_for_layer(self.current_layer)
 
     def sift_cache_path(self):
-        cache_name = "wiki_map_sift_cache.npz"
         if self.current_layer == "G":
-            if SIFT_CACHE_PATH.exists():
-                return SIFT_CACHE_PATH
-        else:
-            cache_name = f"wiki_map_sift_cache_{self.current_layer}.npz"
-            static_cache = data_path(cache_name)
-            if static_cache.exists():
-                return static_cache
-        return user_cache_path(cache_name)
+            return SIFT_CACHE_PATH
+        return PROJECT_DIR / "data" / f"wiki_map_sift_cache_{self.current_layer}.npz"
 
     def load_layer_pixmap(self, layer):
         layer = normalize_map_layer(layer)
@@ -5357,10 +5117,6 @@ class RocoResourceMapQt(QMainWindow):
         pvp_damage_button = QPushButton("PVP伤害计算")
         pvp_damage_button.clicked.connect(self.open_pvp_damage_dialog)
         toolbar_layout.addWidget(pvp_damage_button)
-        update_button = QPushButton("检测更新")
-        update_button.setObjectName("checkUpdateButton")
-        update_button.clicked.connect(self.open_update_page)
-        toolbar_layout.addWidget(update_button)
 
         restore_button = QPushButton("恢复全部")
         restore_button.clicked.connect(self.restore_all)
@@ -5456,10 +5212,6 @@ class RocoResourceMapQt(QMainWindow):
         self.pvp_damage_dialog = dialog
         dialog.show()
 
-    def open_update_page(self):
-        if not QDesktopServices.openUrl(QUrl(UPDATE_PAGE_URL)):
-            QMessageBox.information(self, "检测更新", f"请手动打开更新页面：\n{UPDATE_PAGE_URL}")
-
     def run_search(self):
         query = self.search_input.text().strip()
         if not query:
@@ -5512,7 +5264,7 @@ class RocoResourceMapQt(QMainWindow):
     def build_scene(self):
         self.base_pixmap = self.load_layer_pixmap(self.current_layer)
         if self.base_pixmap.isNull():
-            raise RuntimeError(startup_resource_diagnostics(self.active_map_path()))
+            raise RuntimeError(f"地图图片不存在或无法读取：{self.active_map_path()}")
         self.scene.setSceneRect(0, 0, self.base_pixmap.width(), self.base_pixmap.height())
         self.map_item = self.scene.addPixmap(self.base_pixmap)
         self.map_item.setShapeMode(QGraphicsPixmapItem.BoundingRectShape)
@@ -5901,7 +5653,6 @@ class RocoResourceMapQt(QMainWindow):
 
         dialog = RouteNavigationDialog(self)
         dialog.setWindowTitle("跑图导航")
-        apply_application_icon(dialog)
         dialog.setMinimumSize(ROUTE_DIALOG_NORMAL_MIN_SIZE)
         dialog.setWindowFlags(
             Qt.Window
@@ -5934,11 +5685,9 @@ class RocoResourceMapQt(QMainWindow):
         locate_button.clicked.connect(self.focus_current_player_position)
         route_start_button = QPushButton("定位路线源头")
         route_start_button.clicked.connect(self.focus_route_start_marker)
-        teleport_button = QPushButton("定位传送点")
-        teleport_button.clicked.connect(self.focus_next_route_teleport)
         complete_button = QPushButton("完成当前资源点")
         complete_button.clicked.connect(self.complete_current_route_marker)
-        for button in (locate_button, route_start_button, teleport_button, complete_button):
+        for button in (locate_button, route_start_button, complete_button):
             buttons.addWidget(button)
         buttons.addStretch(1)
         top_left.addLayout(buttons)
@@ -6005,7 +5754,7 @@ class RocoResourceMapQt(QMainWindow):
         pin_bar.setSpacing(0)
         self.route_dialog_route_list_button = QPushButton("隐藏路线")
         self.route_dialog_route_list_button.clicked.connect(self.toggle_route_list_panel)
-        self.route_dialog_pin_label = QLabel("F8 定位传送点  F9 小洛克  F10 源头  F11 路线顺序  F12 取消固定")
+        self.route_dialog_pin_label = QLabel("F9 定位小洛克位置  F10 定位路线源头  F11 开启/关闭路线顺序  F12 解除固定")
         self.route_dialog_pin_label.setFixedHeight(18)
         self.route_dialog_pin_label.setAlignment(Qt.AlignVCenter | Qt.AlignLeft)
         self.route_dialog_pin_label.setStyleSheet("font-size: 12px; font-weight: 700; color: #d05b00; padding: 0px;")
@@ -6026,17 +5775,6 @@ class RocoResourceMapQt(QMainWindow):
         side_column = QVBoxLayout(self.route_dialog_side_panel)
         side_column.setContentsMargins(0, 0, 0, 0)
         side_column.setSpacing(2)
-        reset_row = QHBoxLayout()
-        reset_row.setContentsMargins(2, 0, 2, 0)
-        reset_row.setSpacing(4)
-        reset_label = QLabel("路线顺序")
-        reset_label.setStyleSheet("font-weight: 700;")
-        self.route_dialog_reset_button = QPushButton("重置")
-        self.route_dialog_reset_button.setToolTip("重置当前路线进度")
-        self.route_dialog_reset_button.clicked.connect(self.reset_route_progress)
-        reset_row.addWidget(reset_label, 1)
-        reset_row.addWidget(self.route_dialog_reset_button)
-        side_column.addLayout(reset_row)
         side_column.addWidget(tree, 1)
 
         main_row.addLayout(left_column, 1)
@@ -6049,7 +5787,6 @@ class RocoResourceMapQt(QMainWindow):
             locate_button,
             route_start_button,
             complete_button,
-            teleport_button,
             pin_button,
             follow_button,
             circle_button,
@@ -6066,14 +5803,10 @@ class RocoResourceMapQt(QMainWindow):
         dialog.destroyed.connect(self.on_route_dialog_destroyed)
         self.refresh_route_tree()
         self.update_route_preview()
-        dialog.install_pinned_resize_filters()
         dialog.show()
 
     def eventFilter(self, obj, event):
         if event.type() == QEvent.KeyPress and self.route_dialog is not None and self.route_dialog_pinned:
-            if event.key() == Qt.Key_F8:
-                self.focus_next_route_teleport()
-                return True
             if event.key() == Qt.Key_F12:
                 self.toggle_route_dialog_pin()
                 return True
@@ -6098,7 +5831,6 @@ class RocoResourceMapQt(QMainWindow):
         self.route_dialog_normal_layouts = []
         self.route_dialog_pin_bar_widgets = []
         self.route_dialog_route_list_button = None
-        self.route_dialog_reset_button = None
         self.route_dialog_route_list_visible = True
         self.route_dialog_side_panel = None
         self.route_dialog_unpinned_size = None
@@ -6116,7 +5848,6 @@ class RocoResourceMapQt(QMainWindow):
         self.route_preview_current_item = None
         self.route_preview_player_item = None
         self.route_preview_opacity_slider = None
-        self.route_preview_node_items = []
         self.route_preview_marker_items = []
         self.route_preview_marker_signature = None
         self.minimap_follow_status_label = None
@@ -6175,8 +5906,6 @@ class RocoResourceMapQt(QMainWindow):
                 self.route_dialog_tree.setColumnHidden(1, False)
                 self.route_dialog_tree.setColumnWidth(0, 164)
                 self.route_dialog_tree.setColumnWidth(1, 50)
-        if self.route_dialog_reset_button is not None:
-            self.route_dialog_reset_button.setMaximumWidth(48 if self.route_dialog_pinned else 80)
         if self.route_preview_view is not None:
             if self.route_dialog_pinned:
                 self.route_preview_view.setMinimumSize(160, 120)
@@ -6212,7 +5941,7 @@ class RocoResourceMapQt(QMainWindow):
                 self.minimap_follow_status_label.setText("小地图圈可拖动，滚轮可缩放")
         if self.minimap_circle_locked:
             self.minimap_follow_enabled = True
-            self.minimap_follow_timer.start(MINIMAP_FOLLOW_INTERVAL_MS)
+            self.minimap_follow_timer.start()
             if self.minimap_follow_button is not None:
                 self.minimap_follow_button.setText("关闭AI导航")
             self.minimap_circle.hide()
@@ -6319,14 +6048,7 @@ class RocoResourceMapQt(QMainWindow):
                 except RuntimeError:
                     pass
                 setattr(self, item_name, None)
-        for item in getattr(self, "route_preview_node_items", []):
-            try:
-                self.route_preview_scene.removeItem(item)
-            except RuntimeError:
-                pass
-        self.route_preview_node_items = []
-
-        steps = self.route_all_steps()
+        steps = self.route_remaining_steps(800)
         markers = [marker for marker, _kind in steps]
         preview_markers = self.route_preview_markers(1200)
         route_uids = tuple(route_point_uid(marker) for marker in preview_markers if route_point_uid(marker))
@@ -6363,51 +6085,20 @@ class RocoResourceMapQt(QMainWindow):
                 path.lineTo(marker["x"], marker["y"])
                 if index % ROUTE_ARROW_STEP == 0 or index == 1 or index == len(markers) - 1:
                     self.add_route_arrow(arrow_path, previous, marker)
-            preview_pen = QPen(QColor("#ff7a00"), 4)
+            preview_pen = QPen(QColor("#ff7a00"), 3)
             preview_pen.setCosmetic(True)
             self.route_preview_path_item = QGraphicsPathItem(path)
             self.route_preview_path_item.setPen(preview_pen)
             self.route_preview_path_item.setZValue(3)
             self.route_preview_path_item.setAcceptedMouseButtons(Qt.NoButton)
             self.route_preview_scene.addItem(self.route_preview_path_item)
-            arrow_pen = QPen(QColor("#00a7ff"), 5)
+            arrow_pen = QPen(QColor("#00a7ff"), 4)
             arrow_pen.setCosmetic(True)
             self.route_preview_arrow_item = QGraphicsPathItem(arrow_path)
             self.route_preview_arrow_item.setPen(arrow_pen)
             self.route_preview_arrow_item.setZValue(4)
             self.route_preview_arrow_item.setAcceptedMouseButtons(Qt.NoButton)
             self.route_preview_scene.addItem(self.route_preview_arrow_item)
-
-        current_uid = route_point_uid(self.current_route_marker() or {})
-        for marker, kind in steps:
-            uid = route_point_uid(marker)
-            radius = 22 if uid == current_uid else 16
-            node = QGraphicsEllipseItem(
-                marker["x"] - radius,
-                marker["y"] - radius,
-                radius * 2,
-                radius * 2,
-            )
-            if self.route_point_completed(marker):
-                brush = QBrush(QColor("#111820"))
-                pen = QPen(QColor("#ffffff"), 4)
-            elif uid == current_uid:
-                brush = QBrush(QColor("#ffcc33"))
-                pen = QPen(QColor("#ffffff"), 5)
-            elif kind == "teleport":
-                brush = QBrush(QColor("#2f7dff"))
-                pen = QPen(QColor("#ffffff"), 4)
-            else:
-                brush = QBrush(QColor("#20c06b"))
-                pen = QPen(QColor("#ffffff"), 4)
-            pen.setCosmetic(True)
-            node.setBrush(brush)
-            node.setPen(pen)
-            node.setZValue(5.2)
-            node.setAcceptedMouseButtons(Qt.NoButton)
-            node.setData(0, uid)
-            self.route_preview_scene.addItem(node)
-            self.route_preview_node_items.append(node)
 
         current = self.current_route_marker()
         if current is not None:
@@ -6448,7 +6139,7 @@ class RocoResourceMapQt(QMainWindow):
         self.minimap_follow_enabled = True
         if self.minimap_follow_button is not None:
             self.minimap_follow_button.setText("关闭AI导航")
-        self.minimap_follow_timer.start(MINIMAP_FOLLOW_INTERVAL_MS)
+        self.minimap_follow_timer.start()
         self.update_minimap_follow()
 
     def show_minimap_circle(self):
@@ -6561,7 +6252,6 @@ class RocoResourceMapQt(QMainWindow):
             except Exception:
                 pass
 
-        cache_path = user_cache_path(cache_path.name)
         source = self.cv_read_image(self.active_map_path())
         if source is None:
             QMessageBox.warning(self, "AI小地图跟随", "无法读取地图底图生成识别缓存。")
@@ -6722,17 +6412,17 @@ class RocoResourceMapQt(QMainWindow):
         if region is None:
             return None
         circle_visible = self.minimap_circle is not None and self.minimap_circle.isVisible()
+        if circle_visible:
+            self.minimap_circle.hide()
+            QApplication.processEvents()
+        screen = QApplication.primaryScreen()
         pixmap = None
-        try:
-            if circle_visible:
-                self.minimap_circle.hide()
-                QApplication.processEvents()
-            pixmap = grab_global_screen_region(region["x"], region["y"], region["size"], region["size"])
-        finally:
-            if circle_visible and self.minimap_circle is not None:
-                self.minimap_circle.show()
-                if self.minimap_circle_locked:
-                    self.minimap_circle.set_locked_for_game(True)
+        if screen is not None:
+            pixmap = screen.grabWindow(0, region["x"], region["y"], region["size"], region["size"])
+        if circle_visible and self.minimap_circle is not None:
+            self.minimap_circle.show()
+            if self.minimap_circle_locked:
+                self.minimap_circle.set_locked_for_game(True)
         return pixmap
 
     def detect_minimap_player(self, image):
@@ -7317,10 +7007,10 @@ class RocoResourceMapQt(QMainWindow):
             dx = target[0] - display[0]
             dy = target[1] - display[1]
             distance = math.hypot(dx, dy)
-            if distance < 0.15:
+            if distance < 0.25:
                 display = target
             else:
-                alpha = min(0.44, max(0.035, 1.0 - math.exp(-dt / ROUTE_PREVIEW_PLAYER_SMOOTH_SECONDS)))
+                alpha = min(0.98, max(0.32, 1.0 - math.exp(-dt * 34.0)))
                 display = (display[0] + dx * alpha, display[1] + dy * alpha)
 
         target_angle = float(self.route_preview_player_target_angle)
@@ -7329,7 +7019,7 @@ class RocoResourceMapQt(QMainWindow):
         if abs(diff) < 0.8:
             current_angle = target_angle
         else:
-            angle_alpha = min(0.52, max(0.06, 1.0 - math.exp(-dt / ROUTE_PREVIEW_PLAYER_ANGLE_SMOOTH_SECONDS)))
+            angle_alpha = min(0.995, max(0.68, 1.0 - math.exp(-dt * 120.0)))
             current_angle = (current_angle + diff * angle_alpha) % 360.0
 
         self.route_preview_player_display_pos = display
@@ -8063,19 +7753,11 @@ class RocoResourceMapQt(QMainWindow):
                 break
         return markers
 
-    def route_layer_markers(self, include_completed=False, limit=None):
-        if not include_completed:
-            return self.route_remaining_markers(limit)
-        markers = []
-        for marker in self.route_markers:
-            if not self.route_point_matches_current_layer(marker):
-                continue
-            markers.append(marker)
-            if limit is not None and len(markers) >= max(1, limit):
-                break
-        return markers
-
-    def route_steps_from_markers(self, markers, limit=None):
+    def route_remaining_steps(self, limit=None):
+        route_limit = None
+        if limit is not None:
+            route_limit = max(1, limit)
+        markers = self.route_remaining_markers(route_limit)
         steps = []
         for index, marker in enumerate(markers):
             if index > 0:
@@ -8090,18 +7772,6 @@ class RocoResourceMapQt(QMainWindow):
             if limit is not None and len(steps) >= limit:
                 break
         return steps
-
-    def route_remaining_steps(self, limit=None):
-        route_limit = None
-        if limit is not None:
-            route_limit = max(1, limit)
-        return self.route_steps_from_markers(self.route_remaining_markers(route_limit), limit)
-
-    def route_all_steps(self, limit=None):
-        route_limit = None
-        if limit is not None:
-            route_limit = max(1, limit)
-        return self.route_steps_from_markers(self.route_layer_markers(True, route_limit), limit)
 
     def route_preview_markers(self, limit=None):
         markers = []
@@ -8136,7 +7806,7 @@ class RocoResourceMapQt(QMainWindow):
         self.clear_route_path()
         if not hasattr(self, "scene"):
             return
-        steps = self.route_all_steps()
+        steps = self.route_remaining_steps(ROUTE_DRAW_LIMIT)
         markers = [marker for marker, _kind in steps]
         for marker, kind in steps:
             if kind not in ("teleport", "manual"):
@@ -8164,14 +7834,14 @@ class RocoResourceMapQt(QMainWindow):
             path.lineTo(marker["x"], marker["y"])
             if index % ROUTE_ARROW_STEP == 0 or index == 1 or index == len(markers) - 1:
                 self.add_route_arrow(arrow_path, previous, marker)
-        pen = QPen(QColor("#ff7a00"), 4)
+        pen = QPen(QColor("#ff7a00"), 3)
         pen.setCosmetic(True)
         self.route_path_item = QGraphicsPathItem(path)
         self.route_path_item.setPen(pen)
         self.route_path_item.setZValue(6)
         self.route_path_item.setAcceptedMouseButtons(Qt.NoButton)
         self.scene.addItem(self.route_path_item)
-        arrow_pen = QPen(QColor("#00a7ff"), 5)
+        arrow_pen = QPen(QColor("#00a7ff"), 4)
         arrow_pen.setCosmetic(True)
         self.route_arrow_item = QGraphicsPathItem(arrow_path)
         self.route_arrow_item.setPen(arrow_pen)
@@ -8320,48 +7990,6 @@ class RocoResourceMapQt(QMainWindow):
         if self.route_dialog_tree is not None and self.route_dialog_tree.topLevelItemCount() > 0:
             self.route_dialog_tree.setCurrentItem(self.route_dialog_tree.topLevelItem(0))
 
-    def next_route_teleport_plan(self):
-        self.update_route_transition_hints()
-        if len(self.route_markers) < 2:
-            return None
-        start = max(0, min(self.current_route_index, len(self.route_markers) - 1))
-        indexes = []
-        if start > 0:
-            indexes.append(start - 1)
-        indexes.extend(range(start, len(self.route_markers) - 1))
-        seen = set()
-        for index in indexes:
-            if index in seen or index + 1 >= len(self.route_markers):
-                continue
-            seen.add(index)
-            previous = self.route_markers[index]
-            marker = self.route_markers[index + 1]
-            plan = self.route_transition_hints.get(route_point_uid(previous))
-            if plan is None:
-                plan = self.route_transition_plan(previous, marker)
-            teleport = plan.get("teleport") if plan and plan.get("mode") == "teleport" else None
-            if teleport is not None and self.marker_matches_current_layer(teleport):
-                return plan
-        return None
-
-    def focus_next_route_teleport(self):
-        plan = self.next_route_teleport_plan()
-        teleport = plan.get("teleport") if plan else None
-        if teleport is None:
-            message = "当前路线后面没有需要定位的传送点。"
-            if self.minimap_follow_status_label is not None:
-                self.minimap_follow_status_label.setText(message)
-            else:
-                QMessageBox.information(self, "跑图导航", message)
-            return
-        self._last_focused_route_teleport_uid = route_point_uid(teleport)
-        if self.route_preview_view is not None:
-            self.route_preview_view.centerOn(teleport["x"], teleport["y"])
-        if hasattr(self, "view"):
-            self.view.centerOn(teleport["x"], teleport["y"])
-        if self.minimap_follow_status_label is not None:
-            self.minimap_follow_status_label.setText(f"已定位传送点：{self.marker_title(teleport)}")
-
     def focus_current_route_marker(self):
         marker = self.current_route_marker()
         if marker is None:
@@ -8459,25 +8087,6 @@ class RocoResourceMapQt(QMainWindow):
         self.clear_route_path()
         self.clear_highlight()
         self.refresh_route_tree()
-        self.save_route_state()
-        self.update_status()
-
-    def reset_route_progress(self):
-        if not self.route_markers:
-            QMessageBox.information(self, "跑图导航", "目前没有可以重置的路线。")
-            return
-        for marker in self.route_markers:
-            uid = route_point_uid(marker)
-            self.completed_route_uids.discard(uid)
-            if not is_manual_route_point(marker):
-                self.dimmed_uids.discard(uid)
-        self.current_route_index = 0
-        self.route_auto_complete_candidate_uid = None
-        self.route_auto_complete_candidate_hits = 0
-        self.route_auto_complete_candidate_started_at = 0.0
-        self.rebuild_marker_tiles()
-        self.refresh_route_tree()
-        self.render_route_path()
         self.save_route_state()
         self.update_status()
 
@@ -8639,10 +8248,17 @@ class RocoResourceMapQt(QMainWindow):
         marker = self.route_point_by_uid(uid)
         if marker is None:
             return
-        if self.route_preview_view is not None and self.marker_matches_current_layer(marker):
-            self.route_preview_view.centerOn(marker["x"], marker["y"])
-        if hasattr(self, "view") and self.marker_matches_current_layer(marker):
-            self.view.centerOn(marker["x"], marker["y"])
+        for index, marker in enumerate(self.route_markers):
+            if route_point_uid(marker) == uid:
+                if not self.route_point_completed(marker):
+                    self.current_route_index = index
+                break
+        self.advance_route_index()
+        marker = self.route_point_by_uid(uid)
+        self.focus_marker(marker)
+        self.refresh_route_tree()
+        self.render_route_path()
+        self.save_route_state()
 
     def update_status(self):
         if getattr(self, "tearing_down", False):
@@ -8925,9 +8541,7 @@ def run_check():
 
 
 def run_selftest():
-    configure_qt_application_attributes()
     app = QApplication.instance() or QApplication(sys.argv[:1])
-    apply_application_style(app)
     app.setQuitOnLastWindowClosed(False)
     window = RocoResourceMapQt()
     total = len(window.markers)
@@ -9006,13 +8620,6 @@ def run_selftest():
     route_player_moves_ok = False
     route_player_icon_ok = False
     route_arrows_ok = False
-    route_main_full_path_ok = False
-    route_preview_nodes_ok = False
-    route_preview_green_node_ok = False
-    route_preview_completed_node_ok = False
-    route_list_click_keeps_progress_ok = False
-    route_reset_ok = False
-    teleport_focus_ok = False
     locate_player_ok = False
     cache_button_removed = False
     pinned_layout_ok = False
@@ -9031,9 +8638,6 @@ def run_selftest():
     route_tree_tall_ok = False
     pinned_shortcuts_ok = False
     route_dialog_resize_ok = False
-    pinned_resize_ok = False
-    pinned_drag_ok = False
-    pinned_f12_visible_ok = False
     compact_route_panel_ok = False
     resource_tree_no_hscroll_ok = False
     invalid_frame_no_drift_ok = False
@@ -9043,7 +8647,6 @@ def run_selftest():
     overlapping_marker_cycle_ok = False
     egg_query_feature_ok = False
     pvp_damage_feature_ok = False
-    update_page_button_ok = False
     manual_route_anywhere_ok = False
     manual_first_point_visible_ok = False
     manual_route_no_save_keeps_ok = False
@@ -9074,13 +8677,6 @@ def run_selftest():
         window.open_route_navigation()
         app.processEvents()
         route_dialog_opens = window.route_dialog is not None and window.route_preview_scene is not None
-        update_page_button_ok = (
-            UPDATE_PAGE_URL == "https://github.com/SakuraYuumi/Rock-Kingdom-Multi-Tool/releases/latest"
-            and any(
-                button.objectName() == "checkUpdateButton" and button.text() == "检测更新"
-                for button in window.findChildren(QPushButton)
-            )
-        )
         nav_button_layout_ok = (
             window.minimap_follow_button is not None
             and window.minimap_follow_button.text() == "开启AI导航"
@@ -9090,99 +8686,13 @@ def run_selftest():
             and window.route_dialog_pin_button.text() == "固定导航"
             and any(button.text() == "定位小洛克位置" for button in window.route_dialog.findChildren(QPushButton))
             and any(button.text() == "定位路线源头" for button in window.route_dialog.findChildren(QPushButton))
-            and any(button.text() == "定位传送点" for button in window.route_dialog.findChildren(QPushButton))
             and any(button.text() == "完成当前资源点" for button in window.route_dialog.findChildren(QPushButton))
         )
         window.route_markers = window.markers[:8]
         window.current_route_index = 0
         window.refresh_route_tree()
         window.render_route_path()
-        window.update_route_preview()
         app.processEvents()
-        route_preview_nodes_ok = (
-            len(getattr(window, "route_preview_node_items", [])) >= len(window.route_all_steps())
-            and len(getattr(window, "route_preview_node_items", [])) > 0
-        )
-        route_preview_green_node_ok = any(
-            item.brush().color().name().lower() == "#20c06b"
-            for item in getattr(window, "route_preview_node_items", [])
-        )
-        if window.route_markers:
-            completed_uid = route_point_uid(window.route_markers[0])
-            old_completed = set(window.completed_route_uids)
-            old_dimmed = set(window.dimmed_uids)
-            old_route_index_for_node = window.current_route_index
-            try:
-                window.completed_route_uids.add(completed_uid)
-                window.dimmed_uids.add(completed_uid)
-                window.current_route_index = max(1, window.current_route_index)
-                window.update_route_preview()
-                route_preview_completed_node_ok = any(
-                    item.data(0) == completed_uid
-                    and item.brush().color().name().lower() == "#111820"
-                    for item in getattr(window, "route_preview_node_items", [])
-                )
-            finally:
-                window.completed_route_uids = old_completed
-                window.dimmed_uids = old_dimmed
-                window.current_route_index = old_route_index_for_node
-                window.update_route_preview()
-        if window.route_dialog_tree is not None and window.route_dialog_tree.topLevelItemCount() > 2:
-            old_index_for_click = window.current_route_index
-            old_step_count_for_click = len(window.route_all_steps())
-            clicked = False
-            for item_index in range(window.route_dialog_tree.topLevelItemCount()):
-                item = window.route_dialog_tree.topLevelItem(item_index)
-                uid = item.data(0, Qt.UserRole)
-                if uid and route_point_uid(window.route_markers[0]) != uid:
-                    window.on_route_item_clicked(item, 0)
-                    clicked = True
-                    break
-            route_list_click_keeps_progress_ok = (
-                clicked
-                and window.current_route_index == old_index_for_click
-                and len(window.route_all_steps()) == old_step_count_for_click
-            )
-        if len(window.route_markers) >= 2:
-            reset_uid = route_point_uid(window.route_markers[1])
-            window.completed_route_uids.add(reset_uid)
-            window.dimmed_uids.add(reset_uid)
-            window.current_route_index = 3
-            window.reset_route_progress()
-            route_reset_ok = (
-                window.current_route_index == 0
-                and reset_uid not in window.completed_route_uids
-                and reset_uid not in window.dimmed_uids
-                and len(window.route_markers) == 8
-                and window.route_dialog_reset_button is not None
-            )
-        old_route_for_full_path = window.route_markers
-        old_index_for_full_path = window.current_route_index
-        try:
-            long_route = [
-                window.create_manual_route_point(
-                    float(index * 12),
-                    float(120 + (index % 7) * 24),
-                    title=f"自检路径点 {index + 1}",
-                    uid=f"{MANUAL_ROUTE_UID_PREFIX}selftest-full-{index}",
-                    layer=window.current_layer,
-                )
-                for index in range(ROUTE_DRAW_LIMIT + 25)
-            ]
-            window.route_markers = long_route
-            window.current_route_index = 0
-            window.render_route_path()
-            expected_steps = len(window.route_remaining_steps())
-            path_elements = (
-                window.route_path_item.path().elementCount()
-                if window.route_path_item is not None
-                else 0
-            )
-            route_main_full_path_ok = path_elements == expected_steps == len(long_route)
-        finally:
-            window.route_markers = old_route_for_full_path
-            window.current_route_index = old_index_for_full_path
-            window.render_route_path()
         line_markers = [{"x": float(x), "y": 0.0} for x in (0, 10, 20, 30)]
         line_route = window.build_optimized_route(line_markers, 15.0, 0.0)
         route_global_open_ok = (
@@ -9196,7 +8706,6 @@ def run_selftest():
         )
         old_markers_for_teleport = window.markers
         old_route_for_teleport = window.route_markers
-        old_index_for_teleport = window.current_route_index
         try:
             resource_a = {"uid": "route-test-a", "x": 0.0, "y": 0.0, "mark_type": 802, "title": "A", "name": "资源", "group": "收集"}
             resource_b = {"uid": "route-test-b", "x": 2600.0, "y": 0.0, "mark_type": 802, "title": "B", "name": "资源", "group": "收集"}
@@ -9217,13 +8726,9 @@ def run_selftest():
                 any(item.data(0) == teleport["uid"] for item in window.route_helper_marker_items)
                 and any(item.data(0) == teleport["uid"] for item in window.route_preview_marker_items)
             )
-            window.current_route_index = 1
-            window.focus_next_route_teleport()
-            teleport_focus_ok = getattr(window, "_last_focused_route_teleport_uid", "") == teleport["uid"]
         finally:
             window.markers = old_markers_for_teleport
             window.route_markers = old_route_for_teleport
-            window.current_route_index = old_index_for_teleport
             window.update_route_transition_hints()
             window.render_route_path()
         route_arrows_ok = window.route_preview_arrow_item is not None
@@ -9449,32 +8954,6 @@ def run_selftest():
             window.route_dialog.minimumWidth() <= ROUTE_DIALOG_PINNED_MIN_SIZE.width()
             and window.route_dialog.minimumHeight() <= ROUTE_DIALOG_PINNED_MIN_SIZE.height()
         )
-        pinned_keys = ("F8", "F9", "F10", "F11", "F12")
-        pinned_f12_visible_ok = (
-            all(key in pinned_hint for key in pinned_keys)
-            and [pinned_hint.index(key) for key in pinned_keys] == sorted(pinned_hint.index(key) for key in pinned_keys)
-            and "取消固定" in pinned_hint
-        )
-        pinned_resize_edge = window.route_dialog.pinned_resize_edges_at(window.route_dialog.rect().bottomRight())
-        old_pinned_width = window.route_dialog.width()
-        old_pinned_height = window.route_dialog.height()
-        window.route_dialog.resize(old_pinned_width + 40, old_pinned_height + 24)
-        app.processEvents()
-        pinned_resize_ok = (
-            pinned_resize_edge is not None
-            and window.route_dialog.width() >= old_pinned_width + 35
-            and window.route_dialog.height() >= old_pinned_height + 20
-        )
-        old_pinned_pos = window.route_dialog.pos()
-        drag_start = window.route_dialog.mapToGlobal(QPoint(42, 12))
-        window.route_dialog.begin_pinned_move(drag_start)
-        window.route_dialog.move_to_global_pos(drag_start + QPoint(36, 28))
-        window.route_dialog.end_pinned_move()
-        app.processEvents()
-        pinned_drag_ok = (
-            abs(window.route_dialog.x() - old_pinned_pos.x() - 36) <= 2
-            and abs(window.route_dialog.y() - old_pinned_pos.y() - 28) <= 2
-        )
         shortcut_hits = []
 
         class FakeRouteKey:
@@ -9490,23 +8969,18 @@ def run_selftest():
 
         old_focus_player_shortcut = window.focus_current_player_position
         old_focus_start_shortcut = window.focus_route_start_marker
-        old_focus_teleport_shortcut = window.focus_next_route_teleport
         try:
-            window.focus_next_route_teleport = lambda *args, **kwargs: shortcut_hits.append("teleport")
             window.focus_current_player_position = lambda *args, **kwargs: shortcut_hits.append("player")
             window.focus_route_start_marker = lambda *args, **kwargs: shortcut_hits.append("start")
-            f8_event = FakeRouteKey(Qt.Key_F8)
             f9_event = FakeRouteKey(Qt.Key_F9)
             f10_event = FakeRouteKey(Qt.Key_F10)
             f11_event = FakeRouteKey(Qt.Key_F11)
             route_list_was_visible = window.route_dialog_side_panel.isVisible()
-            window.route_dialog.keyPressEvent(f8_event)
             window.route_dialog.keyPressEvent(f9_event)
             window.route_dialog.keyPressEvent(f10_event)
             window.route_dialog.keyPressEvent(f11_event)
             pinned_shortcuts_ok = (
-                shortcut_hits == ["teleport", "player", "start"]
-                and f8_event.accepted
+                shortcut_hits == ["player", "start"]
                 and f9_event.accepted
                 and f10_event.accepted
                 and f11_event.accepted
@@ -9517,7 +8991,6 @@ def run_selftest():
         finally:
             window.focus_current_player_position = old_focus_player_shortcut
             window.focus_route_start_marker = old_focus_start_shortcut
-            window.focus_next_route_teleport = old_focus_teleport_shortcut
         pinned_layout_ok = (
             window.route_dialog_pinned is True
             and bool(pinned_flags & Qt.FramelessWindowHint)
@@ -9526,8 +8999,7 @@ def run_selftest():
             and not bool(pinned_flags & Qt.WindowCloseButtonHint)
             and window.route_dialog_tree is not None
             and window.route_dialog_tree.isColumnHidden(1)
-            and all(key in pinned_hint for key in ("F8", "F9", "F10", "F11", "F12"))
-            and pinned_f12_visible_ok
+            and all(key in pinned_hint for key in ("F9", "F10", "F11", "F12"))
             and window.route_dialog_pin_label is not None
             and window.route_dialog_pin_label.isVisible()
             and window.route_dialog_pin_label.height() <= 20
@@ -9793,13 +9265,6 @@ def run_selftest():
         "route_player_moves_ok": bool(route_player_moves_ok),
         "route_player_icon_ok": bool(route_player_icon_ok),
         "route_arrows_ok": bool(route_arrows_ok),
-        "route_main_full_path_ok": bool(route_main_full_path_ok),
-        "route_preview_nodes_ok": bool(route_preview_nodes_ok),
-        "route_preview_green_node_ok": bool(route_preview_green_node_ok),
-        "route_preview_completed_node_ok": bool(route_preview_completed_node_ok),
-        "route_list_click_keeps_progress_ok": bool(route_list_click_keeps_progress_ok),
-        "route_reset_ok": bool(route_reset_ok),
-        "teleport_focus_ok": bool(teleport_focus_ok),
         "locate_player_ok": bool(locate_player_ok),
         "cache_button_removed": bool(cache_button_removed),
         "pinned_layout_ok": bool(pinned_layout_ok),
@@ -9818,9 +9283,6 @@ def run_selftest():
         "route_tree_tall_ok": bool(route_tree_tall_ok),
         "pinned_shortcuts_ok": bool(pinned_shortcuts_ok),
         "route_dialog_resize_ok": bool(route_dialog_resize_ok),
-        "pinned_resize_ok": bool(pinned_resize_ok),
-        "pinned_drag_ok": bool(pinned_drag_ok),
-        "pinned_f12_visible_ok": bool(pinned_f12_visible_ok),
         "compact_route_panel_ok": bool(compact_route_panel_ok),
         "resource_tree_no_hscroll_ok": bool(resource_tree_no_hscroll_ok),
         "invalid_frame_no_drift_ok": bool(invalid_frame_no_drift_ok),
@@ -9831,7 +9293,6 @@ def run_selftest():
         "black_glaze_surface_ok": bool(black_glaze_surface_ok),
         "egg_query_feature_ok": bool(egg_query_feature_ok),
         "pvp_damage_feature_ok": bool(pvp_damage_feature_ok),
-        "update_page_button_ok": bool(update_page_button_ok),
         "account_state_isolated_ok": bool(account_state_isolated_ok),
         "account_delete_ok": bool(account_delete_ok),
         "manual_route_anywhere_ok": bool(manual_route_anywhere_ok),
@@ -9889,13 +9350,6 @@ def run_selftest():
     print(f"route player moves: {route_player_moves_ok}")
     print(f"route player icon: {route_player_icon_ok}")
     print(f"route preview arrows: {route_arrows_ok}")
-    print(f"main map full route path: {route_main_full_path_ok}")
-    print(f"route preview nodes: {route_preview_nodes_ok}")
-    print(f"route preview green nodes: {route_preview_green_node_ok}")
-    print(f"route preview completed nodes: {route_preview_completed_node_ok}")
-    print(f"route list click keeps progress: {route_list_click_keeps_progress_ok}")
-    print(f"route reset: {route_reset_ok}")
-    print(f"teleport focus: {teleport_focus_ok}")
     print(f"locate player works: {locate_player_ok}")
     print(f"SIFT cache button removed: {cache_button_removed}")
     print(f"pinned layout minimal: {pinned_layout_ok}")
@@ -9912,11 +9366,8 @@ def run_selftest():
     print(f"transition pause protects: {transition_pause_ok}")
     print(f"locked circle hidden: {locked_circle_hidden_ok}")
     print(f"route tree tall: {route_tree_tall_ok}")
-    print(f"pinned shortcuts F8/F9/F10/F11: {pinned_shortcuts_ok}")
+    print(f"pinned shortcuts F9/F10/F11: {pinned_shortcuts_ok}")
     print(f"route dialog can shrink: {route_dialog_resize_ok}")
-    print(f"pinned dialog resizable: {pinned_resize_ok}")
-    print(f"pinned dialog draggable: {pinned_drag_ok}")
-    print(f"pinned F12 hint visible: {pinned_f12_visible_ok}")
     print(f"compact route panel: {compact_route_panel_ok}")
     print(f"resource tree horizontal bar hidden: {resource_tree_no_hscroll_ok}")
     print(f"invalid frame no drift: {invalid_frame_no_drift_ok}")
@@ -9927,7 +9378,6 @@ def run_selftest():
     print(f"black glaze fixed to surface: {black_glaze_surface_ok}")
     print(f"egg query feature: {egg_query_feature_ok}")
     print(f"PVP damage feature: {pvp_damage_feature_ok}")
-    print(f"update page button: {update_page_button_ok}")
     print(f"account state isolated: {account_state_isolated_ok}")
     print(f"account delete works: {account_delete_ok}")
     print(f"manual route anywhere: {manual_route_anywhere_ok}")
@@ -9952,13 +9402,9 @@ def main():
     if args.selftest:
         return int(run_selftest())
 
-    configure_qt_application_attributes()
     app = QApplication.instance() or QApplication(sys.argv)
-    apply_application_style(app)
-    apply_application_icon(app)
     try:
         window = RocoResourceMapQt()
-        apply_application_icon(window)
     except Exception as exc:
         QMessageBox.critical(None, "启动失败", str(exc))
         return 1

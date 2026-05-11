@@ -13,12 +13,13 @@ except Exception:  # pragma: no cover - optional runtime dependency
     np = None
 
 try:
-    from PyQt5.QtCore import QEvent, QObject, QPointF, QTimer, Qt
+    from PyQt5.QtCore import QEvent, QObject, QPoint, QPointF, QTimer, Qt
     from PyQt5.QtWidgets import QApplication, QLabel, QAbstractButton, QGraphicsEllipseItem
     from PyQt5.QtGui import QColor, QBrush, QImage, QPen, QPixmap
 except Exception:  # pragma: no cover - PyQt is provided by the app runtime
     QEvent = None
     QObject = object
+    QPoint = None
     QPointF = None
     QTimer = None
     Qt = None
@@ -62,8 +63,9 @@ SIFT_MOTION_MAX_GOOD_AGE = 1.8
 SIFT_DEFAULT_WORLD_PER_MINIMAP_PIXEL = 3.8
 SIFT_INVALID_FRAME_COOLDOWN = 0.10
 SIFT_INVALID_FULL_RELOCALIZE_AFTER = 0.85
-SIFT_FAILED_MATCH_COOLDOWN = 0.08
-SIFT_FULL_RELOCALIZE_COOLDOWN = 0.10
+SIFT_FAILED_MATCH_COOLDOWN = 0.18
+SIFT_FULL_RELOCALIZE_COOLDOWN = 0.28
+SIFT_FOLLOW_INTERVAL_MS = 120
 SIFT_FULL_MATCH_MIN_INTERVAL = 0.48
 
 
@@ -1161,7 +1163,9 @@ def _ensure_follow_timer_running(owner):
         if "minimap" in lower or "follow" in lower or "sift" in lower:
             try:
                 if not value.isActive():
-                    value.start(80)
+                    value.start(SIFT_FOLLOW_INTERVAL_MS)
+                elif hasattr(value, "interval") and value.interval() < SIFT_FOLLOW_INTERVAL_MS:
+                    value.setInterval(SIFT_FOLLOW_INTERVAL_MS)
                 return True
             except Exception:
                 pass
@@ -1175,10 +1179,10 @@ def _ensure_follow_timer_running(owner):
         except Exception:
             return False
     try:
-        if timer.interval() > 33:
-            timer.setInterval(33)
+        if timer.interval() != SIFT_FOLLOW_INTERVAL_MS:
+            timer.setInterval(SIFT_FOLLOW_INTERVAL_MS)
         if not timer.isActive():
-            timer.start(33)
+            timer.start(SIFT_FOLLOW_INTERVAL_MS)
         _set_status(owner, "SIFT跟随已启动")
         return True
     except Exception:
@@ -1281,6 +1285,19 @@ def _find_minimap_circle(owner):
     return None
 
 
+def _grab_global_screen_region(x, y, w, h):
+    if QApplication is None:
+        return None
+    center = QPoint(int(x + w / 2), int(y + h / 2)) if QPoint is not None else None
+    screen = QApplication.screenAt(center) if center is not None and hasattr(QApplication, "screenAt") else None
+    if screen is None:
+        screen = QApplication.primaryScreen()
+    if screen is None:
+        return None
+    geometry = screen.geometry()
+    return screen.grabWindow(0, int(x - geometry.x()), int(y - geometry.y()), int(w), int(h))
+
+
 def _capture_minimap(owner):
     if QApplication is None:
         return None, "Qt截图不可用"
@@ -1318,8 +1335,8 @@ def _capture_minimap(owner):
         return None, "读取小地图圈位置失败"
     if w < 32 or h < 32:
         return None, "小地图圈过小"
-    screen = QApplication.primaryScreen()
-    if screen is None:
+    screen_available = QApplication.screenAt(QPoint(int(x + w / 2), int(y + h / 2))) if QPoint is not None and hasattr(QApplication, "screenAt") else QApplication.primaryScreen()
+    if screen_available is None:
         return None, "没有可用屏幕"
     circle_visible = False
     try:
@@ -1327,7 +1344,7 @@ def _capture_minimap(owner):
         if circle_visible:
             circle.hide()
             QApplication.processEvents()
-        pixmap = screen.grabWindow(0, x, y, w, h)
+        pixmap = _grab_global_screen_region(x, y, w, h)
     except Exception:
         return None, "截取小地图失败"
     finally:
@@ -1899,31 +1916,47 @@ def track_minimap_sift_v2(owner, image, *args, **kwargs):
 
 
 def update_minimap_follow_v2(owner, *args, **kwargs):
-    pause_until = float(getattr(owner, "_sift_v2_pause_until", 0.0) or 0.0)
-    now = time.time()
-    if now < pause_until:
+    if bool(getattr(owner, "_sift_v2_update_busy", False)):
         last = _last_world_pos(owner)
-        message = f"过场/加载保护中，{max(0.0, pause_until - now):.1f}s 后重试"
-        _set_status(owner, message)
-        return _result(False, last, message, method="画面保护")
+        return _result(False, last, "上一帧识别中，跳过本帧", method="节流")
+    setattr(owner, "_sift_v2_update_busy", True)
+    started = time.perf_counter()
+    try:
+        pause_until = float(getattr(owner, "_sift_v2_pause_until", 0.0) or 0.0)
+        now = time.time()
+        if now < pause_until:
+            last = _last_world_pos(owner)
+            message = f"过场/加载保护中，{max(0.0, pause_until - now):.1f}s 后重试"
+            _set_status(owner, message)
+            return _result(False, last, message, method="画面保护")
 
-    pixmap, error = _capture_minimap(owner)
-    if pixmap is None:
-        _set_status(owner, error)
-        return None
+        pixmap, error = _capture_minimap(owner)
+        if pixmap is None:
+            _set_status(owner, error)
+            return None
 
-    result = track_minimap_sift_v2(owner, pixmap)
-    message = result.get("message", "")
-    position = result.get("position")
-    if position is not None:
-        _apply_world_pos(owner, position, result.get("player_angle"))
-        if result.get("ok"):
-            auto_complete = getattr(owner, "auto_complete_route_at_position", None)
-            if callable(auto_complete):
-                try:
-                    auto_complete(float(position[0]), float(position[1]))
-                except Exception:
-                    pass
-    if message:
-        _set_status(owner, message)
-    return result
+        result = track_minimap_sift_v2(owner, pixmap)
+        message = result.get("message", "")
+        position = result.get("position")
+        if position is not None:
+            _apply_world_pos(owner, position, result.get("player_angle"))
+            if result.get("ok"):
+                auto_complete = getattr(owner, "auto_complete_route_at_position", None)
+                if callable(auto_complete):
+                    try:
+                        auto_complete(float(position[0]), float(position[1]))
+                    except Exception:
+                        pass
+        if message:
+            _set_status(owner, message)
+        return result
+    finally:
+        elapsed_ms = (time.perf_counter() - started) * 1000.0
+        if elapsed_ms > SIFT_FOLLOW_INTERVAL_MS * 1.5:
+            try:
+                timer = getattr(owner, "minimap_follow_timer", None)
+                if timer is not None and hasattr(timer, "setInterval"):
+                    timer.setInterval(min(260, max(SIFT_FOLLOW_INTERVAL_MS, int(elapsed_ms * 1.25))))
+            except Exception:
+                pass
+        setattr(owner, "_sift_v2_update_busy", False)

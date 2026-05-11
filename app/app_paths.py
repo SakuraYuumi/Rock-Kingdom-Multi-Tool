@@ -4,10 +4,26 @@ from pathlib import Path
 
 
 APP_NAME = "洛克王国多功能辅助工具"
-PROJECT_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
-RUNTIME_DIR = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else PROJECT_DIR
-STATIC_DATA_DIR = PROJECT_DIR / "data"
-ASSETS_DIR = PROJECT_DIR / "assets"
+BUNDLE_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
+RUNTIME_DIR = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else BUNDLE_DIR
+
+
+def first_existing_dir(dirname):
+    candidates = (
+        BUNDLE_DIR / dirname,
+        RUNTIME_DIR / dirname,
+        RUNTIME_DIR / "_internal" / dirname,
+        BUNDLE_DIR.parent / dirname,
+    )
+    for path in candidates:
+        if path.exists():
+            return path
+    return BUNDLE_DIR / dirname
+
+
+PROJECT_DIR = BUNDLE_DIR
+STATIC_DATA_DIR = first_existing_dir("data")
+ASSETS_DIR = first_existing_dir("assets")
 USER_DATA_DIR = RUNTIME_DIR / "user_data"
 USER_CACHE_DIR = USER_DATA_DIR / "cache"
 LOG_DIR = RUNTIME_DIR

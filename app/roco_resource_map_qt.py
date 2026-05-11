@@ -65,7 +65,9 @@ from PyQt5.QtWidgets import (
 
 try:
     from app.app_paths import (
+        ASSETS_DIR,
         PROJECT_DIR,
+        RUNTIME_DIR,
         asset_path,
         data_path,
         legacy_data_path,
@@ -76,7 +78,9 @@ try:
     )
 except ImportError:
     from app_paths import (
+        ASSETS_DIR,
         PROJECT_DIR,
+        RUNTIME_DIR,
         asset_path,
         data_path,
         legacy_data_path,
@@ -225,6 +229,7 @@ ROUTE_DIALOG_PINNED_MIN_SIZE = QSize(360, 240)
 ROUTE_DIALOG_PINNED_DEFAULT_SIZE = QSize(650, 500)
 ROUTE_DIALOG_ROUTE_WIDTH_NORMAL = 218
 ROUTE_DIALOG_ROUTE_WIDTH_PINNED = 142
+MINIMAP_FOLLOW_INTERVAL_MS = 120
 ROUTE_ARROW_STEP = 5
 ROUTE_ARROW_SIZE = 26
 ROUTE_AUTO_COMPLETE_RADIUS = 30
@@ -283,6 +288,54 @@ def apply_application_style(app):
             app.setStyle(style_name)
             return style_name
     return ""
+
+
+def configure_qt_application_attributes():
+    if QApplication.instance() is not None:
+        return
+    for name in ("AA_EnableHighDpiScaling", "AA_UseHighDpiPixmaps"):
+        attribute = getattr(Qt, name, None)
+        if attribute is not None:
+            QApplication.setAttribute(attribute, True)
+
+
+def grab_global_screen_region(x, y, width, height):
+    center = QPoint(int(x + width / 2), int(y + height / 2))
+    screen = QApplication.screenAt(center) if hasattr(QApplication, "screenAt") else None
+    if screen is None:
+        screen = QApplication.primaryScreen()
+    if screen is None:
+        return QPixmap()
+    geometry = screen.geometry()
+    return screen.grabWindow(
+        0,
+        int(x - geometry.x()),
+        int(y - geometry.y()),
+        int(width),
+        int(height),
+    )
+
+
+def startup_resource_diagnostics(map_path):
+    details = [f"地图图片不存在或无法读取：{map_path}"]
+    details.append("")
+    details.append("请确认下载的是 Windows 免安装版 zip，并且已经完整解压。不要只复制 exe，也不要删除 _internal 文件夹。")
+    details.append("")
+    details.append("需要存在的文件：")
+    checks = [
+        ("地图文件", Path(map_path)),
+        ("PNG读取插件", RUNTIME_DIR / "_internal" / "PyQt5" / "Qt5" / "plugins" / "imageformats" / "qpng.dll"),
+        ("地图目录", ASSETS_DIR / "maps"),
+    ]
+    for label, path in checks:
+        if path.exists():
+            if path.is_file():
+                details.append(f"- {label}：存在，大小 {path.stat().st_size} 字节")
+            else:
+                details.append(f"- {label}：存在")
+        else:
+            details.append(f"- {label}：缺失：{path}")
+    return "\n".join(details)
 
 
 sys.excepthook = write_startup_error
@@ -4783,7 +4836,7 @@ class RocoResourceMapQt(QMainWindow):
         self.sift_matcher = None
         self.minimap_follow_status_label = None
         self.minimap_follow_timer = QTimer(self)
-        self.minimap_follow_timer.setInterval(33)
+        self.minimap_follow_timer.setInterval(MINIMAP_FOLLOW_INTERVAL_MS)
         self.minimap_follow_timer.timeout.connect(self.update_minimap_follow)
         self.marker_rebuild_timer = QTimer(self)
         self.marker_rebuild_timer.setSingleShot(True)
@@ -5457,7 +5510,7 @@ class RocoResourceMapQt(QMainWindow):
     def build_scene(self):
         self.base_pixmap = self.load_layer_pixmap(self.current_layer)
         if self.base_pixmap.isNull():
-            raise RuntimeError(f"地图图片不存在或无法读取：{self.active_map_path()}")
+            raise RuntimeError(startup_resource_diagnostics(self.active_map_path()))
         self.scene.setSceneRect(0, 0, self.base_pixmap.width(), self.base_pixmap.height())
         self.map_item = self.scene.addPixmap(self.base_pixmap)
         self.map_item.setShapeMode(QGraphicsPixmapItem.BoundingRectShape)
@@ -6157,7 +6210,7 @@ class RocoResourceMapQt(QMainWindow):
                 self.minimap_follow_status_label.setText("小地图圈可拖动，滚轮可缩放")
         if self.minimap_circle_locked:
             self.minimap_follow_enabled = True
-            self.minimap_follow_timer.start()
+            self.minimap_follow_timer.start(MINIMAP_FOLLOW_INTERVAL_MS)
             if self.minimap_follow_button is not None:
                 self.minimap_follow_button.setText("关闭AI导航")
             self.minimap_circle.hide()
@@ -6393,7 +6446,7 @@ class RocoResourceMapQt(QMainWindow):
         self.minimap_follow_enabled = True
         if self.minimap_follow_button is not None:
             self.minimap_follow_button.setText("关闭AI导航")
-        self.minimap_follow_timer.start()
+        self.minimap_follow_timer.start(MINIMAP_FOLLOW_INTERVAL_MS)
         self.update_minimap_follow()
 
     def show_minimap_circle(self):
@@ -6667,17 +6720,17 @@ class RocoResourceMapQt(QMainWindow):
         if region is None:
             return None
         circle_visible = self.minimap_circle is not None and self.minimap_circle.isVisible()
-        if circle_visible:
-            self.minimap_circle.hide()
-            QApplication.processEvents()
-        screen = QApplication.primaryScreen()
         pixmap = None
-        if screen is not None:
-            pixmap = screen.grabWindow(0, region["x"], region["y"], region["size"], region["size"])
-        if circle_visible and self.minimap_circle is not None:
-            self.minimap_circle.show()
-            if self.minimap_circle_locked:
-                self.minimap_circle.set_locked_for_game(True)
+        try:
+            if circle_visible:
+                self.minimap_circle.hide()
+                QApplication.processEvents()
+            pixmap = grab_global_screen_region(region["x"], region["y"], region["size"], region["size"])
+        finally:
+            if circle_visible and self.minimap_circle is not None:
+                self.minimap_circle.show()
+                if self.minimap_circle_locked:
+                    self.minimap_circle.set_locked_for_game(True)
         return pixmap
 
     def detect_minimap_player(self, image):
@@ -8870,6 +8923,7 @@ def run_check():
 
 
 def run_selftest():
+    configure_qt_application_attributes()
     app = QApplication.instance() or QApplication(sys.argv[:1])
     apply_application_style(app)
     app.setQuitOnLastWindowClosed(False)
@@ -9896,6 +9950,7 @@ def main():
     if args.selftest:
         return int(run_selftest())
 
+    configure_qt_application_attributes()
     app = QApplication.instance() or QApplication(sys.argv)
     apply_application_style(app)
     apply_application_icon(app)

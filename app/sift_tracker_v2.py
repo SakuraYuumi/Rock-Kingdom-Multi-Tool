@@ -63,9 +63,10 @@ SIFT_MOTION_MAX_GOOD_AGE = 1.8
 SIFT_DEFAULT_WORLD_PER_MINIMAP_PIXEL = 3.8
 SIFT_INVALID_FRAME_COOLDOWN = 0.10
 SIFT_INVALID_FULL_RELOCALIZE_AFTER = 0.85
-SIFT_FAILED_MATCH_COOLDOWN = 0.18
-SIFT_FULL_RELOCALIZE_COOLDOWN = 0.28
-SIFT_FOLLOW_INTERVAL_MS = 120
+SIFT_FAILED_MATCH_COOLDOWN = 0.14
+SIFT_FULL_RELOCALIZE_COOLDOWN = 0.24
+SIFT_FOLLOW_INTERVAL_MS = 70
+SIFT_SLOW_FOLLOW_INTERVAL_MS = 260
 SIFT_FULL_MATCH_MIN_INTERVAL = 0.48
 
 
@@ -1173,7 +1174,7 @@ def _ensure_follow_timer_running(owner):
     if timer is None:
         try:
             timer = QTimer(owner)
-            timer.setInterval(80)
+            timer.setInterval(SIFT_FOLLOW_INTERVAL_MS)
             timer.timeout.connect(lambda: update_minimap_follow_v2(owner))
             setattr(owner, "_sift_v2_follow_timer", timer)
         except Exception:
@@ -1952,11 +1953,14 @@ def update_minimap_follow_v2(owner, *args, **kwargs):
         return result
     finally:
         elapsed_ms = (time.perf_counter() - started) * 1000.0
-        if elapsed_ms > SIFT_FOLLOW_INTERVAL_MS * 1.5:
-            try:
-                timer = getattr(owner, "minimap_follow_timer", None)
-                if timer is not None and hasattr(timer, "setInterval"):
-                    timer.setInterval(min(260, max(SIFT_FOLLOW_INTERVAL_MS, int(elapsed_ms * 1.25))))
-            except Exception:
-                pass
+        try:
+            timer = getattr(owner, "minimap_follow_timer", None)
+            if timer is not None and hasattr(timer, "setInterval"):
+                current_interval = int(timer.interval()) if hasattr(timer, "interval") else SIFT_FOLLOW_INTERVAL_MS
+                if elapsed_ms > SIFT_FOLLOW_INTERVAL_MS * 1.5:
+                    timer.setInterval(min(SIFT_SLOW_FOLLOW_INTERVAL_MS, max(SIFT_FOLLOW_INTERVAL_MS, int(elapsed_ms * 1.25))))
+                elif current_interval > SIFT_FOLLOW_INTERVAL_MS:
+                    timer.setInterval(max(SIFT_FOLLOW_INTERVAL_MS, int(current_interval * 0.82)))
+        except Exception:
+            pass
         setattr(owner, "_sift_v2_update_busy", False)

@@ -229,7 +229,9 @@ ROUTE_DIALOG_PINNED_MIN_SIZE = QSize(360, 240)
 ROUTE_DIALOG_PINNED_DEFAULT_SIZE = QSize(650, 500)
 ROUTE_DIALOG_ROUTE_WIDTH_NORMAL = 218
 ROUTE_DIALOG_ROUTE_WIDTH_PINNED = 142
-MINIMAP_FOLLOW_INTERVAL_MS = 120
+MINIMAP_FOLLOW_INTERVAL_MS = 70
+ROUTE_PREVIEW_PLAYER_SMOOTH_SECONDS = 0.075
+ROUTE_PREVIEW_PLAYER_ANGLE_SMOOTH_SECONDS = 0.055
 ROUTE_ARROW_STEP = 5
 ROUTE_ARROW_SIZE = 26
 ROUTE_AUTO_COMPLETE_RADIUS = 30
@@ -7315,10 +7317,10 @@ class RocoResourceMapQt(QMainWindow):
             dx = target[0] - display[0]
             dy = target[1] - display[1]
             distance = math.hypot(dx, dy)
-            if distance < 0.25:
+            if distance < 0.15:
                 display = target
             else:
-                alpha = min(0.98, max(0.32, 1.0 - math.exp(-dt * 34.0)))
+                alpha = min(0.44, max(0.035, 1.0 - math.exp(-dt / ROUTE_PREVIEW_PLAYER_SMOOTH_SECONDS)))
                 display = (display[0] + dx * alpha, display[1] + dy * alpha)
 
         target_angle = float(self.route_preview_player_target_angle)
@@ -7327,7 +7329,7 @@ class RocoResourceMapQt(QMainWindow):
         if abs(diff) < 0.8:
             current_angle = target_angle
         else:
-            angle_alpha = min(0.995, max(0.68, 1.0 - math.exp(-dt * 120.0)))
+            angle_alpha = min(0.52, max(0.06, 1.0 - math.exp(-dt / ROUTE_PREVIEW_PLAYER_ANGLE_SMOOTH_SECONDS)))
             current_angle = (current_angle + diff * angle_alpha) % 360.0
 
         self.route_preview_player_display_pos = display

@@ -1,153 +1,89 @@
 # 洛克王国多功能辅助工具
 
-这个项目是洛克王国世界本地辅助工具，包含互动资源地图、跑图导航、孵蛋查询和 PVP 伤害计算等功能。
+这是一个面向《洛克王国：世界》的本地辅助工具，主要用于查看互动资源地图、规划跑图路线、记录多账号采集进度、查询孵蛋信息，以及进行 PVP 伤害估算。
 
-## 数据源
+## 重要提示
 
-- 页面：<https://wiki.biligame.com/rocom/大地图>
-- 分类索引：<https://wiki.biligame.com/rocom/Data:Mapnew/type/json?action=raw>
-- 点位接口：`https://wiki.biligame.com/rocom/Data:Mapnew/type/{markType}/json?action=raw`
+- 本工具不是官方工具，数据来自公开页面与本地整理，可能与游戏当前版本存在差别。
+- 资源点、坐标、资源介绍、路线顺序、孵蛋数据、PVP 技能与伤害结果仅供参考，请以游戏内实际内容为准。
+- 工具不会修改游戏文件，也不会自动操作游戏；账号记录、采集进度、路线和队伍方案都保存在本机。
 
-## 抓取命令
+## 下载与运行
 
-```powershell
-py -3 scripts/fetch_wiki_resources.py
-```
+普通用户建议在 GitHub Releases 下载 Windows 免安装版压缩包。
 
-默认抓取 Wiki 分类里的：
+1. 下载带有 `Windows-Portable` 或 `portable` 字样的 `.zip` 文件。
+2. 解压整个压缩包。
+3. 双击文件夹里的 `洛克王国多功能辅助工具.exe` 启动。
+4. 不要只把 exe 单独移动出来使用，旁边的 `_internal` 文件夹需要一起保留。
 
-- `地点`
-- `互动事件`
-- `宝箱`
-- `任务`
-- `战斗`
-- `精灵分布`
-- `采集`
-- `收集`
+GitHub 自动生成的 `Source code (zip)` 和 `Source code (tar.gz)` 是源码包，普通使用者不需要下载它们。
 
-如需抓取全部大地图点位分类：
+## 数据来源
 
-```powershell
-py -3 scripts/fetch_wiki_resources.py --include-all-groups
-```
+- 洛克王国世界 Wiki / Biligame 大地图：<https://wiki.biligame.com/rocom/大地图>
+- 17173 洛克王国世界互动地图：<https://map.17173.com/rocom/maps/shijie>
+- 孵蛋、精灵、技能、PVP 相关资料来自公开页面与本地整理数据。
 
-## 输出文件
+部分资源坐标、资源介绍、技能效果和实际游戏内容可能不完全一致，后续可以根据游戏更新继续修正。
 
-- `data/wiki_map_categories.json`：Wiki 大地图分类索引
-- `data/wiki_resource_points.json`：默认资源点位合集
-- `data/wiki_resource_points_by_type.json`：按 `markType` 分组的点位
-- `data/wiki_resource_points.csv`：CSV 版点位
-- `data/wiki_gathering_points.json`：仅 `采集` 类
-- `data/wiki_collection_points.json`：仅 `收集` 类
-- `data/wiki_resource_summary.json`：数量汇总
+## 功能与使用方法
 
-## Wiki 底图
+### 互动资源地图
 
-Wiki 大地图使用 Leaflet 瓦片底图，不是一张静态整图。主地上层配置来自：
+- 左侧资源列表可以按类别显示或隐藏地图点位。
+- `全部显示` 会显示当前类别下的资源点，`全部隐藏` 会隐藏当前类别下的资源点。
+- 顶部搜索框可以按资源名称、备注或介绍内容搜索点位。
+- 鼠标滚轮缩放地图，按住鼠标左键拖动地图。
+- 鼠标悬停在资源图标上可以查看说明，部分资源会显示来自 17173 的介绍。
+- 点击资源图标可以将其标记为已收集或暗淡，再次点击可以恢复。
+- 顶部图层按钮可以切换地上、地底 B1、地底 B2。
 
-- `https://wiki.biligame.com/rocom/Widget:Map4/main?action=raw`
-- `https://wiki.biligame.com/rocom/Widget:Map4.1/mapc?action=raw`
+### 多账号采集记录
 
-抓取并拼接主地上层底图：
+- 可以新增、切换、改名、删除账号。
+- 每个账号会单独保存资源收集状态、路线进度和点位备注。
+- 适合多个游戏账号分别记录采集情况，避免进度混淆。
 
-```powershell
-py -3 scripts/fetch_wiki_basemap.py
-```
+### 跑图导航
 
-默认输出：
+- 勾选需要采集的资源后，可以生成跑图路线。
+- 右侧会显示路线顺序，可以手动完成当前资源点。
+- 可以选择小地图范围并固定小地图圈，让导航根据游戏小地图定位角色位置。
+- 固定导航后会显示简化窗口，方便覆盖在游戏画面上使用。
+- 固定导航快捷键：
+  - `F9`：定位小洛克位置
+  - `F10`：定位路线源头
+  - `F11`：显示或隐藏路线顺序
+  - `F12`：解除固定导航
 
-- `assets/wiki_tiles/G/z5/`：原始 Wiki 瓦片
-- `assets/maps/wiki_G_z5.png`：拼接后的 Wiki 地上层底图
-- `data/wiki_basemap_metadata.json`：底图来源、瓦片范围、坐标换算参数
+### 自行规划路线
 
-把资源坐标投影到 Wiki 底图像素：
+- 可以在地图上手动点击点位来规划路线。
+- 支持在地图任意位置规划，不要求必须点在已有资源图标上。
+- 选择不保存路线时，当前规划路线仍会保留在界面中，方便继续查看或调整。
 
-```powershell
-py -3 scripts/project_resources_to_wiki_basemap.py
-```
+### 孵蛋查询
 
-输出：
+- 可以根据蛋尺寸和蛋重量推测可能的蛋组。
+- 可以输入精灵名反查蛋组。
+- 可以进入生蛋规划，查看精灵之间的蛋组关系。
 
-- `data/wiki_resource_points_pixels.json`
-- `dev_artifacts/resource_previews/wiki_G_z5_resources_preview.png`
+### PVP 伤害计算
 
-生成更高清的 z=6 版底图和资源预览：
+- 支持攻击方和防守方各 6 个队伍槽位。
+- 点击队伍槽位可以切换双方主战精灵。
+- 可以搜索并选择精灵，设置属性、技能、性格、个体、血量百分比等参数。
+- 可以查看预计伤害、属性克制、状态结算、愿力冲击和双方斩杀线。
+- 支持保存队伍方案，记录队伍精灵、属性和技能配置。
 
-```powershell
-py -3 scripts/fetch_wiki_basemap.py --zoom 6 --scan-min-x -6 --scan-max-x 5 --scan-min-y -6 --scan-max-y 5 --workers 24 --preserve-scan-bounds --metadata-output data/wiki_basemap_metadata_z6.json
-py -3 scripts/project_resources_to_wiki_basemap.py --metadata data/wiki_basemap_metadata_z6.json --output data/wiki_resource_points_pixels_z6.json --preview dev_artifacts/resource_previews/wiki_G_z6_resources_preview.png --icon-width 40
-```
+### 本地数据
 
-高清输出：
+- 工具会在本地保存账号状态、采集记录、路线进度、点位备注和 PVP 队伍方案。
+- 这些数据不会自动上传，也不会自动同步到其他电脑。
+- Windows 免安装版的个人数据会保存在程序目录下的 `user_data` 文件夹中。
+- 如果要更换电脑、升级软件或删除软件文件夹，请先备份自己的 `user_data` 文件夹。
 
-- `assets/maps/wiki_G_z6.png`：3072x3072 Wiki 地上层底图
-- `dev_artifacts/resource_previews/wiki_G_z6_resources_preview.png`：3072x3072 资源标记预览
-- `data/wiki_basemap_metadata_z6.json`：z=6 底图坐标换算参数
-- `data/wiki_resource_points_pixels_z6.json`：z=6 资源像素坐标
+## 使用许可
 
-## Wiki 标记图标
-
-下载当前点位数据实际用到的 Wiki 标记图标：
-
-```powershell
-py -3 scripts/fetch_wiki_icons.py
-```
-
-输出：
-
-- `assets/icons/wiki/`：本地资源标记图
-- `data/wiki_resource_icons.json`：`markType` 到图标文件的映射
-
-`project_resources_to_wiki_basemap.py` 会自动读取 `data/wiki_resource_icons.json`，用图标替换预览图里的圆点。默认绘制宽度是 24px，可用 `--icon-width` 调整。
-
-## 本地程序
-
-打开项目根目录里的 `洛克王国多功能辅助工具.pyw` 即可运行本地程序。
-
-也可以用命令启动：
-
-```powershell
-py -3 洛克王国多功能辅助工具.pyw
-```
-
-程序功能：
-
-- 顶部账号栏可新增、切换、改名账号
-- 左侧按资源类型选择显示内容
-- 鼠标拖拽移动地图
-- 鼠标滚轮按当前位置缩放地图
-- 点击资源图标变暗淡，再次点击恢复
-- 每个账号独立保存暗淡/已采集状态、路线进度和点位备注
-- 顶部工具条提供缩小、放大、100%、适合窗口、恢复全部
-
-程序文件：
-
-- `洛克王国多功能辅助工具.pyw`：双击启动入口
-- `app/roco_resource_map_qt.py`：程序主体
-- `app/sift_tracker_v2.py`：小地图跟随与导航定位
-- `data/wiki_resource_points_pixels_z7.json`：资源像素坐标
-- `assets/maps/wiki_G_z7.png`：高清 Wiki 地上层底图
-- `assets/maps/wiki_B1_z7.png`、`assets/maps/wiki_B2_z7.png`：地底 B1/B2 底图
-- `assets/icons/wiki/`：资源图标
-- `data/user_accounts.json`：账号列表与当前账号
-- `data/accounts/<账号ID>/`：每个账号自己的采集状态、路线进度和备注
-
-检查资源是否齐全：
-
-```powershell
-py -3 app/roco_resource_map_qt.py --check
-```
-
-检查程序交互逻辑：
-
-```powershell
-py -3 洛克王国多功能辅助工具.pyw --selftest
-```
-
-## 开发归档
-
-不是日常运行必需、但对后续校准和回溯有用的文件统一放在 `dev_artifacts/`，目录说明见 `dev_artifacts/README.md`。
-
-## 坐标说明
-
-点位里的 `lat` 和 `lng` 是 Wiki 大地图接口字段名，不是现实地理经纬度。使用 Wiki 底图时，当前 z=5 拼接图的像素换算记录在 `data/wiki_basemap_metadata.json`。
+本项目仅供个人学习、研究和自用。详细规则请查看 `LICENSE`。

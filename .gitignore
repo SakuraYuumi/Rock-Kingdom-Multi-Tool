@@ -8,13 +8,19 @@ __pycache__/
 # Local runtime state
 启动错误.log
 tmp_*/
+user_data/
 data/**/*.tmp
 data/accounts/
 data/user_*.json
 data/pvp_team_slots.json
 data/pvp_team_presets.json
+data/user_marker_audit_submissions.json
+data/user_marker_submission_uploads/
 
 # Development-only generated artifacts
 dev_artifacts/
 release/
+build/
+dist/
+*.spec
 *.zip

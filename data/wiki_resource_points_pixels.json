@@ -1,18 +1,18 @@
 {
   "meta": {
-    "sourcePage": "https://wiki.biligame.com/rocom/大地图",
+    "sourcePage": "https://wiki.biligame.com/rocom/???",
     "categoryUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/json?action=raw",
     "pointUrlTemplate": "https://wiki.biligame.com/rocom/Data:Mapnew/type/{mark_type}/json?action=raw",
-    "fetchedAt": "2026-04-26T11:09:26+00:00",
+    "fetchedAt": "2026-05-11T16:42:39+00:00",
     "selectedGroups": [
-      "采集",
-      "收集"
+      "收集",
+      "采集"
     ],
     "categoryCount": 45,
-    "markerCount": 2634,
+    "markerCount": 2719,
     "countsByGroup": {
       "收集": 492,
-      "采集": 2142
+      "采集": 2227
     },
     "countsByType": {
       "801 果实": 17,
@@ -22,34 +22,34 @@
       "808 无花果": 32,
       "809 魔力果": 17,
       "810 乐谱": 11,
-      "701 黑晶琉璃": 268,
+      "701 黑晶琉璃": 275,
       "702 黄石榴石": 90,
       "703 蓝晶碧玺": 30,
       "704 紫莲刚玉": 40,
       "715 蜂窝": 13,
-      "705 向阳花": 98,
-      "727 海神花": 68,
-      "728 紫雀花": 52,
-      "706 喵喵草": 82,
-      "708 睡铃": 92,
+      "705 向阳花": 112,
+      "727 海神花": 83,
+      "728 紫雀花": 54,
+      "706 喵喵草": 84,
+      "708 睡铃": 101,
       "710 石耳": 157,
-      "711 伞伞菌": 172,
+      "711 伞伞菌": 174,
       "712 蜜黄菌": 58,
       "714 凤眼莲": 42,
       "707 蓝掌": 47,
       "725 风卷草": 22,
-      "723 彩玉花": 17,
-      "713 喷气菇": 56,
+      "723 彩玉花": 21,
+      "713 喷气菇": 59,
       "734 幽幽草": 16,
       "735 幽幽鬼火": 2,
       "709 天使草": 49,
       "716 星霜花": 57,
-      "732 火焰花": 17,
+      "732 火焰花": 23,
       "733 雪菇": 50,
-      "738 杏黄贝": 42,
+      "738 杏黄贝": 41,
       "721 海桑花": 59,
-      "731 花星角": 13,
-      "724 象牙花": 45,
+      "731 花星角": 19,
+      "724 象牙花": 47,
       "720 紫晶菇": 11,
       "717 荧光兰": 83,
       "739 短木莲": 45,
@@ -57,8 +57,8 @@
       "730 骨片": 23,
       "737 洋红珊瑚": 10,
       "726 海珊瑚": 17,
-      "718 大嘴花": 36,
-      "719 流星兰": 75,
+      "718 大嘴花": 48,
+      "719 流星兰": 77,
       "736 藻羽花": 72
     },
     "basemap": "D:\\素材\\Codex\\洛克王国坐标项目\\assets\\maps\\wiki_G_z5.png",
@@ -75,8 +75,8 @@
       "latMax": 3072.0
     },
     "pixelPerCoordinate": 0.25,
-    "projectedCount": 2634,
-    "inBoundsCount": 2634,
+    "projectedCount": 2719,
+    "inBoundsCount": 2719,
     "outOfBoundsCount": 0,
     "iconMetadata": "D:\\素材\\Codex\\洛克王国坐标项目\\data\\wiki_resource_icons.json",
     "iconWidth": 24
@@ -373,7 +373,7 @@
         "x": 992.75,
         "y": 833.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -10609,8 +10609,8 @@
       "markType": 701,
       "markTypeName": "黑晶琉璃",
       "title": "",
-      "lat": -1128,
-      "lng": -1801,
+      "lat": -1112,
+      "lng": -1802,
       "layer": "G",
       "time": 1744194146078,
       "version": 4,
@@ -10618,8 +10618,8 @@
       "icon": "assets/icons/wiki/701_黑晶琉璃.png",
       "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
       "wikiMapPixel": {
-        "x": 317.75,
-        "y": 486.0,
+        "x": 317.5,
+        "y": 490.0,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -11545,7 +11545,7 @@
         "x": 1236.5,
         "y": 877.5,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -11638,8 +11638,8 @@
       "markType": 701,
       "markTypeName": "黑晶琉璃",
       "title": "",
-      "lat": 252,
-      "lng": -2190,
+      "lat": 257,
+      "lng": -2178,
       "layer": "G",
       "time": 1746157041071,
       "version": 4,
@@ -11647,8 +11647,8 @@
       "icon": "assets/icons/wiki/701_黑晶琉璃.png",
       "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
       "wikiMapPixel": {
-        "x": 220.5,
-        "y": 831.0,
+        "x": 223.5,
+        "y": 832.25,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -11660,7 +11660,7 @@
       "markTypeName": "黑晶琉璃",
       "title": "",
       "lat": 263,
-      "lng": -2212,
+      "lng": -2209,
       "layer": "G",
       "time": 1746157049158,
       "version": 4,
@@ -11668,7 +11668,7 @@
       "icon": "assets/icons/wiki/701_黑晶琉璃.png",
       "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
       "wikiMapPixel": {
-        "x": 215.0,
+        "x": 215.75,
         "y": 833.75,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
@@ -12763,7 +12763,7 @@
         "x": 868.75,
         "y": 943.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -12784,7 +12784,7 @@
         "x": 861.75,
         "y": 940.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -12805,7 +12805,7 @@
         "x": 858.0,
         "y": 940.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -12826,7 +12826,7 @@
         "x": 849.5,
         "y": 928.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -12847,7 +12847,7 @@
         "x": 866.25,
         "y": 912.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -12868,7 +12868,7 @@
         "x": 865.5,
         "y": 904.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -12889,7 +12889,7 @@
         "x": 864.5,
         "y": 904.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -12910,7 +12910,7 @@
         "x": 860.75,
         "y": 886.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B2_z5.png"
       }
     },
     {
@@ -12931,7 +12931,7 @@
         "x": 873.25,
         "y": 889.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B2_z5.png"
       }
     },
     {
@@ -14464,7 +14464,7 @@
         "x": 835.0,
         "y": 773.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -14485,7 +14485,7 @@
         "x": 832.0,
         "y": 765.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -14506,7 +14506,7 @@
         "x": 823.75,
         "y": 756.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -14527,7 +14527,7 @@
         "x": 825.5,
         "y": 755.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -14548,7 +14548,7 @@
         "x": 818.0,
         "y": 755.5,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -14569,7 +14569,7 @@
         "x": 810.75,
         "y": 765.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -14590,7 +14590,7 @@
         "x": 806.75,
         "y": 775.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -14611,7 +14611,7 @@
         "x": 805.75,
         "y": 777.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15451,7 +15451,7 @@
         "x": 1230.25,
         "y": 930.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15472,7 +15472,7 @@
         "x": 1244.75,
         "y": 912.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15493,7 +15493,7 @@
         "x": 1244.25,
         "y": 910.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15514,7 +15514,7 @@
         "x": 1246.5,
         "y": 907.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15535,7 +15535,7 @@
         "x": 1238.0,
         "y": 901.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15640,7 +15640,7 @@
         "x": 851.0,
         "y": 824.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15661,7 +15661,7 @@
         "x": 855.25,
         "y": 837.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15682,7 +15682,7 @@
         "x": 858.5,
         "y": 836.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15703,7 +15703,7 @@
         "x": 847.0,
         "y": 839.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15724,7 +15724,7 @@
         "x": 878.25,
         "y": 835.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15745,7 +15745,7 @@
         "x": 838.0,
         "y": 805.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15766,7 +15766,7 @@
         "x": 831.75,
         "y": 822.5,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -15943,8 +15943,8 @@
       "markType": 701,
       "markTypeName": "黑晶琉璃",
       "title": "",
-      "lat": -625,
-      "lng": -1627,
+      "lat": -624,
+      "lng": -1622,
       "layer": "G",
       "time": 1776911952490,
       "version": 4,
@@ -15952,8 +15952,8 @@
       "icon": "assets/icons/wiki/701_黑晶琉璃.png",
       "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
       "wikiMapPixel": {
-        "x": 361.25,
-        "y": 611.75,
+        "x": 362.5,
+        "y": 612.0,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -15964,8 +15964,8 @@
       "markType": 701,
       "markTypeName": "黑晶琉璃",
       "title": "",
-      "lat": -606,
-      "lng": -1631,
+      "lat": -597,
+      "lng": -1629,
       "layer": "G",
       "time": 1776911961726,
       "version": 4,
@@ -15973,8 +15973,8 @@
       "icon": "assets/icons/wiki/701_黑晶琉璃.png",
       "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
       "wikiMapPixel": {
-        "x": 360.25,
-        "y": 616.5,
+        "x": 360.75,
+        "y": 618.75,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -15985,8 +15985,8 @@
       "markType": 701,
       "markTypeName": "黑晶琉璃",
       "title": "",
-      "lat": -631,
-      "lng": -1794,
+      "lat": -635,
+      "lng": -1788,
       "layer": "G",
       "time": 1776912046919,
       "version": 4,
@@ -15994,8 +15994,8 @@
       "icon": "assets/icons/wiki/701_黑晶琉璃.png",
       "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
       "wikiMapPixel": {
-        "x": 319.5,
-        "y": 610.25,
+        "x": 321.0,
+        "y": 609.25,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -16006,8 +16006,8 @@
       "markType": 701,
       "markTypeName": "黑晶琉璃",
       "title": "",
-      "lat": -624,
-      "lng": -1775,
+      "lat": -625,
+      "lng": -1779,
       "layer": "G",
       "time": 1776912051027,
       "version": 4,
@@ -16015,8 +16015,8 @@
       "icon": "assets/icons/wiki/701_黑晶琉璃.png",
       "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
       "wikiMapPixel": {
-        "x": 324.25,
-        "y": 612.0,
+        "x": 323.25,
+        "y": 611.75,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -16038,6 +16038,153 @@
       "wikiMapPixel": {
         "x": 658.5,
         "y": 620.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1e97mho2ge",
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "title": "",
+      "lat": -610,
+      "lng": -1625,
+      "layer": "G",
+      "time": 1777370258286,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/701/json?action=raw",
+      "icon": "assets/icons/wiki/701_黑晶琉璃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
+      "wikiMapPixel": {
+        "x": 361.75,
+        "y": 615.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1dn5sjrfzlq",
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "title": "",
+      "lat": -624,
+      "lng": -1793,
+      "layer": "G",
+      "time": 1777370302718,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/701/json?action=raw",
+      "icon": "assets/icons/wiki/701_黑晶琉璃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
+      "wikiMapPixel": {
+        "x": 319.75,
+        "y": 612.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1siesz0g1j7",
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "title": "",
+      "lat": -1150,
+      "lng": -1787,
+      "layer": "G",
+      "time": 1777370380227,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/701/json?action=raw",
+      "icon": "assets/icons/wiki/701_黑晶琉璃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
+      "wikiMapPixel": {
+        "x": 321.25,
+        "y": 480.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "xw0ap29rxw",
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "title": "",
+      "lat": -1124,
+      "lng": -1786,
+      "layer": "G",
+      "time": 1777370389428,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/701/json?action=raw",
+      "icon": "assets/icons/wiki/701_黑晶琉璃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
+      "wikiMapPixel": {
+        "x": 321.5,
+        "y": 487.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1sbbl3kujjl",
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "title": "",
+      "lat": -1112,
+      "lng": -1810,
+      "layer": "G",
+      "time": 1777370410609,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/701/json?action=raw",
+      "icon": "assets/icons/wiki/701_黑晶琉璃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
+      "wikiMapPixel": {
+        "x": 315.5,
+        "y": 490.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1cgmhb5tkht",
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "title": "",
+      "lat": -1104,
+      "lng": -1813,
+      "layer": "G",
+      "time": 1777370418689,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/701/json?action=raw",
+      "icon": "assets/icons/wiki/701_黑晶琉璃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
+      "wikiMapPixel": {
+        "x": 314.75,
+        "y": 492.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1l4k3q8zz1w",
+      "group": "采集",
+      "markType": 701,
+      "markTypeName": "黑晶琉璃",
+      "title": "",
+      "lat": 260,
+      "lng": -2192,
+      "layer": "G",
+      "time": 1777370594356,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/701/json?action=raw",
+      "icon": "assets/icons/wiki/701_黑晶琉璃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/df/e68j6k2qyoilm26qmp6ikz9s3v11rax.png",
+      "wikiMapPixel": {
+        "x": 220.0,
+        "y": 833.0,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -21734,6 +21881,300 @@
       }
     },
     {
+      "id": "197ndpsno0d",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1773,
+      "lng": -1382,
+      "layer": "G",
+      "time": 1778053163341,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 422.5,
+        "y": 1211.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "z6386oa2oa",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1748,
+      "lng": -1374,
+      "layer": "G",
+      "time": 1778053168138,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 424.5,
+        "y": 1205.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2ammxm7kobj",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1719,
+      "lng": -1403,
+      "layer": "G",
+      "time": 1778053179167,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 417.25,
+        "y": 1197.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1r18o8juoef",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1711,
+      "lng": -1391,
+      "layer": "G",
+      "time": 1778053179911,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 420.25,
+        "y": 1195.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "uqkt1eycuf",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1827,
+      "lng": -1408,
+      "layer": "G",
+      "time": 1778053199751,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 416.0,
+        "y": 1224.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "sdi6k7klg2",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1829,
+      "lng": -1420,
+      "layer": "G",
+      "time": 1778053202066,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 413.0,
+        "y": 1225.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1xqa3xasut9",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1818,
+      "lng": -1476,
+      "layer": "G",
+      "time": 1778053228797,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 399.0,
+        "y": 1222.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "nncxlsu7w6",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1756,
+      "lng": -1526,
+      "layer": "G",
+      "time": 1778053260150,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 386.5,
+        "y": 1207.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1idb1tgtrmk",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1750,
+      "lng": -1543,
+      "layer": "G",
+      "time": 1778053260572,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 382.25,
+        "y": 1205.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "ucedajriwc",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1681,
+      "lng": -1571,
+      "layer": "G",
+      "time": 1778053268332,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 375.25,
+        "y": 1188.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "oc675tmiiu",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 792,
+      "lng": -1659,
+      "layer": "G",
+      "time": 1778053482566,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 353.25,
+        "y": 966.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "15yo9t57rwp",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 765,
+      "lng": -1701,
+      "layer": "G",
+      "time": 1778053517833,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 342.75,
+        "y": 959.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "e3itraemqk",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1628,
+      "lng": 951,
+      "layer": "G",
+      "time": 1778054787228,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 1005.75,
+        "y": 1175.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2jzdtlc9g88",
+      "group": "采集",
+      "markType": 705,
+      "markTypeName": "向阳花",
+      "title": "",
+      "lat": 1697,
+      "lng": 1027,
+      "layer": "G",
+      "time": 1778054793831,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/705/json?action=raw",
+      "icon": "assets/icons/wiki/705_向阳花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f8/ifb5jnhil9kfur7px1yftlfah8zhcmt.png",
+      "wikiMapPixel": {
+        "x": 1024.75,
+        "y": 1192.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "28yd5i5ma1m",
       "group": "采集",
       "markType": 727,
@@ -23162,6 +23603,321 @@
       }
     },
     {
+      "id": "bjczem6tvg",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1314,
+      "lng": -1503,
+      "layer": "G",
+      "time": 1778052741820,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 392.25,
+        "y": 1096.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1aan30oj61w",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1707,
+      "lng": -1388,
+      "layer": "G",
+      "time": 1778053148004,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 421.0,
+        "y": 1194.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2ksj6dxozy",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1717,
+      "lng": -1378,
+      "layer": "G",
+      "time": 1778053149134,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 423.5,
+        "y": 1197.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "190k5ud19g9",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1770,
+      "lng": -1374,
+      "layer": "G",
+      "time": 1778053151513,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 424.5,
+        "y": 1210.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1zi32s7bwdp",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1848,
+      "lng": -1501,
+      "layer": "G",
+      "time": 1778053214125,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 392.75,
+        "y": 1230.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "216cfpe26xv",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1844,
+      "lng": -1480,
+      "layer": "G",
+      "time": 1778053214627,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 398.0,
+        "y": 1229.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "hu7zci5t3k",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1846,
+      "lng": -1454,
+      "layer": "G",
+      "time": 1778053215376,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 404.5,
+        "y": 1229.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2iwe4affszy",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1863,
+      "lng": -1469,
+      "layer": "G",
+      "time": 1778053216142,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 400.75,
+        "y": 1233.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2hf7z8obsc8",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 1813,
+      "lng": -1526,
+      "layer": "G",
+      "time": 1778053221432,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 386.5,
+        "y": 1221.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2m1tm9dgv48",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 734,
+      "lng": -1723,
+      "layer": "G",
+      "time": 1778053526152,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 337.25,
+        "y": 951.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1ft57gtzibj",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 745,
+      "lng": -1737,
+      "layer": "G",
+      "time": 1778053526655,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 333.75,
+        "y": 954.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1627vqw8g07",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 597,
+      "lng": -1855,
+      "layer": "G",
+      "time": 1778055551751,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 304.25,
+        "y": 917.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1pupczzkm7k",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 611,
+      "lng": -1892,
+      "layer": "G",
+      "time": 1778055552112,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 295.0,
+        "y": 920.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1qu5gd5nvg7",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 536,
+      "lng": -1765,
+      "layer": "G",
+      "time": 1778055575543,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 326.75,
+        "y": 902.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1vz9meq6gt",
+      "group": "采集",
+      "markType": 727,
+      "markTypeName": "海神花",
+      "title": "",
+      "lat": 524,
+      "lng": -1690,
+      "layer": "G",
+      "time": 1778055575869,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/727/json?action=raw",
+      "icon": "assets/icons/wiki/727_海神花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/26/a27zj53s5m40p9kb9q9v9wt70acxc24.png",
+      "wikiMapPixel": {
+        "x": 345.5,
+        "y": 899.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "qb1ybl05l7",
       "group": "采集",
       "markType": 728,
@@ -24249,6 +25005,48 @@
       "wikiMapPixel": {
         "x": 818.0,
         "y": 751.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "tuobm02la6",
+      "group": "采集",
+      "markType": 728,
+      "markTypeName": "紫雀花",
+      "title": "",
+      "lat": 680,
+      "lng": -1836,
+      "layer": "G",
+      "time": 1778055528510,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/728/json?action=raw",
+      "icon": "assets/icons/wiki/728_紫雀花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/fb/6bnm71szdu8owh9r9i8ccy6qwzq1s2x.png",
+      "wikiMapPixel": {
+        "x": 309.0,
+        "y": 938.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1okmfto24zz",
+      "group": "采集",
+      "markType": 728,
+      "markTypeName": "紫雀花",
+      "title": "",
+      "lat": 694,
+      "lng": -1825,
+      "layer": "G",
+      "time": 1778055528911,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/728/json?action=raw",
+      "icon": "assets/icons/wiki/728_紫雀花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/fb/6bnm71szdu8owh9r9i8ccy6qwzq1s2x.png",
+      "wikiMapPixel": {
+        "x": 311.75,
+        "y": 941.5,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -25976,6 +26774,48 @@
       }
     },
     {
+      "id": "1wqu0k6472y",
+      "group": "采集",
+      "markType": 706,
+      "markTypeName": "喵喵草",
+      "title": "",
+      "lat": 501,
+      "lng": -1687,
+      "layer": "G",
+      "time": 1778055566042,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/706/json?action=raw",
+      "icon": "assets/icons/wiki/706_喵喵草.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/da/hs6vx7ljpikp90jihceykugitp8fba4.png",
+      "wikiMapPixel": {
+        "x": 346.25,
+        "y": 893.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1w20r05gora",
+      "group": "采集",
+      "markType": 706,
+      "markTypeName": "喵喵草",
+      "title": "",
+      "lat": 474,
+      "lng": -1692,
+      "layer": "G",
+      "time": 1778055566934,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/706/json?action=raw",
+      "icon": "assets/icons/wiki/706_喵喵草.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/d/da/hs6vx7ljpikp90jihceykugitp8fba4.png",
+      "wikiMapPixel": {
+        "x": 345.0,
+        "y": 886.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "2ds208uza8t",
       "group": "采集",
       "markType": 708,
@@ -26643,27 +27483,6 @@
       "wikiMapPixel": {
         "x": 309.0,
         "y": 636.5,
-        "inBounds": true,
-        "basemap": "wiki_G_z5.png"
-      }
-    },
-    {
-      "id": "17camt0hmy6",
-      "group": "采集",
-      "markType": 708,
-      "markTypeName": "睡铃",
-      "title": "",
-      "lat": -749,
-      "lng": -1983,
-      "layer": "G",
-      "time": 1764740825710,
-      "version": 4,
-      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
-      "icon": "assets/icons/wiki/708_睡铃.png",
-      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
-      "wikiMapPixel": {
-        "x": 272.25,
-        "y": 580.75,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -27903,6 +28722,216 @@
       "wikiMapPixel": {
         "x": 572.75,
         "y": 758.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "db5y9k38pg",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -554,
+      "lng": -1883,
+      "layer": "G",
+      "time": 1778055030485,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 297.25,
+        "y": 629.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "6ikwn3d4g7",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -539,
+      "lng": -1899,
+      "layer": "G",
+      "time": 1778055034567,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 293.25,
+        "y": 633.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1q5c6t4owsc",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -601,
+      "lng": -1865,
+      "layer": "G",
+      "time": 1778055042045,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 301.75,
+        "y": 617.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "212strpchjy",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -575,
+      "lng": -1926,
+      "layer": "G",
+      "time": 1778055051486,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 286.5,
+        "y": 624.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "kw3vdrasqs",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -680,
+      "lng": -1954,
+      "layer": "G",
+      "time": 1778055065348,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 279.5,
+        "y": 598.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "12wsdry3z7t",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -763,
+      "lng": -1954,
+      "layer": "G",
+      "time": 1778055082761,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 279.5,
+        "y": 577.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "70ayboghfa",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -791,
+      "lng": -2003,
+      "layer": "G",
+      "time": 1778055127094,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 267.25,
+        "y": 570.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1b6jkg5zsti",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -893,
+      "lng": -2066,
+      "layer": "G",
+      "time": 1778055152038,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 251.5,
+        "y": 544.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "11q92jcgmob",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -910,
+      "lng": -2113,
+      "layer": "G",
+      "time": 1778055155404,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 239.75,
+        "y": 540.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2ib4go5qxeg",
+      "group": "采集",
+      "markType": 708,
+      "markTypeName": "睡铃",
+      "title": "",
+      "lat": -925,
+      "lng": -2100,
+      "layer": "G",
+      "time": 1778055155863,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/708/json?action=raw",
+      "icon": "assets/icons/wiki/708_睡铃.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/b/b6/tb04lckoztoeodpnd90f7a2ns0iemul.png",
+      "wikiMapPixel": {
+        "x": 243.0,
+        "y": 536.75,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -34817,6 +35846,48 @@
       }
     },
     {
+      "id": "1uvhfrjr9gv",
+      "group": "采集",
+      "markType": 711,
+      "markTypeName": "伞伞菌",
+      "title": "",
+      "lat": 740,
+      "lng": -1875,
+      "layer": "G",
+      "time": 1778055542703,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/711/json?action=raw",
+      "icon": "assets/icons/wiki/711_伞伞菌.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0d/kafrl1nyyu3r9o6q0ien852ir1vwk4a.png",
+      "wikiMapPixel": {
+        "x": 299.25,
+        "y": 953.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2krqp33d5p8",
+      "group": "采集",
+      "markType": 711,
+      "markTypeName": "伞伞菌",
+      "title": "",
+      "lat": 261,
+      "lng": 1409,
+      "layer": "G",
+      "time": 1778055871771,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/711/json?action=raw",
+      "icon": "assets/icons/wiki/711_伞伞菌.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0d/kafrl1nyyu3r9o6q0ien852ir1vwk4a.png",
+      "wikiMapPixel": {
+        "x": 1120.25,
+        "y": 833.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "25peao4acxw",
       "group": "采集",
       "markType": 712,
@@ -38723,6 +39794,90 @@
       }
     },
     {
+      "id": "1oo61rdk5m8",
+      "group": "采集",
+      "markType": 723,
+      "markTypeName": "彩玉花",
+      "title": "",
+      "lat": -493,
+      "lng": -1824,
+      "layer": "G",
+      "time": 1778055012976,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/723/json?action=raw",
+      "icon": "assets/icons/wiki/723_彩玉花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/27/ft5ssyy8usds144r2apm1rvaqgtl2et.png",
+      "wikiMapPixel": {
+        "x": 312.0,
+        "y": 644.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2vfczkih96",
+      "group": "采集",
+      "markType": 723,
+      "markTypeName": "彩玉花",
+      "title": "",
+      "lat": -785,
+      "lng": -1955,
+      "layer": "G",
+      "time": 1778055088090,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/723/json?action=raw",
+      "icon": "assets/icons/wiki/723_彩玉花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/27/ft5ssyy8usds144r2apm1rvaqgtl2et.png",
+      "wikiMapPixel": {
+        "x": 279.25,
+        "y": 571.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1zi32s8gpt4",
+      "group": "采集",
+      "markType": 723,
+      "markTypeName": "彩玉花",
+      "title": "",
+      "lat": -782,
+      "lng": -2034,
+      "layer": "G",
+      "time": 1778055118504,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/723/json?action=raw",
+      "icon": "assets/icons/wiki/723_彩玉花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/27/ft5ssyy8usds144r2apm1rvaqgtl2et.png",
+      "wikiMapPixel": {
+        "x": 259.5,
+        "y": 572.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1wg76r0fucl",
+      "group": "采集",
+      "markType": 723,
+      "markTypeName": "彩玉花",
+      "title": "",
+      "lat": -857,
+      "lng": -2084,
+      "layer": "G",
+      "time": 1778055140197,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/723/json?action=raw",
+      "icon": "assets/icons/wiki/723_彩玉花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/2/27/ft5ssyy8usds144r2apm1rvaqgtl2et.png",
+      "wikiMapPixel": {
+        "x": 247.0,
+        "y": 553.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "2nq2jmm7qi2",
       "group": "采集",
       "markType": 713,
@@ -39894,6 +41049,69 @@
       "wikiMapPixel": {
         "x": 512.5,
         "y": 500.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "19wgnan636t",
+      "group": "采集",
+      "markType": 713,
+      "markTypeName": "喷气菇",
+      "title": "",
+      "lat": -936,
+      "lng": -1000,
+      "layer": "G",
+      "time": 1778103313573,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/713/json?action=raw",
+      "icon": "assets/icons/wiki/713_喷气菇.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/a/ae/55rfsc6gwyr8rp2r3o6bw2adwvm0u12.png",
+      "wikiMapPixel": {
+        "x": 518.0,
+        "y": 534.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1rtljr47gov",
+      "group": "采集",
+      "markType": 713,
+      "markTypeName": "喷气菇",
+      "title": "",
+      "lat": -1075,
+      "lng": -1115,
+      "layer": "G",
+      "time": 1778103390271,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/713/json?action=raw",
+      "icon": "assets/icons/wiki/713_喷气菇.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/a/ae/55rfsc6gwyr8rp2r3o6bw2adwvm0u12.png",
+      "wikiMapPixel": {
+        "x": 489.25,
+        "y": 499.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "zuwhriu1w9",
+      "group": "采集",
+      "markType": 713,
+      "markTypeName": "喷气菇",
+      "title": "",
+      "lat": -1101,
+      "lng": -1077,
+      "layer": "G",
+      "time": 1778103391001,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/713/json?action=raw",
+      "icon": "assets/icons/wiki/713_喷气菇.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/a/ae/55rfsc6gwyr8rp2r3o6bw2adwvm0u12.png",
+      "wikiMapPixel": {
+        "x": 498.75,
+        "y": 492.75,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -41974,7 +43192,7 @@
         "x": 305.5,
         "y": 253.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -42331,7 +43549,7 @@
         "x": 282.5,
         "y": 252.5,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -42352,7 +43570,7 @@
         "x": 277.75,
         "y": 261.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -42373,7 +43591,7 @@
         "x": 277.0,
         "y": 268.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -42394,7 +43612,7 @@
         "x": 272.75,
         "y": 268.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -42855,6 +44073,132 @@
       "wikiMapPixel": {
         "x": 26.25,
         "y": 386.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "e72fp11bgc",
+      "group": "采集",
+      "markType": 732,
+      "markTypeName": "火焰花",
+      "title": "",
+      "lat": -1439,
+      "lng": -2737,
+      "layer": "G",
+      "time": 1778056168764,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/732/json?action=raw",
+      "icon": "assets/icons/wiki/732_火焰花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0a/gs8y15s355mmh9ktpledfxlza39uvhx.png",
+      "wikiMapPixel": {
+        "x": 83.75,
+        "y": 408.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "vixoj76lwm",
+      "group": "采集",
+      "markType": 732,
+      "markTypeName": "火焰花",
+      "title": "",
+      "lat": -1420,
+      "lng": -2684,
+      "layer": "G",
+      "time": 1778056169318,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/732/json?action=raw",
+      "icon": "assets/icons/wiki/732_火焰花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0a/gs8y15s355mmh9ktpledfxlza39uvhx.png",
+      "wikiMapPixel": {
+        "x": 97.0,
+        "y": 413.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "19lttgpq5n0",
+      "group": "采集",
+      "markType": 732,
+      "markTypeName": "火焰花",
+      "title": "",
+      "lat": -1302,
+      "lng": -2744,
+      "layer": "G",
+      "time": 1778056251404,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/732/json?action=raw",
+      "icon": "assets/icons/wiki/732_火焰花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0a/gs8y15s355mmh9ktpledfxlza39uvhx.png",
+      "wikiMapPixel": {
+        "x": 82.0,
+        "y": 442.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "130bzpomjyg",
+      "group": "采集",
+      "markType": 732,
+      "markTypeName": "火焰花",
+      "title": "",
+      "lat": -1443,
+      "lng": -2953,
+      "layer": "G",
+      "time": 1778056272520,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/732/json?action=raw",
+      "icon": "assets/icons/wiki/732_火焰花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0a/gs8y15s355mmh9ktpledfxlza39uvhx.png",
+      "wikiMapPixel": {
+        "x": 29.75,
+        "y": 407.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "pfydtgk3e",
+      "group": "采集",
+      "markType": 732,
+      "markTypeName": "火焰花",
+      "title": "",
+      "lat": -1240,
+      "lng": -2929,
+      "layer": "G",
+      "time": 1778056288954,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/732/json?action=raw",
+      "icon": "assets/icons/wiki/732_火焰花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0a/gs8y15s355mmh9ktpledfxlza39uvhx.png",
+      "wikiMapPixel": {
+        "x": 35.75,
+        "y": 458.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "232hhurplv",
+      "group": "采集",
+      "markType": 732,
+      "markTypeName": "火焰花",
+      "title": "",
+      "lat": -1207,
+      "lng": -2872,
+      "layer": "G",
+      "time": 1778056293475,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/732/json?action=raw",
+      "icon": "assets/icons/wiki/732_火焰花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/0/0a/gs8y15s355mmh9ktpledfxlza39uvhx.png",
+      "wikiMapPixel": {
+        "x": 50.0,
+        "y": 466.25,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -44493,27 +45837,6 @@
       "wikiMapPixel": {
         "x": 657.75,
         "y": 976.5,
-        "inBounds": true,
-        "basemap": "wiki_G_z5.png"
-      }
-    },
-    {
-      "id": "xhtufvoio6",
-      "group": "采集",
-      "markType": 738,
-      "markTypeName": "杏黄贝",
-      "title": "",
-      "lat": 1643,
-      "lng": 27,
-      "layer": "G",
-      "time": 1776262918022,
-      "version": 4,
-      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/738/json?action=raw",
-      "icon": "assets/icons/wiki/738_杏黄贝.png",
-      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/4/40/76cxy5ki6bae4srlfmsz8ms9ej03m6y.png",
-      "wikiMapPixel": {
-        "x": 774.75,
-        "y": 1178.75,
         "inBounds": true,
         "basemap": "wiki_G_z5.png"
       }
@@ -46304,6 +47627,132 @@
       }
     },
     {
+      "id": "2atq5hnz7tg",
+      "group": "采集",
+      "markType": 731,
+      "markTypeName": "花星角",
+      "title": "",
+      "lat": 770,
+      "lng": 179,
+      "layer": "G",
+      "time": 1778054503764,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/731/json?action=raw",
+      "icon": "assets/icons/wiki/731_花星角.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f1/edr6ut42a72p0bge76w17tng45r4nrb.png",
+      "wikiMapPixel": {
+        "x": 812.75,
+        "y": 960.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1bkq070u7t6",
+      "group": "采集",
+      "markType": 731,
+      "markTypeName": "花星角",
+      "title": "",
+      "lat": 774,
+      "lng": 172,
+      "layer": "G",
+      "time": 1778054504202,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/731/json?action=raw",
+      "icon": "assets/icons/wiki/731_花星角.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f1/edr6ut42a72p0bge76w17tng45r4nrb.png",
+      "wikiMapPixel": {
+        "x": 811.0,
+        "y": 961.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1ne34l1ra1j",
+      "group": "采集",
+      "markType": 731,
+      "markTypeName": "花星角",
+      "title": "",
+      "lat": 775,
+      "lng": 160,
+      "layer": "G",
+      "time": 1778054504599,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/731/json?action=raw",
+      "icon": "assets/icons/wiki/731_花星角.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f1/edr6ut42a72p0bge76w17tng45r4nrb.png",
+      "wikiMapPixel": {
+        "x": 808.0,
+        "y": 961.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1d5fr6hri0u",
+      "group": "采集",
+      "markType": 731,
+      "markTypeName": "花星角",
+      "title": "",
+      "lat": 745,
+      "lng": 171,
+      "layer": "G",
+      "time": 1778054507774,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/731/json?action=raw",
+      "icon": "assets/icons/wiki/731_花星角.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f1/edr6ut42a72p0bge76w17tng45r4nrb.png",
+      "wikiMapPixel": {
+        "x": 810.75,
+        "y": 954.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2yyyx9z4hx",
+      "group": "采集",
+      "markType": 731,
+      "markTypeName": "花星角",
+      "title": "",
+      "lat": 746,
+      "lng": 162,
+      "layer": "G",
+      "time": 1778054508165,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/731/json?action=raw",
+      "icon": "assets/icons/wiki/731_花星角.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f1/edr6ut42a72p0bge76w17tng45r4nrb.png",
+      "wikiMapPixel": {
+        "x": 808.5,
+        "y": 954.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2qa8tj7s646",
+      "group": "采集",
+      "markType": 731,
+      "markTypeName": "花星角",
+      "title": "",
+      "lat": 752,
+      "lng": 150,
+      "layer": "G",
+      "time": 1778054508790,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/731/json?action=raw",
+      "icon": "assets/icons/wiki/731_花星角.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/f/f1/edr6ut42a72p0bge76w17tng45r4nrb.png",
+      "wikiMapPixel": {
+        "x": 805.5,
+        "y": 956.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "1hab6eexofs",
       "group": "采集",
       "markType": 724,
@@ -46867,7 +48316,7 @@
         "x": 810.5,
         "y": 767.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -46888,7 +48337,7 @@
         "x": 809.0,
         "y": 768.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47249,6 +48698,48 @@
       }
     },
     {
+      "id": "2jzdtm82ecs",
+      "group": "采集",
+      "markType": 724,
+      "markTypeName": "象牙花",
+      "title": "",
+      "lat": -316,
+      "lng": 371,
+      "layer": "G",
+      "time": 1778108212525,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/724/json?action=raw",
+      "icon": "assets/icons/wiki/724_象牙花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/1/16/oqnsqagk6zafrc6qzgmecc8sl9psehm.png",
+      "wikiMapPixel": {
+        "x": 860.75,
+        "y": 689.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1z0d14j1c7w",
+      "group": "采集",
+      "markType": 724,
+      "markTypeName": "象牙花",
+      "title": "",
+      "lat": -304,
+      "lng": 398,
+      "layer": "G",
+      "time": 1778108213020,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/724/json?action=raw",
+      "icon": "assets/icons/wiki/724_象牙花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/1/16/oqnsqagk6zafrc6qzgmecc8sl9psehm.png",
+      "wikiMapPixel": {
+        "x": 867.5,
+        "y": 692.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "1juh5ywvyyv",
       "group": "采集",
       "markType": 720,
@@ -47266,7 +48757,7 @@
         "x": 857.25,
         "y": 823.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47287,7 +48778,7 @@
         "x": 843.25,
         "y": 834.5,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47371,7 +48862,7 @@
         "x": 814.25,
         "y": 761.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47392,7 +48883,7 @@
         "x": 807.0,
         "y": 772.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47413,7 +48904,7 @@
         "x": 882.0,
         "y": 830.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47434,7 +48925,7 @@
         "x": 872.0,
         "y": 819.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47455,7 +48946,7 @@
         "x": 867.25,
         "y": 811.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -47476,7 +48967,7 @@
         "x": 833.0,
         "y": 808.25,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -49125,7 +50616,7 @@
       "title": "",
       "lat": -753,
       "lng": -613,
-      "layer": "B1",
+      "layer": "G",
       "time": 1777123198620,
       "version": 4,
       "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/717/json?action=raw",
@@ -49146,7 +50637,7 @@
       "title": "",
       "lat": -837,
       "lng": -572,
-      "layer": "B1",
+      "layer": "G",
       "time": 1777123227670,
       "version": 4,
       "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/717/json?action=raw",
@@ -49167,7 +50658,7 @@
       "title": "",
       "lat": -893,
       "lng": -531,
-      "layer": "B1",
+      "layer": "G",
       "time": 1777123248199,
       "version": 4,
       "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/717/json?action=raw",
@@ -52310,6 +53801,258 @@
       }
     },
     {
+      "id": "t2bg49p5tj",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 241,
+      "lng": 1242,
+      "layer": "G",
+      "time": 1778055676599,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1078.5,
+        "y": 828.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "ptcc7m1ojk",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 233,
+      "lng": 1311,
+      "layer": "G",
+      "time": 1778055677056,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1095.75,
+        "y": 826.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1a73h308b3m",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 167,
+      "lng": 1260,
+      "layer": "G",
+      "time": 1778055677490,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1083.0,
+        "y": 809.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "lvjyqxqor1",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 179,
+      "lng": 1164,
+      "layer": "G",
+      "time": 1778055678157,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1059.0,
+        "y": 812.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1al9wtvh3f9",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 42,
+      "lng": 1093,
+      "layer": "G",
+      "time": 1778055700117,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1041.25,
+        "y": 778.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2kdk9c81pw6",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": -40,
+      "lng": 1074,
+      "layer": "G",
+      "time": 1778055725398,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1036.5,
+        "y": 758.0,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "pipiegnuez",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": -69,
+      "lng": 1053,
+      "layer": "G",
+      "time": 1778055741883,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1031.25,
+        "y": 750.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "qwc1ihywsv",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": -71,
+      "lng": 1085,
+      "layer": "G",
+      "time": 1778055742351,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1039.25,
+        "y": 750.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "26lay7v2eo5",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 283,
+      "lng": 1376,
+      "layer": "G",
+      "time": 1778055877061,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1112.0,
+        "y": 838.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1efiocu32rd",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 339,
+      "lng": 1421,
+      "layer": "G",
+      "time": 1778055888569,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1123.25,
+        "y": 852.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "2fgbsidrldk",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 387,
+      "lng": 1418,
+      "layer": "G",
+      "time": 1778055895544,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1122.5,
+        "y": 864.75,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1emlw89pig7",
+      "group": "采集",
+      "markType": 718,
+      "markTypeName": "大嘴花",
+      "title": "",
+      "lat": 434,
+      "lng": 1368,
+      "layer": "G",
+      "time": 1778055901863,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/718/json?action=raw",
+      "icon": "assets/icons/wiki/718_大嘴花.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/73/pjf7ksa2inroq78lg923jb5i9ud7735.png",
+      "wikiMapPixel": {
+        "x": 1110.0,
+        "y": 876.5,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "14okxajd3wb",
       "group": "采集",
       "markType": 719,
@@ -53885,6 +55628,48 @@
       }
     },
     {
+      "id": "1k8nmm4rl8o",
+      "group": "采集",
+      "markType": 719,
+      "markTypeName": "流星兰",
+      "title": "",
+      "lat": 233,
+      "lng": 1490,
+      "layer": "G",
+      "time": 1778055938120,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/719/json?action=raw",
+      "icon": "assets/icons/wiki/719_流星兰.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/7f/6i9icgucsl9udn60rtngk6lns1v2ls7.png",
+      "wikiMapPixel": {
+        "x": 1140.5,
+        "y": 826.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
+      "id": "1b2zyigns55",
+      "group": "采集",
+      "markType": 719,
+      "markTypeName": "流星兰",
+      "title": "",
+      "lat": 213,
+      "lng": 1439,
+      "layer": "G",
+      "time": 1778055947833,
+      "version": 4,
+      "sourceUrl": "https://wiki.biligame.com/rocom/Data:Mapnew/type/719/json?action=raw",
+      "icon": "assets/icons/wiki/719_流星兰.png",
+      "iconSourceUrl": "https://patchwiki.biligame.com/images/rocom/7/7f/6i9icgucsl9udn60rtngk6lns1v2ls7.png",
+      "wikiMapPixel": {
+        "x": 1127.75,
+        "y": 821.25,
+        "inBounds": true,
+        "basemap": "wiki_G_z5.png"
+      }
+    },
+    {
       "id": "1gav6p5oj07",
       "group": "采集",
       "markType": 736,
@@ -55309,7 +57094,7 @@
         "x": 1234.5,
         "y": 927.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -55330,7 +57115,7 @@
         "x": 1236.5,
         "y": 926.5,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -55351,7 +57136,7 @@
         "x": 1242.75,
         "y": 914.75,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -55372,7 +57157,7 @@
         "x": 1234.0,
         "y": 902.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     },
     {
@@ -55393,7 +57178,7 @@
         "x": 1231.25,
         "y": 902.0,
         "inBounds": true,
-        "basemap": "wiki_G_z5.png"
+        "basemap": "wiki_B1_z5.png"
       }
     }
   ]

@@ -48,14 +48,14 @@ SIFT_MINIMAP_CENTER_EXCLUDE_RADIUS_RATIO = 0.17
 SIFT_MATCH_RATIO = 0.86
 SIFT_MIN_MATCH_COUNT = 6
 SIFT_RANSAC_THRESHOLD = 8.0
-SIFT_MIN_INLIER_COUNT = 5
-SIFT_MIN_INLIER_RATIO = 0.40
+SIFT_MIN_INLIER_COUNT = 6
+SIFT_MIN_INLIER_RATIO = 0.45
 SIFT_LOCAL_SEARCH_RADIUS = 440
 SIFT_LOST_EXPAND_STEP = 280
 SIFT_MAX_LOCAL_RADIUS = 2200
 SIFT_FULL_RELOCALIZE_AFTER = 5
 SIFT_MAX_WORLD_JUMP = 520
-SIFT_TEMPLATE_MIN_SCORE = 0.24
+SIFT_TEMPLATE_MIN_SCORE = 0.30
 SIFT_MOTION_MIN_RESPONSE = 0.22
 SIFT_MOTION_MAX_LOST_FRAMES = 3
 SIFT_MOTION_MAX_GOOD_AGE = 1.8
@@ -345,10 +345,100 @@ def _project_dir():
     return Path(__file__).resolve().parents[1]
 
 
-def _cache_path():
-    data_dir = _project_dir() / "data"
-    data_dir.mkdir(parents=True, exist_ok=True)
-    return data_dir / SIFT_CACHE_NAME
+def _cache_path(owner=None):
+    if owner is not None:
+        owner_cache = getattr(owner, "sift_cache_path", None)
+        if callable(owner_cache):
+            try:
+                return Path(owner_cache())
+            except Exception:
+                pass
+    try:
+        from app.app_paths import data_path, user_cache_path
+    except Exception:
+        try:
+            from app_paths import data_path, user_cache_path
+        except Exception:
+            data_dir = _project_dir() / "user_data" / "cache"
+            data_dir.mkdir(parents=True, exist_ok=True)
+            return data_dir / SIFT_CACHE_NAME
+    static_cache = data_path(SIFT_CACHE_NAME)
+    if static_cache.exists():
+        return static_cache
+    return user_cache_path(SIFT_CACHE_NAME)
+
+
+def _write_cache_path(owner=None):
+    if owner is not None:
+        owner_cache = getattr(owner, "sift_cache_path", None)
+        if callable(owner_cache):
+            try:
+                path = Path(owner_cache())
+                if "_internal" not in path.parts:
+                    return path
+            except Exception:
+                pass
+    try:
+        from app.app_paths import user_cache_path
+    except Exception:
+        try:
+            from app_paths import user_cache_path
+        except Exception:
+            data_dir = _project_dir() / "user_data" / "cache"
+            data_dir.mkdir(parents=True, exist_ok=True)
+            return data_dir / SIFT_CACHE_NAME
+    return user_cache_path(SIFT_CACHE_NAME)
+
+
+def _cache_text(value):
+    try:
+        return str(value.item())
+    except Exception:
+        return str(value)
+
+
+def _reference_scaled_shape(map_path):
+    bgr = _read_image(map_path)
+    if bgr is None:
+        return None
+    h, w = bgr.shape[:2]
+    scale = min(1.0, SIFT_REFERENCE_MAX_SIDE / float(max(h, w)))
+    return int(h * scale), int(w * scale)
+
+
+def _cache_matches_reference(data, map_path, map_mtime):
+    try:
+        if int(data["version"]) != SIFT_CACHE_VERSION:
+            return False
+        cached_map = _cache_text(data["map_path"])
+        if cached_map == str(map_path) and int(data["map_mtime"]) == int(map_mtime):
+            return True
+        if Path(cached_map).name != Path(map_path).name:
+            return False
+        cached_shape = tuple(int(v) for v in data["shape"])
+    except Exception:
+        return False
+    return cached_shape == _reference_scaled_shape(map_path)
+
+
+def _load_sift_cache(owner, data):
+    setattr(owner, "_sift_v2_scale", float(data["scale"]))
+    setattr(owner, "_sift_v2_points", data["points"].astype(np.float32))
+    setattr(owner, "_sift_v2_desc", data["desc"].astype(np.float32))
+    setattr(owner, "_sift_v2_shape", tuple(int(v) for v in data["shape"]))
+
+
+def _build_full_matcher(desc):
+    if cv2 is None or desc is None or len(desc) < SIFT_MIN_MATCH_COUNT:
+        return None
+    try:
+        matcher = _create_matcher()
+        train_desc = np.ascontiguousarray(desc.astype(np.float32))
+        matcher.add([train_desc])
+        matcher.train()
+        return matcher
+    except Exception:
+        return None
 
 
 def _read_image(path):
@@ -372,7 +462,16 @@ def _image_area(path):
     return int(img.shape[0] * img.shape[1])
 
 
-def _find_reference_map_path():
+def _find_reference_map_path(owner=None):
+    if owner is not None:
+        active_map_path = getattr(owner, "active_map_path", None)
+        if callable(active_map_path):
+            try:
+                path = Path(active_map_path())
+                if path.exists():
+                    return path
+            except Exception:
+                pass
     preferred_keys = (
         "LOGIC_MAP_PATH",
         "WIKI_MAP_PATH",
@@ -451,6 +550,43 @@ def _create_matcher():
     return cv2.FlannBasedMatcher(index_params, search_params)
 
 
+def _homography_geometry_valid(H, query_shape):
+    try:
+        h, w = query_shape[:2]
+        corners = np.float32([[[0, 0]], [[w, 0]], [[w, h]], [[0, h]]])
+        mapped = cv2.perspectiveTransform(corners, H).reshape(-1, 2)
+        if not np.all(np.isfinite(mapped)):
+            return False
+        edges = [
+            float(np.linalg.norm(mapped[(index + 1) % 4] - mapped[index]))
+            for index in range(4)
+        ]
+        min_edge = min(edges)
+        max_edge = max(edges)
+        if min_edge < 8.0 or max_edge > 2400.0 or max_edge / max(1.0, min_edge) > 8.0:
+            return False
+        area = abs(float(cv2.contourArea(mapped.astype(np.float32))))
+        ratio = area / max(1.0, float(w * h))
+        return 0.05 <= ratio <= 90.0
+    except Exception:
+        return False
+
+
+def _update_homography_world_scale(owner, H, player_local, scale):
+    try:
+        x, y = float(player_local[0]), float(player_local[1])
+        delta = 8.0
+        pts = np.float32([[[x, y]], [[x + delta, y]], [[x, y + delta]]])
+        mapped = cv2.perspectiveTransform(pts, H).reshape(-1, 2)
+        dx = float(np.linalg.norm(mapped[1] - mapped[0])) / delta / max(0.001, scale)
+        dy = float(np.linalg.norm(mapped[2] - mapped[0])) / delta / max(0.001, scale)
+        value = (dx + dy) * 0.5
+        if 0.4 <= value <= 20.0:
+            setattr(owner, "_sift_v2_world_per_query_px", value)
+    except Exception:
+        pass
+
+
 def _clahe_gray(bgr):
     gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
     clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
@@ -523,6 +659,18 @@ def _stabilize_player_angle(owner, angle, now=None):
     except Exception:
         pass
     return stable
+
+
+def _reset_player_angle_state(owner, clear_angle=False):
+    try:
+        if clear_angle:
+            setattr(owner, "_sift_v2_player_angle", None)
+        setattr(owner, "_sift_v2_player_angle_time", 0.0)
+        setattr(owner, "_sift_v2_player_angle_pending", None)
+        setattr(owner, "_sift_v2_player_angle_changed", False)
+        setattr(owner, "_sift_v2_skip_motion_until", 0.0)
+    except Exception:
+        pass
 
 
 def _arrow_angle_from_points(points_x, points_y):
@@ -887,6 +1035,55 @@ def _minimap_content_valid(bgr):
     return True, ""
 
 
+def _owner_map_layer(owner):
+    layer = str(getattr(owner, "current_layer", "G") or "G").upper().strip()
+    if layer in {"B1", "-1"}:
+        return "B1"
+    if layer in {"B2", "-2"}:
+        return "B2"
+    return "G"
+
+
+def _minimap_looks_underground(bgr):
+    try:
+        hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
+    except Exception:
+        return False
+    h, w = hsv.shape[:2]
+    if h < 32 or w < 32:
+        return False
+    yy, xx = np.ogrid[:h, :w]
+    cx = w / 2.0
+    cy = h / 2.0
+    radius = min(w, h) * 0.43
+    circle = (xx - cx) * (xx - cx) + (yy - cy) * (yy - cy) <= radius * radius
+    if not np.any(circle):
+        return False
+    hue = hsv[:, :, 0]
+    sat = hsv[:, :, 1]
+    val = hsv[:, :, 2]
+    circle_count = max(1, int(np.count_nonzero(circle)))
+    cave_brown = circle & (hue >= 5) & (hue <= 34) & (sat >= 22) & (val >= 35) & (val <= 170)
+    cave_gray = circle & (sat <= 58) & (val >= 35) & (val <= 150)
+    cave_dark = circle & (val >= 25) & (val <= 115) & (sat <= 140)
+    outdoor_green = circle & (hue >= 36) & (hue <= 94) & (sat >= 42) & (val >= 72)
+    outdoor_water = circle & (hue >= 92) & (hue <= 132) & (sat >= 38) & (val >= 72)
+    cave_ratio = float(np.count_nonzero(cave_brown | cave_gray | cave_dark)) / circle_count
+    outdoor_ratio = float(np.count_nonzero(outdoor_green | outdoor_water)) / circle_count
+    val_mean = float(val[circle].mean())
+    return cave_ratio >= 0.46 and outdoor_ratio <= 0.34 and val_mean <= 145.0
+
+
+def _minimap_layer_mismatch(owner, bgr):
+    layer = _owner_map_layer(owner)
+    underground = _minimap_looks_underground(bgr)
+    if layer == "G" and underground:
+        return True, "当前导航是地上，但小地图像地底层，暂停定位以避免误定位到海上"
+    if layer in {"B1", "B2"} and not underground:
+        return True, f"当前导航是地底 {layer}，但小地图像地上，暂停定位以避免跨图层误定位"
+    return False, ""
+
+
 def _template_sources(query_gray, query_mask):
     edge = _edge_image(query_gray)
     masked_edge = cv2.bitwise_and(edge, edge, mask=query_mask)
@@ -1207,6 +1404,8 @@ def _mark_invalid_minimap_frame(owner, now=None):
     except Exception:
         pass
     long_transition = now - since >= SIFT_INVALID_FULL_RELOCALIZE_AFTER
+    if now - since >= 0.12:
+        _reset_player_angle_state(owner, clear_angle=True)
     try:
         setattr(owner, "_sift_v2_transition_recover_long", long_transition)
         lost = int(getattr(owner, "_sift_v2_lost_frames", 0))
@@ -1370,11 +1569,18 @@ def _apply_world_pos(owner, pos, angle=None):
             item.setVisible(True)
         except Exception:
             pass
+    follow_view = (
+        bool(getattr(owner, "route_preview_auto_follow", True))
+        and (
+            bool(getattr(owner, "minimap_follow_enabled", False))
+            or bool(getattr(owner, "minimap_circle_locked", False))
+        )
+    )
     for name in ("route_preview_view", "preview_view", "navigation_map_view", "nav_map_view", "map_view", "view"):
         view = getattr(owner, name, None)
         if view is None:
             continue
-        if name in ("route_preview_view", "preview_view", "navigation_map_view", "nav_map_view") and not handled_item_ids:
+        if name in ("route_preview_view", "preview_view", "navigation_map_view", "nav_map_view") and follow_view:
             try:
                 view.centerOn(float(pos[0]), float(pos[1]))
             except Exception:
@@ -1386,6 +1592,14 @@ def _apply_world_pos(owner, pos, angle=None):
                 view.update()
             except Exception:
                 pass
+
+
+def _keep_last_player_visible(owner):
+    last = _last_world_pos(owner)
+    if last is None:
+        return None
+    _apply_world_pos(owner, last, getattr(owner, "_sift_v2_player_angle", None))
+    return last
 
 
 def _result(ok, position=None, message="", match_count=0, inliers=0, method="SIFT", score=0.0, player_angle=None):
@@ -1407,35 +1621,34 @@ def prepare_sift_tracker_v2(owner, force=False):
         setattr(owner, "_sift_v2_error", "未安装 opencv-python，无法使用 SIFT。")
         return False
 
-    if getattr(owner, "_sift_v2_ready", False) and not force:
-        return True
-
-    map_path = _find_reference_map_path()
+    map_path = _find_reference_map_path(owner)
     if not map_path:
         setattr(owner, "_sift_v2_error", "没有找到可用于匹配的纯净地图图片。")
         return False
+    map_path = Path(map_path)
+    if getattr(owner, "_sift_v2_ready", False) and not force:
+        if str(getattr(owner, "_sift_v2_map_path", "")) == str(map_path):
+            if getattr(owner, "_sift_v2_full_matcher", None) is None:
+                setattr(owner, "_sift_v2_full_matcher", _build_full_matcher(getattr(owner, "_sift_v2_desc", None)))
+            return True
+        setattr(owner, "_sift_v2_ready", False)
+        setattr(owner, "_sift_v2_prev_gray", None)
+        setattr(owner, "_sift_v2_prev_mask", None)
 
     detector = _create_sift(SIFT_MAP_NFEATURES)
     if detector is None:
         setattr(owner, "_sift_v2_error", "当前 OpenCV 不支持 SIFT。")
         return False
 
-    cache_path = _cache_path()
+    cache_path = _cache_path(owner)
     map_mtime = int(map_path.stat().st_mtime)
     loaded = False
 
     if cache_path.exists() and not force:
         try:
             data = np.load(str(cache_path), allow_pickle=False)
-            if (
-                int(data["version"]) == SIFT_CACHE_VERSION
-                and str(data["map_path"]) == str(map_path)
-                and int(data["map_mtime"]) == map_mtime
-            ):
-                setattr(owner, "_sift_v2_scale", float(data["scale"]))
-                setattr(owner, "_sift_v2_points", data["points"].astype(np.float32))
-                setattr(owner, "_sift_v2_desc", data["desc"].astype(np.float32))
-                setattr(owner, "_sift_v2_shape", tuple(int(v) for v in data["shape"]))
+            if _cache_matches_reference(data, map_path, map_mtime):
+                _load_sift_cache(owner, data)
                 loaded = True
         except Exception:
             loaded = False
@@ -1465,6 +1678,7 @@ def prepare_sift_tracker_v2(owner, force=False):
         setattr(owner, "_sift_v2_points", points)
         setattr(owner, "_sift_v2_desc", desc)
         setattr(owner, "_sift_v2_shape", ref.shape[:2])
+        cache_path = _write_cache_path(owner)
         try:
             np.savez_compressed(
                 str(cache_path),
@@ -1493,6 +1707,7 @@ def prepare_sift_tracker_v2(owner, force=False):
 
     setattr(owner, "_sift_v2_detector", _create_sift(SIFT_QUERY_NFEATURES))
     setattr(owner, "_sift_v2_matcher", _create_matcher())
+    setattr(owner, "_sift_v2_full_matcher", _build_full_matcher(getattr(owner, "_sift_v2_desc", None)))
     setattr(owner, "_sift_v2_map_path", str(map_path))
     setattr(owner, "_sift_v2_ready", True)
     setattr(owner, "_sift_v2_error", "")
@@ -1539,8 +1754,15 @@ def _homography_position(owner, query_gray, query_mask, player_local=None):
     if ref_desc is None or len(ref_desc) < SIFT_MIN_MATCH_COUNT:
         return None, 0, 0, "地图特征缓存无效"
 
+    full_reference = ref_desc is getattr(owner, "_sift_v2_desc", None)
+    query_desc = np.ascontiguousarray(qdesc.astype(np.float32))
     try:
-        matches = matcher.knnMatch(qdesc.astype(np.float32), ref_desc.astype(np.float32), k=2)
+        full_matcher = getattr(owner, "_sift_v2_full_matcher", None) if full_reference else None
+        if full_matcher is not None:
+            matches = full_matcher.knnMatch(query_desc, k=2)
+        else:
+            train_desc = np.ascontiguousarray(ref_desc.astype(np.float32))
+            matches = matcher.knnMatch(query_desc, train_desc, k=2)
     except Exception:
         return None, 0, 0, "SIFT匹配失败"
 
@@ -1566,6 +1788,11 @@ def _homography_position(owner, query_gray, query_mask, player_local=None):
     if inliers < SIFT_MIN_INLIER_COUNT or inlier_ratio < SIFT_MIN_INLIER_RATIO:
         return None, len(good), inliers, f"{scope}内点不足"
 
+    if full_reference and (inliers < 9 or inlier_ratio < 0.52):
+        return None, len(good), inliers, f"{scope}缃俊涓嶈冻"
+    if not _homography_geometry_valid(H, query_gray.shape):
+        return None, len(good), inliers, f"{scope}鍑犱綍涓嶇ǔ"
+
     h, w = query_gray.shape[:2]
     if player_local is None:
         player_local = (w / 2.0, h / 2.0)
@@ -1573,6 +1800,7 @@ def _homography_position(owner, query_gray, query_mask, player_local=None):
     mapped = cv2.perspectiveTransform(player_point, H)[0][0]
     scale = getattr(owner, "_sift_v2_scale", 1.0)
     world = (float(mapped[0] / scale), float(mapped[1] / scale))
+    _update_homography_world_scale(owner, H, player_local, scale)
 
     if last_pos:
         jump = math.hypot(world[0] - last_pos[0], world[1] - last_pos[1])
@@ -1755,12 +1983,24 @@ def track_minimap_sift_v2(owner, image, *args, **kwargs):
         msg = f"{content_reason}，暂停定位并等待小地图恢复 {elapsed:.0f}ms"
         return _result(False, last, msg, method="画面保护")
 
+    layer_mismatch, layer_reason = _minimap_layer_mismatch(owner, bgr)
+    if layer_mismatch:
+        last = _keep_last_player_visible(owner)
+        _mark_invalid_minimap_frame(owner, now)
+        setattr(owner, "_sift_v2_pause_until", time.time() + SIFT_INVALID_FRAME_COOLDOWN)
+        elapsed = (time.perf_counter() - started) * 1000.0
+        msg = f"{layer_reason} {elapsed:.0f}ms"
+        return _result(False, last, msg, method="图层保护")
+
     lost_before = int(getattr(owner, "_sift_v2_lost_frames", 0))
     invalid_duration = _clear_invalid_minimap_frame(owner, now)
     if invalid_duration >= SIFT_INVALID_FULL_RELOCALIZE_AFTER and 0 < lost_before < 2:
-        lost_before = 2
+        lost_before = SIFT_FULL_RELOCALIZE_AFTER
         try:
             setattr(owner, "_sift_v2_lost_frames", lost_before)
+            setattr(owner, "_sift_v2_prev_gray", None)
+            setattr(owner, "_sift_v2_prev_mask", None)
+            setattr(owner, "_sift_v2_last_full_match_time", 0.0)
         except Exception:
             pass
     last_good = float(getattr(owner, "_sift_v2_last_good_time", 0.0) or 0.0)
@@ -1878,13 +2118,14 @@ def update_minimap_follow_v2(owner, *args, **kwargs):
     pause_until = float(getattr(owner, "_sift_v2_pause_until", 0.0) or 0.0)
     now = time.time()
     if now < pause_until:
-        last = _last_world_pos(owner)
+        last = _keep_last_player_visible(owner)
         message = f"过场/加载保护中，{max(0.0, pause_until - now):.1f}s 后重试"
         _set_status(owner, message)
         return _result(False, last, message, method="画面保护")
 
     pixmap, error = _capture_minimap(owner)
     if pixmap is None:
+        _keep_last_player_visible(owner)
         _set_status(owner, error)
         return None
 

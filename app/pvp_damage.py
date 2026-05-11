@@ -1,16 +1,20 @@
 import json
 import math
-import sys
 from pathlib import Path
 
 
-PROJECT_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
-PVP_POKEMON_PATH = PROJECT_DIR / "data" / "pvp_pokemon_data.json"
-PVP_SKILL_PATH = PROJECT_DIR / "data" / "pvp_skill_data.json"
-PVP_FORMULA_PATH = PROJECT_DIR / "data" / "pvp_damage_formula.json"
-PVP_TEAM_PATH = PROJECT_DIR / "data" / "pvp_team_slots.json"
-PVP_CREATURE_SKILLS_PATH = PROJECT_DIR / "data" / "rocopvp_creature_skills.json"
-PVP_ROCOPVP_CREATURES_PATH = PROJECT_DIR / "data" / "rocopvp_creatures.json"
+try:
+    from app.app_paths import data_path, migrate_user_file
+except ImportError:
+    from app_paths import data_path, migrate_user_file
+
+
+PVP_POKEMON_PATH = data_path("pvp_pokemon_data.json")
+PVP_SKILL_PATH = data_path("pvp_skill_data.json")
+PVP_FORMULA_PATH = data_path("pvp_damage_formula.json")
+PVP_TEAM_PATH = migrate_user_file("pvp_team_slots.json")
+PVP_CREATURE_SKILLS_PATH = data_path("rocopvp_creature_skills.json")
+PVP_ROCOPVP_CREATURES_PATH = data_path("rocopvp_creatures.json")
 
 STAT_LABELS = {
     "hp": "生命",
